@@ -1,0 +1,11 @@
+ALTER TABLE [HospitalManagement].[Tran].[OPDHistory] ADD [NumberofXRAY] int;
+
+DELETE FROM [HospitalManagement].[Tran].OPDHistoryUpdate;
+DELETE FROM [HospitalManagement].[Tran].BillHistory;
+DELETE FROM [HospitalManagement].[Tran].PatientHistory;
+DELETE FROM [HospitalManagement].[Tran].OPDHistory;
+DELETE FROM [HospitalManagement].[Tran].IPDHistory;
+
+DELETE FROM [HospitalManagement].People.PatientDetail;
+DELETE FROM [HospitalManagement].People.DoctorDetail where IsInHouse='false';
+DELETE FROM [HospitalManagement].LKP.LabDetail; 

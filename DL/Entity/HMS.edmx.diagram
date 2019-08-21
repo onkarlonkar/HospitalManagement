@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a8e400acbaa242f88ed5b5f3f7b4b333" Name="Diagram1">
+        <EntityTypeShape EntityType="HospitalManagementModel.sysdiagram" Width="1.5" PointX="0.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalManagementModel.Department" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalManagementModel.LabDetail" Width="1.5" PointX="2.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalManagementModel.Medicine" Width="1.5" PointX="8" PointY="23" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalManagementModel.MedicineCategory" Width="1.5" PointX="4.625" PointY="21.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalManagementModel.MedicineTiming" Width="1.5" PointX="8.125" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalManagementModel.MedicineType" Width="1.5" PointX="5.75" PointY="25.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalManagementModel.RoleCategory" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalManagementModel.RoomType" Width="1.5" PointX="5.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalManagementModel.Status" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalManagementModel.WardDetail" Width="1.5" PointX="5.25" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalManagementModel.DoctorDetail" Width="1.5" PointX="6" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalManagementModel.PatientDetail" Width="1.5" PointX="8" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalManagementModel.OPDHistory" Width="1.5" PointX="4.875" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalManagementModel.PatientHistory" Width="1.5" PointX="10.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HospitalManagementModel.UserDetail" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <AssociationConnector Association="HospitalManagementModel.FK_PatientDetail_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalManagementModel.FK_Status_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalManagementModel.FK_UserDetail_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalManagementModel.FK_Medicine_MedicineCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalManagementModel.FK_Medicine_MedicineType" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalManagementModel.FK_PatientHistory_Medicine" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalManagementModel.FK_PatientHistory_MedicineTiming" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalManagementModel.FK_UserDetail_RoleCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalManagementModel.FK_PatientDetail_RoomType" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalManagementModel.FK_OPDHistory_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalManagementModel.FK_PatientDetail_WardDetail" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalManagementModel.FK_PatientDetail_DoctorDetail" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalManagementModel.FK_PatientHistory_PatientDetail" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalManagementModel.FK_PatientHistory_OPDHistory" ManuallyRouted="false" />
+        <AssociationConnector Association="HospitalManagementModel.FK_OPDHistory_PatientDetail" />
+        <EntityTypeShape EntityType="HospitalManagementModel.BillHistory" Width="1.5" PointX="13.25" PointY="8.625" />
+        <AssociationConnector Association="HospitalManagementModel.FK_BillHistory_PatientDetail" />
+        <AssociationConnector Association="HospitalManagementModel.FK_BillHistory_OPDHistory" />
+        <EntityTypeShape EntityType="HospitalManagementModel.OPDRate" Width="1.5" PointX="10.375" PointY="12.75" />
+        <EntityTypeShape EntityType="HospitalManagementModel.OPDHistoryUpdate" Width="1.5" PointX="7.5" PointY="29.5" />
+        <AssociationConnector Association="HospitalManagementModel.FK_OPDHistoryUpdate_OPDHistory" />
+        <AssociationConnector Association="HospitalManagementModel.FK_OPDHistory_LabDetail" />
+        <AssociationConnector Association="HospitalManagementModel.FK_OPDHistory_DoctorDetail" />
+        <EntityTypeShape EntityType="HospitalManagementModel.IPDHistory" Width="1.5" PointX="10.25" PointY="3.875" />
+        <AssociationConnector Association="HospitalManagementModel.FK_IPDHistory_PatientDetail" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

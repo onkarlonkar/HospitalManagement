@@ -1,0 +1,421 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F4953B54-57B2-4969-B958-9B41D4D52BF3}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HospitalManagement</RootNamespace>
+    <AssemblyName>HospitalManagement</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Bunifu_UI_v1.5.3">
+      <HintPath>C:\Users\Onkar Lonkar\Downloads\Bunifu_UI_v1.5.3\Bunifu_UI_v1.5.3.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MetroFramework">
+      <HintPath>..\..\MetroFrameWorkPrac\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="circularLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Common\patientDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Common\patientDialog.Designer.cs">
+      <DependentUpon>patientDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Dashboard.Designer.cs">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DashboardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DashboardForm.Designer.cs">
+      <DependentUpon>DashboardForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Doctor\DoctorDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Doctor\DoctorDetails.Designer.cs">
+      <DependentUpon>DoctorDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Doctor\DoctorList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Doctor\DoctorList.Designer.cs">
+      <DependentUpon>DoctorList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Lookup\DepartmentList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Lookup\DepartmentList.Designer.cs">
+      <DependentUpon>DepartmentList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Lookup\DepartmentOperations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Lookup\DepartmentOperations.Designer.cs">
+      <DependentUpon>DepartmentOperations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Lookup\LabDetailOperations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Lookup\LabDetailOperations.Designer.cs">
+      <DependentUpon>LabDetailOperations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Lookup\LabDetailList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Lookup\LabDetailList.Designer.cs">
+      <DependentUpon>LabDetailList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Lookup\OPDRateList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Lookup\OPDRateList.Designer.cs">
+      <DependentUpon>OPDRateList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Lookup\StatusList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Lookup\StatusList.Designer.cs">
+      <DependentUpon>StatusList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Lookup\OPDRateOperations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Lookup\OPDRateOperations.Designer.cs">
+      <DependentUpon>OPDRateOperations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Lookup\StatusOperations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Lookup\StatusOperations.Designer.cs">
+      <DependentUpon>StatusOperations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Patients\AddOPD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Patients\AddOPD.Designer.cs">
+      <DependentUpon>AddOPD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Patients\OPDHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Patients\OPDHistory.Designer.cs">
+      <DependentUpon>OPDHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Patients\PatientDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Patients\PatientDetails.Designer.cs">
+      <DependentUpon>PatientDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Patients\PrintOptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Patients\PrintOptions.Designer.cs">
+      <DependentUpon>PrintOptions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Patients\PatientList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Patients\PatientList.Designer.cs">
+      <DependentUpon>PatientList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainDashBoard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainDashBoard.Designer.cs">
+      <DependentUpon>MainDashBoard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\IPDReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\IPDReport.Designer.cs">
+      <DependentUpon>IPDReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\OPDReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\OPDReport.Designer.cs">
+      <DependentUpon>OPDReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\trialDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\trialDashboard.Designer.cs">
+      <DependentUpon>trialDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserDetailList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UserDetailList.Designer.cs">
+      <DependentUpon>UserDetailList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UserDetails.Designer.cs">
+      <DependentUpon>UserDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\Common\patientDialog.resx">
+      <DependentUpon>patientDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Dashboard.resx">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DashboardForm.resx">
+      <DependentUpon>DashboardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Doctor\DoctorDetails.resx">
+      <DependentUpon>DoctorDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Doctor\DoctorList.resx">
+      <DependentUpon>DoctorList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Lookup\DepartmentList.resx">
+      <DependentUpon>DepartmentList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Lookup\DepartmentOperations.resx">
+      <DependentUpon>DepartmentOperations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Lookup\LabDetailOperations.resx">
+      <DependentUpon>LabDetailOperations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Lookup\LabDetailList.resx">
+      <DependentUpon>LabDetailList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Lookup\OPDRateList.resx">
+      <DependentUpon>OPDRateList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Lookup\StatusList.resx">
+      <DependentUpon>StatusList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Lookup\OPDRateOperations.resx">
+      <DependentUpon>OPDRateOperations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Lookup\StatusOperations.resx">
+      <DependentUpon>StatusOperations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Patients\AddOPD.resx">
+      <DependentUpon>AddOPD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Patients\OPDHistory.resx">
+      <DependentUpon>OPDHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Patients\PatientDetails.resx">
+      <DependentUpon>PatientDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Patients\PrintOptions.resx">
+      <DependentUpon>PrintOptions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Patients\PatientList.resx">
+      <DependentUpon>PatientList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainDashBoard.resx">
+      <DependentUpon>MainDashBoard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\IPDReport.resx">
+      <DependentUpon>IPDReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\OPDReport.resx">
+      <DependentUpon>OPDReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\trialDashboard.resx">
+      <DependentUpon>trialDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserDetailList.resx">
+      <DependentUpon>UserDetailList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserDetails.resx">
+      <DependentUpon>UserDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\Menu_42px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\Close_30px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\Restore Window_30px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\Maximize Window_30px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\Minimize Window_30px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\Add User Male_40px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\Administrative Tools_36px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\User Account_36px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\Create_30px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\Create_18px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\Edit_18px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\Trash_18px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\User_Account_36px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\Save_18px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\Cancel_18px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BL\BL.csproj">
+      <Project>{08f06ebe-9cdb-44f7-8a9f-7798a91138bb}</Project>
+      <Name>BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{d2990835-2e14-441e-82d9-a266c1cc6654}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Service\Service.csproj">
+      <Project>{1226a67c-2906-49e3-a4ba-cfbeb32aa6e7}</Project>
+      <Name>Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utility\Utility.csproj">
+      <Project>{f7743a95-46e9-4d6e-8dfc-0a46495db8c5}</Project>
+      <Name>Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="images\Add New_18px.png" />
+    <Content Include="images\Caduceus_104px.png" />
+    <None Include="images\department_24px.png" />
+    <None Include="images\reports_24px.png" />
+    <None Include="images\IPDPatient_24px.png" />
+    <None Include="images\lab_24px.png" />
+    <None Include="images\rates_24px.png" />
+    <None Include="images\master_24px.png" />
+    <None Include="images\opdReport_24px.png" />
+    <None Include="images\user_24px.png" />
+    <None Include="images\Dashboard_24px.png" />
+    <None Include="images\Search_New_18px.png" />
+    <None Include="images\Download_18px.png" />
+    <None Include="images\OPD_Report_36px.png" />
+    <None Include="images\Print_Report_18px.png" />
+    <None Include="images\Search_18px.png" />
+    <None Include="images\Print_18px.png" />
+    <None Include="images\Dashboard_36px.png" />
+    <None Include="images\Caduceus_40px.png" />
+    <None Include="images\Medical Doctor_36px.png" />
+    <None Include="images\Department_36px.png" />
+    <None Include="images\Status_36px.png" />
+    <None Include="images\Historical_18px.png" />
+    <None Include="images\Add_New_Green_18px.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

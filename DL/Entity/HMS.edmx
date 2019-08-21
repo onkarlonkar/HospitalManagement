@@ -1,0 +1,1812 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HospitalManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="LabDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="75" />
+          <Property Name="PathelogistName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="15" />
+          <Property Name="IsInHouse" Type="bit" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="Medicine">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MedicineCategoryId" Type="uniqueidentifier" />
+          <Property Name="MedicineTypeId" Type="uniqueidentifier" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="MedicineCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="MedicineTiming">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="MedicineType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="OPDRate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="Rate" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="IsDefault" Type="bit" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" />
+          <Property Name="ModifiedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="RoleCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="RoomType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DepartmentId" Type="uniqueidentifier" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sequence" Type="int" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="WardDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="DoctorDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gender" Type="int" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="15" />
+          <Property Name="MobileNumber" Type="nvarchar" MaxLength="10" />
+          <Property Name="ClinicName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClinicContact" Type="nvarchar" MaxLength="15" />
+          <Property Name="Age" Type="int" />
+          <Property Name="Address" Type="nvarchar" MaxLength="250" />
+          <Property Name="Qualification" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsCounsalting" Type="bit" />
+          <Property Name="IsInHouse" Type="bit" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="PatientDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CasePaperNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Gender" Type="int" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="15" />
+          <Property Name="MobileNumber" Type="nchar" MaxLength="10" />
+          <Property Name="Age" Type="int" />
+          <Property Name="Address" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsAdmitted" Type="bit" />
+          <Property Name="AadharCard" Type="nvarchar" MaxLength="12" />
+          <Property Name="PanCard" Type="nvarchar" MaxLength="10" />
+          <Property Name="AdmittedDate" Type="datetime" />
+          <Property Name="IsDischarged" Type="bit" />
+          <Property Name="DischargedDate" Type="datetime" />
+          <Property Name="RefferedDoctor" Type="uniqueidentifier" />
+          <Property Name="CasePaperIssuedDate" Type="datetime" />
+          <Property Name="CasePaperExpiryDate" Type="datetime" />
+          <Property Name="WardNumberId" Type="uniqueidentifier" />
+          <Property Name="RoomNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="RoomTypeId" Type="uniqueidentifier" />
+          <Property Name="DepartmentId" Type="uniqueidentifier" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="BillHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PatientId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="OPDHistoryId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ReceiptNumber" Type="int" Nullable="false" />
+          <Property Name="PrintCopys" Type="int" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="LastPrintedBy" Type="uniqueidentifier" />
+          <Property Name="LastPrintedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="IPDHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PatientId" Type="uniqueidentifier" />
+          <Property Name="TotalAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PaidAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="DueAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ReceivedBy" Type="uniqueidentifier" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="OPDHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PatientId" Type="uniqueidentifier" />
+          <Property Name="Sequence" Type="int" />
+          <Property Name="InTime" Type="datetime" />
+          <Property Name="OutTime" Type="datetime" />
+          <Property Name="IsCharity" Type="bit" />
+          <Property Name="IsLabCharity" Type="bit" />
+          <Property Name="IsECG" Type="bit" />
+          <Property Name="IsXRAY" Type="bit" />
+          <Property Name="ThirdPartyLabId" Type="uniqueidentifier" />
+          <Property Name="ThirdPartyLabAmoumt" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ECGAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="NumberofXRAY" Type="int" />
+          <Property Name="XRAYAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ConsultingDoctorId" Type="uniqueidentifier" />
+          <Property Name="Diagnose" Type="nvarchar(max)" />
+          <Property Name="Madicines" Type="nvarchar(max)" />
+          <Property Name="StatusId" Type="uniqueidentifier" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="LabTestingAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TotalAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PaidAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="DueAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="ReceivedBy" Type="uniqueidentifier" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="OPDHistoryUpdate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OPDHistoryId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UpdatedBy" Type="uniqueidentifier" />
+          <Property Name="UpdatedField" Type="nvarchar" MaxLength="50" />
+          <Property Name="PreviousValue" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdatedValue" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PatientHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PateintId" Type="uniqueidentifier" />
+          <Property Name="OPDHistoryId" Type="uniqueidentifier" />
+          <Property Name="MedicineId" Type="uniqueidentifier" />
+          <Property Name="MedicineTimingId" Type="uniqueidentifier" />
+          <Property Name="Quantity" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="UserDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" />
+          <Property Name="PhoneNumber" Type="nchar" MaxLength="10" />
+          <Property Name="DepartmentId" Type="uniqueidentifier" />
+          <Property Name="RoleCategoryId" Type="uniqueidentifier" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" />
+        </EntityType>
+        <Association Name="FK_BillHistory_OPDHistory">
+          <End Role="OPDHistory" Type="Self.OPDHistory" Multiplicity="1" />
+          <End Role="BillHistory" Type="Self.BillHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OPDHistory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BillHistory">
+              <PropertyRef Name="OPDHistoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BillHistory_PatientDetail">
+          <End Role="PatientDetail" Type="Self.PatientDetail" Multiplicity="1" />
+          <End Role="BillHistory" Type="Self.BillHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PatientDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BillHistory">
+              <PropertyRef Name="PatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IPDHistory_PatientDetail">
+          <End Role="PatientDetail" Type="Self.PatientDetail" Multiplicity="0..1" />
+          <End Role="IPDHistory" Type="Self.IPDHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PatientDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="IPDHistory">
+              <PropertyRef Name="PatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Medicine_MedicineCategory">
+          <End Role="MedicineCategory" Type="Self.MedicineCategory" Multiplicity="0..1" />
+          <End Role="Medicine" Type="Self.Medicine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MedicineCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Medicine">
+              <PropertyRef Name="MedicineCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Medicine_MedicineType">
+          <End Role="MedicineType" Type="Self.MedicineType" Multiplicity="0..1" />
+          <End Role="Medicine" Type="Self.Medicine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MedicineType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Medicine">
+              <PropertyRef Name="MedicineTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OPDHistory_DoctorDetail">
+          <End Role="DoctorDetail" Type="Self.DoctorDetail" Multiplicity="0..1" />
+          <End Role="OPDHistory" Type="Self.OPDHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DoctorDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OPDHistory">
+              <PropertyRef Name="ConsultingDoctorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OPDHistory_LabDetail">
+          <End Role="LabDetail" Type="Self.LabDetail" Multiplicity="0..1" />
+          <End Role="OPDHistory" Type="Self.OPDHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LabDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OPDHistory">
+              <PropertyRef Name="ThirdPartyLabId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OPDHistory_PatientDetail">
+          <End Role="PatientDetail" Type="Self.PatientDetail" Multiplicity="0..1" />
+          <End Role="OPDHistory" Type="Self.OPDHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PatientDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OPDHistory">
+              <PropertyRef Name="PatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OPDHistory_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="OPDHistory" Type="Self.OPDHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OPDHistory">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OPDHistoryUpdate_OPDHistory">
+          <End Role="OPDHistory" Type="Self.OPDHistory" Multiplicity="1" />
+          <End Role="OPDHistoryUpdate" Type="Self.OPDHistoryUpdate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OPDHistory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OPDHistoryUpdate">
+              <PropertyRef Name="OPDHistoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PatientDetail_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="PatientDetail" Type="Self.PatientDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatientDetail">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PatientDetail_DoctorDetail">
+          <End Role="DoctorDetail" Type="Self.DoctorDetail" Multiplicity="0..1" />
+          <End Role="PatientDetail" Type="Self.PatientDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DoctorDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatientDetail">
+              <PropertyRef Name="RefferedDoctor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PatientDetail_RoomType">
+          <End Role="RoomType" Type="Self.RoomType" Multiplicity="0..1" />
+          <End Role="PatientDetail" Type="Self.PatientDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatientDetail">
+              <PropertyRef Name="RoomTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PatientDetail_WardDetail">
+          <End Role="WardDetail" Type="Self.WardDetail" Multiplicity="0..1" />
+          <End Role="PatientDetail" Type="Self.PatientDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WardDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatientDetail">
+              <PropertyRef Name="WardNumberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PatientHistory_Medicine">
+          <End Role="Medicine" Type="Self.Medicine" Multiplicity="0..1" />
+          <End Role="PatientHistory" Type="Self.PatientHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medicine">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatientHistory">
+              <PropertyRef Name="MedicineId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PatientHistory_MedicineTiming">
+          <End Role="MedicineTiming" Type="Self.MedicineTiming" Multiplicity="0..1" />
+          <End Role="PatientHistory" Type="Self.PatientHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MedicineTiming">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatientHistory">
+              <PropertyRef Name="MedicineTimingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PatientHistory_OPDHistory">
+          <End Role="OPDHistory" Type="Self.OPDHistory" Multiplicity="0..1" />
+          <End Role="PatientHistory" Type="Self.PatientHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OPDHistory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatientHistory">
+              <PropertyRef Name="OPDHistoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PatientHistory_PatientDetail">
+          <End Role="PatientDetail" Type="Self.PatientDetail" Multiplicity="0..1" />
+          <End Role="PatientHistory" Type="Self.PatientHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PatientDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatientHistory">
+              <PropertyRef Name="PateintId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Status_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="Status" Type="Self.Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Status">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDetail_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="UserDetail" Type="Self.UserDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserDetail">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDetail_RoleCategory">
+          <End Role="RoleCategory" Type="Self.RoleCategory" Multiplicity="0..1" />
+          <End Role="UserDetail" Type="Self.UserDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoleCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserDetail">
+              <PropertyRef Name="RoleCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HospitalManagementModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="LKP" store:Type="Tables" />
+          <EntitySet Name="LabDetail" EntityType="Self.LabDetail" Schema="LKP" store:Type="Tables" />
+          <EntitySet Name="Medicine" EntityType="Self.Medicine" Schema="LKP" store:Type="Tables" />
+          <EntitySet Name="MedicineCategory" EntityType="Self.MedicineCategory" Schema="LKP" store:Type="Tables" />
+          <EntitySet Name="MedicineTiming" EntityType="Self.MedicineTiming" Schema="LKP" store:Type="Tables" />
+          <EntitySet Name="MedicineType" EntityType="Self.MedicineType" Schema="LKP" store:Type="Tables" />
+          <EntitySet Name="OPDRate" EntityType="Self.OPDRate" Schema="LKP" store:Type="Tables" />
+          <EntitySet Name="RoleCategory" EntityType="Self.RoleCategory" Schema="LKP" store:Type="Tables" />
+          <EntitySet Name="RoomType" EntityType="Self.RoomType" Schema="LKP" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="LKP" store:Type="Tables" />
+          <EntitySet Name="WardDetail" EntityType="Self.WardDetail" Schema="LKP" store:Type="Tables" />
+          <EntitySet Name="DoctorDetail" EntityType="Self.DoctorDetail" Schema="People" store:Type="Tables" />
+          <EntitySet Name="PatientDetail" EntityType="Self.PatientDetail" Schema="People" store:Type="Tables" />
+          <EntitySet Name="BillHistory" EntityType="Self.BillHistory" Schema="Tran" store:Type="Tables" />
+          <EntitySet Name="IPDHistory" EntityType="Self.IPDHistory" Schema="Tran" store:Type="Tables" />
+          <EntitySet Name="OPDHistory" EntityType="Self.OPDHistory" Schema="Tran" store:Type="Tables" />
+          <EntitySet Name="OPDHistoryUpdate" EntityType="Self.OPDHistoryUpdate" Schema="Tran" store:Type="Tables" />
+          <EntitySet Name="PatientHistory" EntityType="Self.PatientHistory" Schema="Tran" store:Type="Tables" />
+          <EntitySet Name="UserDetail" EntityType="Self.UserDetail" Schema="User" store:Type="Tables" />
+          <AssociationSet Name="FK_BillHistory_OPDHistory" Association="Self.FK_BillHistory_OPDHistory">
+            <End Role="OPDHistory" EntitySet="OPDHistory" />
+            <End Role="BillHistory" EntitySet="BillHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BillHistory_PatientDetail" Association="Self.FK_BillHistory_PatientDetail">
+            <End Role="PatientDetail" EntitySet="PatientDetail" />
+            <End Role="BillHistory" EntitySet="BillHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IPDHistory_PatientDetail" Association="Self.FK_IPDHistory_PatientDetail">
+            <End Role="PatientDetail" EntitySet="PatientDetail" />
+            <End Role="IPDHistory" EntitySet="IPDHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Medicine_MedicineCategory" Association="Self.FK_Medicine_MedicineCategory">
+            <End Role="MedicineCategory" EntitySet="MedicineCategory" />
+            <End Role="Medicine" EntitySet="Medicine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Medicine_MedicineType" Association="Self.FK_Medicine_MedicineType">
+            <End Role="MedicineType" EntitySet="MedicineType" />
+            <End Role="Medicine" EntitySet="Medicine" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OPDHistory_DoctorDetail" Association="Self.FK_OPDHistory_DoctorDetail">
+            <End Role="DoctorDetail" EntitySet="DoctorDetail" />
+            <End Role="OPDHistory" EntitySet="OPDHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OPDHistory_LabDetail" Association="Self.FK_OPDHistory_LabDetail">
+            <End Role="LabDetail" EntitySet="LabDetail" />
+            <End Role="OPDHistory" EntitySet="OPDHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OPDHistory_PatientDetail" Association="Self.FK_OPDHistory_PatientDetail">
+            <End Role="PatientDetail" EntitySet="PatientDetail" />
+            <End Role="OPDHistory" EntitySet="OPDHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OPDHistory_Status" Association="Self.FK_OPDHistory_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="OPDHistory" EntitySet="OPDHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OPDHistoryUpdate_OPDHistory" Association="Self.FK_OPDHistoryUpdate_OPDHistory">
+            <End Role="OPDHistory" EntitySet="OPDHistory" />
+            <End Role="OPDHistoryUpdate" EntitySet="OPDHistoryUpdate" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PatientDetail_Department" Association="Self.FK_PatientDetail_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="PatientDetail" EntitySet="PatientDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PatientDetail_DoctorDetail" Association="Self.FK_PatientDetail_DoctorDetail">
+            <End Role="DoctorDetail" EntitySet="DoctorDetail" />
+            <End Role="PatientDetail" EntitySet="PatientDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PatientDetail_RoomType" Association="Self.FK_PatientDetail_RoomType">
+            <End Role="RoomType" EntitySet="RoomType" />
+            <End Role="PatientDetail" EntitySet="PatientDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PatientDetail_WardDetail" Association="Self.FK_PatientDetail_WardDetail">
+            <End Role="WardDetail" EntitySet="WardDetail" />
+            <End Role="PatientDetail" EntitySet="PatientDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PatientHistory_Medicine" Association="Self.FK_PatientHistory_Medicine">
+            <End Role="Medicine" EntitySet="Medicine" />
+            <End Role="PatientHistory" EntitySet="PatientHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PatientHistory_MedicineTiming" Association="Self.FK_PatientHistory_MedicineTiming">
+            <End Role="MedicineTiming" EntitySet="MedicineTiming" />
+            <End Role="PatientHistory" EntitySet="PatientHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PatientHistory_OPDHistory" Association="Self.FK_PatientHistory_OPDHistory">
+            <End Role="OPDHistory" EntitySet="OPDHistory" />
+            <End Role="PatientHistory" EntitySet="PatientHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PatientHistory_PatientDetail" Association="Self.FK_PatientHistory_PatientDetail">
+            <End Role="PatientDetail" EntitySet="PatientDetail" />
+            <End Role="PatientHistory" EntitySet="PatientHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Status_Department" Association="Self.FK_Status_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Status" EntitySet="Status" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDetail_Department" Association="Self.FK_UserDetail_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="UserDetail" EntitySet="UserDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDetail_RoleCategory" Association="Self.FK_UserDetail_RoleCategory">
+            <End Role="RoleCategory" EntitySet="RoleCategory" />
+            <End Role="UserDetail" EntitySet="UserDetail" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HospitalManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="ModifiedBy" Type="Guid" />
+          <NavigationProperty Name="PatientDetails" Relationship="Self.FK_PatientDetail_Department" FromRole="Department" ToRole="PatientDetail" />
+          <NavigationProperty Name="Status" Relationship="Self.FK_Status_Department" FromRole="Department" ToRole="Status" />
+          <NavigationProperty Name="UserDetails" Relationship="Self.FK_UserDetail_Department" FromRole="Department" ToRole="UserDetail" />
+        </EntityType>
+        <EntityType Name="LabDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+          <Property Name="PathelogistName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="IsInHouse" Type="Boolean" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="ModifiedBy" Type="Guid" />
+          <NavigationProperty Name="OPDHistories" Relationship="HospitalManagementModel.FK_OPDHistory_LabDetail" FromRole="LabDetail" ToRole="OPDHistory" />
+        </EntityType>
+        <EntityType Name="Medicine">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MedicineCategoryId" Type="Guid" />
+          <Property Name="MedicineTypeId" Type="Guid" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="ModifiedBy" Type="Guid" />
+          <NavigationProperty Name="MedicineCategory" Relationship="Self.FK_Medicine_MedicineCategory" FromRole="Medicine" ToRole="MedicineCategory" />
+          <NavigationProperty Name="MedicineType" Relationship="Self.FK_Medicine_MedicineType" FromRole="Medicine" ToRole="MedicineType" />
+          <NavigationProperty Name="PatientHistories" Relationship="Self.FK_PatientHistory_Medicine" FromRole="Medicine" ToRole="PatientHistory" />
+        </EntityType>
+        <EntityType Name="MedicineCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="ModifiedBy" Type="Guid" />
+          <NavigationProperty Name="Medicines" Relationship="Self.FK_Medicine_MedicineCategory" FromRole="MedicineCategory" ToRole="Medicine" />
+        </EntityType>
+        <EntityType Name="MedicineTiming">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="ModifiedBy" Type="Guid" />
+          <NavigationProperty Name="PatientHistories" Relationship="Self.FK_PatientHistory_MedicineTiming" FromRole="MedicineTiming" ToRole="PatientHistory" />
+        </EntityType>
+        <EntityType Name="MedicineType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="ModifiedBy" Type="Guid" />
+          <NavigationProperty Name="Medicines" Relationship="Self.FK_Medicine_MedicineType" FromRole="MedicineType" ToRole="Medicine" />
+        </EntityType>
+        <EntityType Name="RoleCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="ModifiedBy" Type="Guid" />
+          <NavigationProperty Name="UserDetails" Relationship="Self.FK_UserDetail_RoleCategory" FromRole="RoleCategory" ToRole="UserDetail" />
+        </EntityType>
+        <EntityType Name="RoomType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="ModifiedBy" Type="Guid" />
+          <NavigationProperty Name="PatientDetails" Relationship="Self.FK_PatientDetail_RoomType" FromRole="RoomType" ToRole="PatientDetail" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartmentId" Type="Guid" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sequence" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="ModifiedBy" Type="Guid" />
+          <NavigationProperty Name="Department" Relationship="Self.FK_Status_Department" FromRole="Status" ToRole="Department" />
+          <NavigationProperty Name="OPDHistories" Relationship="Self.FK_OPDHistory_Status" FromRole="Status" ToRole="OPDHistory" />
+        </EntityType>
+        <EntityType Name="WardDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="ModifiedBy" Type="Guid" />
+          <NavigationProperty Name="PatientDetails" Relationship="Self.FK_PatientDetail_WardDetail" FromRole="WardDetail" ToRole="PatientDetail" />
+        </EntityType>
+        <EntityType Name="DoctorDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="Int32" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Qualification" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsCounsalting" Type="Boolean" />
+          <Property Name="IsInHouse" Type="Boolean" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="ModifiedBy" Type="Guid" />
+          <NavigationProperty Name="PatientDetails" Relationship="Self.FK_PatientDetail_DoctorDetail" FromRole="DoctorDetail" ToRole="PatientDetail" />
+          <Property Name="MobileNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ClinicName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClinicContact" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OPDHistories" Relationship="HospitalManagementModel.FK_OPDHistory_DoctorDetail" FromRole="DoctorDetail" ToRole="OPDHistory" />
+        </EntityType>
+        <EntityType Name="PatientDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CasePaperNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="Int32" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsAdmitted" Type="Boolean" />
+          <Property Name="AdmittedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsDischarged" Type="Boolean" />
+          <Property Name="DischargedDate" Type="DateTime" Precision="3" />
+          <Property Name="RefferedDoctor" Type="Guid" />
+          <Property Name="CasePaperIssuedDate" Type="DateTime" Precision="3" />
+          <Property Name="CasePaperExpiryDate" Type="DateTime" Precision="3" />
+          <Property Name="WardNumberId" Type="Guid" />
+          <Property Name="RoomNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RoomTypeId" Type="Guid" />
+          <Property Name="DepartmentId" Type="Guid" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="ModifiedBy" Type="Guid" />
+          <NavigationProperty Name="Department" Relationship="Self.FK_PatientDetail_Department" FromRole="PatientDetail" ToRole="Department" />
+          <NavigationProperty Name="RoomType" Relationship="Self.FK_PatientDetail_RoomType" FromRole="PatientDetail" ToRole="RoomType" />
+          <NavigationProperty Name="WardDetail" Relationship="Self.FK_PatientDetail_WardDetail" FromRole="PatientDetail" ToRole="WardDetail" />
+          <NavigationProperty Name="DoctorDetail" Relationship="Self.FK_PatientDetail_DoctorDetail" FromRole="PatientDetail" ToRole="DoctorDetail" />
+          <NavigationProperty Name="PatientHistories" Relationship="Self.FK_PatientHistory_PatientDetail" FromRole="PatientDetail" ToRole="PatientHistory" />
+          <Property Name="AadharCard" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="PanCard" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="OPDHistories" Relationship="HospitalManagementModel.FK_OPDHistory_PatientDetail" FromRole="PatientDetail" ToRole="OPDHistory" />
+          <NavigationProperty Name="BillHistories" Relationship="HospitalManagementModel.FK_BillHistory_PatientDetail" FromRole="PatientDetail" ToRole="BillHistory" />
+          <NavigationProperty Name="IPDHistories" Relationship="HospitalManagementModel.FK_IPDHistory_PatientDetail" FromRole="PatientDetail" ToRole="IPDHistory" />
+        </EntityType>
+        <EntityType Name="OPDHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientId" Type="Guid" />
+          <Property Name="Sequence" Type="Int32" />
+          <Property Name="InTime" Type="DateTime" Precision="3" />
+          <Property Name="OutTime" Type="DateTime" Precision="3" />
+          <Property Name="IsCharity" Type="Boolean" />
+          <Property Name="StatusId" Type="Guid" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" DefaultValue="0.00" />
+          <Property Name="PaidAmount" Type="Decimal" Precision="18" Scale="2" DefaultValue="0.00" />
+          <Property Name="DueAmount" Type="Decimal" Precision="18" Scale="2" DefaultValue="0.00" />
+          <Property Name="ReceivedBy" Type="Guid" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="ModifiedBy" Type="Guid" />
+          <NavigationProperty Name="Status" Relationship="Self.FK_OPDHistory_Status" FromRole="OPDHistory" ToRole="Status" />
+          <NavigationProperty Name="PatientHistories" Relationship="Self.FK_PatientHistory_OPDHistory" FromRole="OPDHistory" ToRole="PatientHistory" />
+          <Property Name="IsLabCharity" Type="Boolean" />
+          <Property Name="Diagnose" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Madicines" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LabTestingAmount" Type="Decimal" Precision="18" Scale="2" DefaultValue="0.00" />
+          <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="2" DefaultValue="0.00" />
+          <NavigationProperty Name="PatientDetail" Relationship="HospitalManagementModel.FK_OPDHistory_PatientDetail" FromRole="OPDHistory" ToRole="PatientDetail" />
+          <NavigationProperty Name="BillHistories" Relationship="HospitalManagementModel.FK_BillHistory_OPDHistory" FromRole="OPDHistory" ToRole="BillHistory" />
+          <Property Name="ECGAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="XRAYAmount" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="OPDHistoryUpdates" Relationship="HospitalManagementModel.FK_OPDHistoryUpdate_OPDHistory" FromRole="OPDHistory" ToRole="OPDHistoryUpdate" />
+          <Property Name="ConsultingDoctorId" Type="Guid" />
+          <Property Name="ThirdPartyLabId" Type="Guid" />
+          <Property Name="ThirdPartyLabAmoumt" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="LabDetail" Relationship="HospitalManagementModel.FK_OPDHistory_LabDetail" FromRole="OPDHistory" ToRole="LabDetail" />
+          <NavigationProperty Name="DoctorDetail" Relationship="HospitalManagementModel.FK_OPDHistory_DoctorDetail" FromRole="OPDHistory" ToRole="DoctorDetail" />
+          <Property Name="IsECG" Type="Boolean" />
+          <Property Name="IsXRAY" Type="Boolean" />
+          <Property Name="NumberofXRAY" Type="Int32" />
+        </EntityType>
+        <EntityType Name="PatientHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PateintId" Type="Guid" />
+          <Property Name="OPDHistoryId" Type="Guid" />
+          <Property Name="MedicineId" Type="Guid" />
+          <Property Name="MedicineTimingId" Type="Guid" />
+          <Property Name="Quantity" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="ModifiedBy" Type="Guid" />
+          <NavigationProperty Name="Medicine" Relationship="Self.FK_PatientHistory_Medicine" FromRole="PatientHistory" ToRole="Medicine" />
+          <NavigationProperty Name="MedicineTiming" Relationship="Self.FK_PatientHistory_MedicineTiming" FromRole="PatientHistory" ToRole="MedicineTiming" />
+          <NavigationProperty Name="PatientDetail" Relationship="Self.FK_PatientHistory_PatientDetail" FromRole="PatientHistory" ToRole="PatientDetail" />
+          <NavigationProperty Name="OPDHistory" Relationship="Self.FK_PatientHistory_OPDHistory" FromRole="PatientHistory" ToRole="OPDHistory" />
+        </EntityType>
+        <EntityType Name="UserDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="DepartmentId" Type="Guid" />
+          <Property Name="RoleCategoryId" Type="Guid" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="ModifiedBy" Type="Guid" />
+          <NavigationProperty Name="Department" Relationship="Self.FK_UserDetail_Department" FromRole="UserDetail" ToRole="Department" />
+          <NavigationProperty Name="RoleCategory" Relationship="Self.FK_UserDetail_RoleCategory" FromRole="UserDetail" ToRole="RoleCategory" />
+        </EntityType>
+        <Association Name="FK_PatientDetail_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="PatientDetail" Type="Self.PatientDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatientDetail">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Status_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="Status" Type="Self.Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Status">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDetail_Department">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="UserDetail" Type="Self.UserDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserDetail">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Medicine_MedicineCategory">
+          <End Role="MedicineCategory" Type="Self.MedicineCategory" Multiplicity="0..1" />
+          <End Role="Medicine" Type="Self.Medicine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MedicineCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Medicine">
+              <PropertyRef Name="MedicineCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Medicine_MedicineType">
+          <End Role="MedicineType" Type="Self.MedicineType" Multiplicity="0..1" />
+          <End Role="Medicine" Type="Self.Medicine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MedicineType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Medicine">
+              <PropertyRef Name="MedicineTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PatientHistory_Medicine">
+          <End Role="Medicine" Type="Self.Medicine" Multiplicity="0..1" />
+          <End Role="PatientHistory" Type="Self.PatientHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Medicine">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatientHistory">
+              <PropertyRef Name="MedicineId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PatientHistory_MedicineTiming">
+          <End Role="MedicineTiming" Type="Self.MedicineTiming" Multiplicity="0..1" />
+          <End Role="PatientHistory" Type="Self.PatientHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MedicineTiming">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatientHistory">
+              <PropertyRef Name="MedicineTimingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDetail_RoleCategory">
+          <End Role="RoleCategory" Type="Self.RoleCategory" Multiplicity="0..1" />
+          <End Role="UserDetail" Type="Self.UserDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoleCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserDetail">
+              <PropertyRef Name="RoleCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PatientDetail_RoomType">
+          <End Role="RoomType" Type="Self.RoomType" Multiplicity="0..1" />
+          <End Role="PatientDetail" Type="Self.PatientDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatientDetail">
+              <PropertyRef Name="RoomTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OPDHistory_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="OPDHistory" Type="Self.OPDHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OPDHistory">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PatientDetail_WardDetail">
+          <End Role="WardDetail" Type="Self.WardDetail" Multiplicity="0..1" />
+          <End Role="PatientDetail" Type="Self.PatientDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WardDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatientDetail">
+              <PropertyRef Name="WardNumberId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PatientDetail_DoctorDetail">
+          <End Role="DoctorDetail" Type="Self.DoctorDetail" Multiplicity="0..1" />
+          <End Role="PatientDetail" Type="Self.PatientDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DoctorDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatientDetail">
+              <PropertyRef Name="RefferedDoctor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PatientHistory_PatientDetail">
+          <End Role="PatientDetail" Type="Self.PatientDetail" Multiplicity="0..1" />
+          <End Role="PatientHistory" Type="Self.PatientHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PatientDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatientHistory">
+              <PropertyRef Name="PateintId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PatientHistory_OPDHistory">
+          <End Role="OPDHistory" Type="Self.OPDHistory" Multiplicity="0..1" />
+          <End Role="PatientHistory" Type="Self.PatientHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OPDHistory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatientHistory">
+              <PropertyRef Name="OPDHistoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HMSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Departments" EntityType="Self.Department" />
+          <EntitySet Name="LabDetails" EntityType="Self.LabDetail" />
+          <EntitySet Name="Medicines" EntityType="Self.Medicine" />
+          <EntitySet Name="MedicineCategories" EntityType="Self.MedicineCategory" />
+          <EntitySet Name="MedicineTimings" EntityType="Self.MedicineTiming" />
+          <EntitySet Name="MedicineTypes" EntityType="Self.MedicineType" />
+          <EntitySet Name="RoleCategories" EntityType="Self.RoleCategory" />
+          <EntitySet Name="RoomTypes" EntityType="Self.RoomType" />
+          <EntitySet Name="Status" EntityType="Self.Status" />
+          <EntitySet Name="WardDetails" EntityType="Self.WardDetail" />
+          <EntitySet Name="DoctorDetails" EntityType="Self.DoctorDetail" />
+          <EntitySet Name="PatientDetails" EntityType="Self.PatientDetail" />
+          <EntitySet Name="OPDHistories" EntityType="Self.OPDHistory" />
+          <EntitySet Name="PatientHistories" EntityType="Self.PatientHistory" />
+          <EntitySet Name="UserDetails" EntityType="Self.UserDetail" />
+          <AssociationSet Name="FK_PatientDetail_Department" Association="Self.FK_PatientDetail_Department">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="PatientDetail" EntitySet="PatientDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Status_Department" Association="Self.FK_Status_Department">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="Status" EntitySet="Status" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDetail_Department" Association="Self.FK_UserDetail_Department">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="UserDetail" EntitySet="UserDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Medicine_MedicineCategory" Association="Self.FK_Medicine_MedicineCategory">
+            <End Role="MedicineCategory" EntitySet="MedicineCategories" />
+            <End Role="Medicine" EntitySet="Medicines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Medicine_MedicineType" Association="Self.FK_Medicine_MedicineType">
+            <End Role="MedicineType" EntitySet="MedicineTypes" />
+            <End Role="Medicine" EntitySet="Medicines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PatientHistory_Medicine" Association="Self.FK_PatientHistory_Medicine">
+            <End Role="Medicine" EntitySet="Medicines" />
+            <End Role="PatientHistory" EntitySet="PatientHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PatientHistory_MedicineTiming" Association="Self.FK_PatientHistory_MedicineTiming">
+            <End Role="MedicineTiming" EntitySet="MedicineTimings" />
+            <End Role="PatientHistory" EntitySet="PatientHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDetail_RoleCategory" Association="Self.FK_UserDetail_RoleCategory">
+            <End Role="RoleCategory" EntitySet="RoleCategories" />
+            <End Role="UserDetail" EntitySet="UserDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PatientDetail_RoomType" Association="Self.FK_PatientDetail_RoomType">
+            <End Role="RoomType" EntitySet="RoomTypes" />
+            <End Role="PatientDetail" EntitySet="PatientDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OPDHistory_Status" Association="Self.FK_OPDHistory_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="OPDHistory" EntitySet="OPDHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PatientDetail_WardDetail" Association="Self.FK_PatientDetail_WardDetail">
+            <End Role="WardDetail" EntitySet="WardDetails" />
+            <End Role="PatientDetail" EntitySet="PatientDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PatientDetail_DoctorDetail" Association="Self.FK_PatientDetail_DoctorDetail">
+            <End Role="DoctorDetail" EntitySet="DoctorDetails" />
+            <End Role="PatientDetail" EntitySet="PatientDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PatientHistory_PatientDetail" Association="Self.FK_PatientHistory_PatientDetail">
+            <End Role="PatientDetail" EntitySet="PatientDetails" />
+            <End Role="PatientHistory" EntitySet="PatientHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PatientHistory_OPDHistory" Association="Self.FK_PatientHistory_OPDHistory">
+            <End Role="OPDHistory" EntitySet="OPDHistories" />
+            <End Role="PatientHistory" EntitySet="PatientHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OPDHistory_PatientDetail" Association="HospitalManagementModel.FK_OPDHistory_PatientDetail">
+            <End Role="PatientDetail" EntitySet="PatientDetails" />
+            <End Role="OPDHistory" EntitySet="OPDHistories" />
+          </AssociationSet>
+          <EntitySet Name="BillHistories" EntityType="HospitalManagementModel.BillHistory" />
+          <AssociationSet Name="FK_BillHistory_PatientDetail" Association="HospitalManagementModel.FK_BillHistory_PatientDetail">
+            <End Role="PatientDetail" EntitySet="PatientDetails" />
+            <End Role="BillHistory" EntitySet="BillHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BillHistory_OPDHistory" Association="HospitalManagementModel.FK_BillHistory_OPDHistory">
+            <End Role="OPDHistory" EntitySet="OPDHistories" />
+            <End Role="BillHistory" EntitySet="BillHistories" />
+          </AssociationSet>
+          <EntitySet Name="OPDRates" EntityType="HospitalManagementModel.OPDRate" />
+          <EntitySet Name="OPDHistoryUpdates" EntityType="HospitalManagementModel.OPDHistoryUpdate" />
+          <AssociationSet Name="FK_OPDHistoryUpdate_OPDHistory" Association="HospitalManagementModel.FK_OPDHistoryUpdate_OPDHistory">
+            <End Role="OPDHistory" EntitySet="OPDHistories" />
+            <End Role="OPDHistoryUpdate" EntitySet="OPDHistoryUpdates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OPDHistory_LabDetail" Association="HospitalManagementModel.FK_OPDHistory_LabDetail">
+            <End Role="LabDetail" EntitySet="LabDetails" />
+            <End Role="OPDHistory" EntitySet="OPDHistories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OPDHistory_DoctorDetail" Association="HospitalManagementModel.FK_OPDHistory_DoctorDetail">
+            <End Role="DoctorDetail" EntitySet="DoctorDetails" />
+            <End Role="OPDHistory" EntitySet="OPDHistories" />
+          </AssociationSet>
+          <EntitySet Name="IPDHistories" EntityType="HospitalManagementModel.IPDHistory" />
+          <AssociationSet Name="FK_IPDHistory_PatientDetail" Association="HospitalManagementModel.FK_IPDHistory_PatientDetail">
+            <End Role="PatientDetail" EntitySet="PatientDetails" />
+            <End Role="IPDHistory" EntitySet="IPDHistories" />
+          </AssociationSet>
+          </EntityContainer>
+        <Association Name="FK_OPDHistory_PatientDetail">
+          <End Type="HospitalManagementModel.PatientDetail" Role="PatientDetail" Multiplicity="0..1" />
+          <End Type="HospitalManagementModel.OPDHistory" Role="OPDHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PatientDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OPDHistory">
+              <PropertyRef Name="PatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="BillHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientId" Type="Guid" Nullable="false" />
+          <Property Name="OPDHistoryId" Type="Guid" Nullable="false" />
+          <Property Name="ReceiptNumber" Type="Int32" Nullable="false" />
+          <Property Name="PrintCopys" Type="Int32" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="LastPrintedBy" Type="Guid" />
+          <Property Name="LastPrintedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="PatientDetail" Relationship="HospitalManagementModel.FK_BillHistory_PatientDetail" FromRole="BillHistory" ToRole="PatientDetail" />
+          <NavigationProperty Name="OPDHistory" Relationship="HospitalManagementModel.FK_BillHistory_OPDHistory" FromRole="BillHistory" ToRole="OPDHistory" />
+        </EntityType>
+        <Association Name="FK_BillHistory_PatientDetail">
+          <End Type="HospitalManagementModel.PatientDetail" Role="PatientDetail" Multiplicity="1" />
+          <End Type="HospitalManagementModel.BillHistory" Role="BillHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PatientDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BillHistory">
+              <PropertyRef Name="PatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BillHistory_OPDHistory">
+          <End Type="HospitalManagementModel.OPDHistory" Role="OPDHistory" Multiplicity="1" />
+          <End Type="HospitalManagementModel.BillHistory" Role="BillHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OPDHistory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BillHistory">
+              <PropertyRef Name="OPDHistoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="OPDRate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Rate" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="IsDefault" Type="Boolean" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Guid" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="OPDHistoryUpdate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OPDHistoryId" Type="Guid" Nullable="false" />
+          <Property Name="UpdatedBy" Type="Guid" />
+          <Property Name="UpdatedField" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="UpdatedValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="OPDHistory" Relationship="HospitalManagementModel.FK_OPDHistoryUpdate_OPDHistory" FromRole="OPDHistoryUpdate" ToRole="OPDHistory" />
+          <Property Name="PreviousValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_OPDHistoryUpdate_OPDHistory">
+          <End Type="HospitalManagementModel.OPDHistory" Role="OPDHistory" Multiplicity="1" />
+          <End Type="HospitalManagementModel.OPDHistoryUpdate" Role="OPDHistoryUpdate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OPDHistory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OPDHistoryUpdate">
+              <PropertyRef Name="OPDHistoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OPDHistory_LabDetail">
+          <End Type="HospitalManagementModel.LabDetail" Role="LabDetail" Multiplicity="0..1" />
+          <End Type="HospitalManagementModel.OPDHistory" Role="OPDHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LabDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OPDHistory">
+              <PropertyRef Name="ThirdPartyLabId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OPDHistory_DoctorDetail">
+          <End Type="HospitalManagementModel.DoctorDetail" Role="DoctorDetail" Multiplicity="0..1" />
+          <End Type="HospitalManagementModel.OPDHistory" Role="OPDHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DoctorDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OPDHistory">
+              <PropertyRef Name="ConsultingDoctorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="IPDHistory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientId" Type="Guid" />
+          <Property Name="TotalAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PaidAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="DueAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="ReceivedBy" Type="Guid" />
+          <Property Name="CreatedBy" Type="Guid" />
+          <Property Name="ModifiedBy" Type="Guid" />
+          <NavigationProperty Name="PatientDetail" Relationship="HospitalManagementModel.FK_IPDHistory_PatientDetail" FromRole="IPDHistory" ToRole="PatientDetail" />
+        </EntityType>
+        <Association Name="FK_IPDHistory_PatientDetail">
+          <End Type="HospitalManagementModel.PatientDetail" Role="PatientDetail" Multiplicity="0..1" />
+          <End Type="HospitalManagementModel.IPDHistory" Role="IPDHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PatientDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="IPDHistory">
+              <PropertyRef Name="PatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HospitalManagementModelStoreContainer" CdmEntityContainer="HMSEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="HospitalManagementModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="HospitalManagementModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LabDetails">
+            <EntityTypeMapping TypeName="HospitalManagementModel.LabDetail">
+              <MappingFragment StoreEntitySet="LabDetail">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PathelogistName" ColumnName="PathelogistName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="IsInHouse" ColumnName="IsInHouse" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Medicines">
+            <EntityTypeMapping TypeName="HospitalManagementModel.Medicine">
+              <MappingFragment StoreEntitySet="Medicine">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MedicineCategoryId" ColumnName="MedicineCategoryId" />
+                <ScalarProperty Name="MedicineTypeId" ColumnName="MedicineTypeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MedicineCategories">
+            <EntityTypeMapping TypeName="HospitalManagementModel.MedicineCategory">
+              <MappingFragment StoreEntitySet="MedicineCategory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MedicineTimings">
+            <EntityTypeMapping TypeName="HospitalManagementModel.MedicineTiming">
+              <MappingFragment StoreEntitySet="MedicineTiming">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MedicineTypes">
+            <EntityTypeMapping TypeName="HospitalManagementModel.MedicineType">
+              <MappingFragment StoreEntitySet="MedicineType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoleCategories">
+            <EntityTypeMapping TypeName="HospitalManagementModel.RoleCategory">
+              <MappingFragment StoreEntitySet="RoleCategory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomTypes">
+            <EntityTypeMapping TypeName="HospitalManagementModel.RoomType">
+              <MappingFragment StoreEntitySet="RoomType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="HospitalManagementModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WardDetails">
+            <EntityTypeMapping TypeName="HospitalManagementModel.WardDetail">
+              <MappingFragment StoreEntitySet="WardDetail">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DoctorDetails">
+            <EntityTypeMapping TypeName="HospitalManagementModel.DoctorDetail">
+              <MappingFragment StoreEntitySet="DoctorDetail">
+                <ScalarProperty Name="ClinicContact" ColumnName="ClinicContact" />
+                <ScalarProperty Name="ClinicName" ColumnName="ClinicName" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Qualification" ColumnName="Qualification" />
+                <ScalarProperty Name="IsCounsalting" ColumnName="IsCounsalting" />
+                <ScalarProperty Name="IsInHouse" ColumnName="IsInHouse" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PatientDetails">
+            <EntityTypeMapping TypeName="HospitalManagementModel.PatientDetail">
+              <MappingFragment StoreEntitySet="PatientDetail">
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="PanCard" ColumnName="PanCard" />
+                <ScalarProperty Name="AadharCard" ColumnName="AadharCard" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CasePaperNumber" ColumnName="CasePaperNumber" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="IsAdmitted" ColumnName="IsAdmitted" />
+                <ScalarProperty Name="AdmittedDate" ColumnName="AdmittedDate" />
+                <ScalarProperty Name="IsDischarged" ColumnName="IsDischarged" />
+                <ScalarProperty Name="DischargedDate" ColumnName="DischargedDate" />
+                <ScalarProperty Name="RefferedDoctor" ColumnName="RefferedDoctor" />
+                <ScalarProperty Name="CasePaperIssuedDate" ColumnName="CasePaperIssuedDate" />
+                <ScalarProperty Name="CasePaperExpiryDate" ColumnName="CasePaperExpiryDate" />
+                <ScalarProperty Name="WardNumberId" ColumnName="WardNumberId" />
+                <ScalarProperty Name="RoomNumber" ColumnName="RoomNumber" />
+                <ScalarProperty Name="RoomTypeId" ColumnName="RoomTypeId" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OPDHistories">
+            <EntityTypeMapping TypeName="HospitalManagementModel.OPDHistory">
+              <MappingFragment StoreEntitySet="OPDHistory">
+                <ScalarProperty Name="NumberofXRAY" ColumnName="NumberofXRAY" />
+                <ScalarProperty Name="IsXRAY" ColumnName="IsXRAY" />
+                <ScalarProperty Name="IsECG" ColumnName="IsECG" />
+                <ScalarProperty Name="ThirdPartyLabAmoumt" ColumnName="ThirdPartyLabAmoumt" />
+                <ScalarProperty Name="ThirdPartyLabId" ColumnName="ThirdPartyLabId" />
+                <ScalarProperty Name="ConsultingDoctorId" ColumnName="ConsultingDoctorId" />
+                <ScalarProperty Name="XRAYAmount" ColumnName="XRAYAmount" />
+                <ScalarProperty Name="ECGAmount" ColumnName="ECGAmount" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="LabTestingAmount" ColumnName="LabTestingAmount" />
+                <ScalarProperty Name="Madicines" ColumnName="Madicines" />
+                <ScalarProperty Name="Diagnose" ColumnName="Diagnose" />
+                <ScalarProperty Name="IsLabCharity" ColumnName="IsLabCharity" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+                <ScalarProperty Name="InTime" ColumnName="InTime" />
+                <ScalarProperty Name="OutTime" ColumnName="OutTime" />
+                <ScalarProperty Name="IsCharity" ColumnName="IsCharity" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="PaidAmount" ColumnName="PaidAmount" />
+                <ScalarProperty Name="DueAmount" ColumnName="DueAmount" />
+                <ScalarProperty Name="ReceivedBy" ColumnName="ReceivedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PatientHistories">
+            <EntityTypeMapping TypeName="HospitalManagementModel.PatientHistory">
+              <MappingFragment StoreEntitySet="PatientHistory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PateintId" ColumnName="PateintId" />
+                <ScalarProperty Name="OPDHistoryId" ColumnName="OPDHistoryId" />
+                <ScalarProperty Name="MedicineId" ColumnName="MedicineId" />
+                <ScalarProperty Name="MedicineTimingId" ColumnName="MedicineTimingId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserDetails">
+            <EntityTypeMapping TypeName="HospitalManagementModel.UserDetail">
+              <MappingFragment StoreEntitySet="UserDetail">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="RoleCategoryId" ColumnName="RoleCategoryId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BillHistories">
+            <EntityTypeMapping TypeName="HospitalManagementModel.BillHistory">
+              <MappingFragment StoreEntitySet="BillHistory">
+                <ScalarProperty Name="LastPrintedOn" ColumnName="LastPrintedOn" />
+                <ScalarProperty Name="LastPrintedBy" ColumnName="LastPrintedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="PrintCopys" ColumnName="PrintCopys" />
+                <ScalarProperty Name="ReceiptNumber" ColumnName="ReceiptNumber" />
+                <ScalarProperty Name="OPDHistoryId" ColumnName="OPDHistoryId" />
+                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OPDRates">
+            <EntityTypeMapping TypeName="HospitalManagementModel.OPDRate">
+              <MappingFragment StoreEntitySet="OPDRate">
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+                <ScalarProperty Name="Rate" ColumnName="Rate" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OPDHistoryUpdates">
+            <EntityTypeMapping TypeName="HospitalManagementModel.OPDHistoryUpdate">
+              <MappingFragment StoreEntitySet="OPDHistoryUpdate">
+                <ScalarProperty Name="PreviousValue" ColumnName="PreviousValue" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedValue" ColumnName="UpdatedValue" />
+                <ScalarProperty Name="UpdatedField" ColumnName="UpdatedField" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="OPDHistoryId" ColumnName="OPDHistoryId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IPDHistories">
+            <EntityTypeMapping TypeName="HospitalManagementModel.IPDHistory">
+              <MappingFragment StoreEntitySet="IPDHistory">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ReceivedBy" ColumnName="ReceivedBy" />
+                <ScalarProperty Name="DueAmount" ColumnName="DueAmount" />
+                <ScalarProperty Name="PaidAmount" ColumnName="PaidAmount" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
