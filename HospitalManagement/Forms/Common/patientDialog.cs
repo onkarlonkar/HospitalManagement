@@ -49,6 +49,10 @@ namespace HospitalManagement.Forms.Common
             try
             {
                 List<LookupModel> list = service.getPatientByType(type);
+                if(type==P_TYPE.XRAY)
+                    this.dgvPatientInfo.Columns["XRAYCount"].Visible = true;
+                else
+                    this.dgvPatientInfo.Columns["XRAYCount"].Visible = false;
                 dgvPatientInfo.AutoGenerateColumns = false;
                 dgvPatientInfo.DataSource = list;
                 dgvPatientInfo.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);

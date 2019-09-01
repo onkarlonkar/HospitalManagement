@@ -330,6 +330,7 @@ namespace HospitalManagement.Forms
                 btnTotalCollection.Text = Convert.ToString(model.TotalCollection);
                 btnReceivedCollection.Text = Convert.ToString(model.ReceivedCollection);
                 getUserCollection(model.UsreCollection);
+                getRecentActivity(model.RecentActivity);
 
             }
             catch (Exception ex)
@@ -354,6 +355,24 @@ namespace HospitalManagement.Forms
                 dgvUserCollection.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
                 dgvUserCollection.Refresh();
                 dgvUserCollection.ClearSelection();
+
+            }
+            catch (Exception ex)
+            {
+                Utility.ErrorLog.Logging("Main Dashboard", ex.Message.ToString(), ex.StackTrace.ToString());
+            }
+        }
+
+        private void getRecentActivity(List<OPDHistoryUpdateModel> recentActivity)
+        {
+            try
+            {
+                List<OPDHistoryUpdateModel> list = recentActivity;
+                dgvRecentActivity.AutoGenerateColumns = false;
+                dgvRecentActivity.DataSource = list;
+                dgvRecentActivity.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                dgvRecentActivity.Refresh();
+                dgvRecentActivity.ClearSelection();
 
             }
             catch (Exception ex)

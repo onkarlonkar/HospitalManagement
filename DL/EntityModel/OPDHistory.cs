@@ -342,12 +342,13 @@ namespace DL.Entity
                 {
                     /* Build Predicate according to Create or Update */
 
-                    predicate = o => o.PatientDetail.CasePaperNumber == casePaperNumber && DbFunctions.TruncateTime(o.InTime.Value) == DateTime.Today;//for Create Record
-                                                                                                                                                      //}
-                                                                                                                                                      //else
-                                                                                                                                                      //{
-                                                                                                                                                      //    predicate = o => o.Id != model.Id && o.PatientDetail.CasePaperNumber == model.CasePaperNumber && DbFunctions.TruncateTime(o.InTime.Value) == DateTime.Today;//for Update Record Record
-                                                                                                                                                      //}
+                    predicate = o => o.PatientDetail.CasePaperNumber == casePaperNumber && DbFunctions.TruncateTime(o.InTime.Value) == DateTime.Today;
+                    //for Create Record
+                    //}
+                    //else
+                    //{
+                    //    predicate = o => o.Id != model.Id && o.PatientDetail.CasePaperNumber == model.CasePaperNumber && DbFunctions.TruncateTime(o.InTime.Value) == DateTime.Today;//for Update Record Record
+                    //}
 
                     /* return is Exist or not */
                     if (db.OPDHistories.Any(predicate))
@@ -588,7 +589,6 @@ namespace DL.Entity
                             }
                             else
                             {
-
                                 OPDHistoryUpdateModel obj = new OPDHistoryUpdateModel();
                                 obj.OPDHistoryId = new Guid(modelType.GetProperty("Id").GetValue(modelEntry, null).ToString());
                                 obj.PreviousValue = Convert.ToString(oldValue);
@@ -693,6 +693,7 @@ namespace DL.Entity
                     model.DuesCollection = duesCollection != null ? duesCollection : Convert.ToDecimal(0.00);
                     model.ReceivedCollection = paidCollection != null ? paidCollection : Convert.ToDecimal(0.00);
 
+                    #region User Collection
                     var list = db.UserDetails.Where(u => u.IsActive == true);
                     model.UsreCollection = new List<LookupModel>();
                     foreach (var users in list)
@@ -723,11 +724,50 @@ namespace DL.Entity
                                 md = new LookupModel();
                             }
 
-
                         }
                     }
 
+                    #endregion
 
+                    #region Recent Activity
+
+                    model.RecentActivity = new List<OPDHistoryUpdateModel>();
+                    var activities = db.OPDHistoryUpdates.AsEnumerable().Where(h => h.CreatedOn.Value.Date == today).OrderByDescending(t => t.CreatedOn);
+                    foreach (var item in activities)
+                    {
+                        OPDHistoryUpdateModel lookup = new OPDHistoryUpdateModel();
+                        lookup.Id = item.Id;
+                        lookup.CasePaper = GetById(item.OPDHistoryId).CasePaperNumber;
+                        lookup.UpdatedName = UserDetail.GetNameById(item.UpdatedBy.Value);
+                        lookup.UpdatedField = item.UpdatedField;
+                        switch (item.UpdatedField)
+                        {
+                            case "XRAYAmount":
+                            case "ECGAmount":
+                            case "PayingAmount":
+                            case "ThirdPartyLabAmoumt":
+                            case "LabTestingAmount":
+                                lookup.PreviousValue = item.PreviousValue != null ? Convert.ToString(item.PreviousValue) : "";
+                                lookup.UpdatedValue = item.UpdatedValue != null ? Convert.ToString(item.UpdatedValue) : "";
+                                break;
+                            case "IsCharity":
+                            case "IsXRAY":
+                            case "IsECG":
+                            case "IsLabCharity":
+                                lookup.PreviousValue = item.PreviousValue != null ? Convert.ToBoolean(item.PreviousValue) ? "Yes" : "No" : "";
+                                lookup.UpdatedValue = item.UpdatedValue != null ? Convert.ToBoolean(item.UpdatedValue) ? "Yes" : "No" : "";
+                                break;
+                            case "StatusId":
+                                lookup.PreviousValue = item.PreviousValue != null ? Status.GetNameById(new Guid(item.PreviousValue)) : "";
+                                lookup.UpdatedValue = item.UpdatedValue != null ? Status.GetNameById(new Guid(item.UpdatedValue)) : "";
+                                break;
+                            default:
+                                break;
+                        }
+
+                        model.RecentActivity.Add(lookup);
+                    }
+                    #endregion                   
                 }
 
                 return model;
@@ -742,14 +782,17 @@ namespace DL.Entity
         {
             List<LookupModel> list = new List<LookupModel>();
             DateTime today = DateTime.Today;
+            bool isXRAY = false;
             Expression<Func<OPDHistory, bool>> predicate = null;
             switch (type)
             {
                 case P_TYPE.ECG:
                     predicate = t => t.IsECG == true && DbFunctions.TruncateTime(t.InTime.Value) == today;
+                    
                     break;
                 case P_TYPE.XRAY:
                     predicate = t => t.IsXRAY == true && DbFunctions.TruncateTime(t.InTime.Value) == today;
+                    isXRAY = true;
                     break;
                 case P_TYPE.CHARITY:
                     predicate = t => t.IsCharity == true && DbFunctions.TruncateTime(t.InTime.Value) == today;
@@ -763,12 +806,16 @@ namespace DL.Entity
 
             using (var db = new HMSEntities())
             {
-                list = db.OPDHistories.Where(predicate).Select(a => new LookupModel
+                var val = db.OPDHistories.Where(predicate);
+                foreach (var item in val)
                 {
-                    Name = a.PatientDetail != null ? a.PatientDetail.FullName : "",
-                    Id = a.PatientId,
-                    Rate = a.NumberofXRAY
-                }).ToList();
+                    LookupModel md = new LookupModel();
+                    md.Name = item.PatientDetail != null ? item.PatientDetail.FullName : "";
+                    md.Id = item.PatientId;
+                    md.Description = item.PatientDetail.CasePaperNumber;
+                    md.PerentName = isXRAY == true ? Convert.ToString(item.NumberofXRAY) : "";
+                    list.Add(md);
+                }
             }
 
             return list;

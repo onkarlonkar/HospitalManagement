@@ -18,5 +18,8 @@ namespace Model
         public Nullable<System.DateTime> ModifiedOn { get; set; }
         public Nullable<System.Guid> CreatedBy { get; set; }
         public Nullable<System.Guid> ModifiedBy { get; set; }
+
+        public string ReceivedBy { get; set; }
+        public string updatedColumn { get; set; }
     }
 }

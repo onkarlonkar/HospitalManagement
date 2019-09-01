@@ -84,7 +84,7 @@
             this.pnlmainMenu.MaximumSize = new System.Drawing.Size(200, 0);
             this.pnlmainMenu.MinimumSize = new System.Drawing.Size(40, 650);
             this.pnlmainMenu.Name = "pnlmainMenu";
-            this.pnlmainMenu.Size = new System.Drawing.Size(200, 650);
+            this.pnlmainMenu.Size = new System.Drawing.Size(43, 650);
             this.pnlmainMenu.TabIndex = 0;
             // 
             // pnlMenu
@@ -94,7 +94,7 @@
             this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlMenu.Location = new System.Drawing.Point(0, 42);
             this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(200, 608);
+            this.pnlMenu.Size = new System.Drawing.Size(43, 608);
             this.pnlMenu.TabIndex = 1;
             // 
             // flyMenu
@@ -110,7 +110,7 @@
             this.flyMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flyMenu.Location = new System.Drawing.Point(0, 0);
             this.flyMenu.Name = "flyMenu";
-            this.flyMenu.Size = new System.Drawing.Size(200, 608);
+            this.flyMenu.Size = new System.Drawing.Size(43, 608);
             this.flyMenu.TabIndex = 0;
             // 
             // btnMenuDashboard
@@ -375,7 +375,7 @@
             this.pnlHeading.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHeading.Location = new System.Drawing.Point(0, 0);
             this.pnlHeading.Name = "pnlHeading";
-            this.pnlHeading.Size = new System.Drawing.Size(200, 42);
+            this.pnlHeading.Size = new System.Drawing.Size(43, 42);
             this.pnlHeading.TabIndex = 0;
             // 
             // pnlCmpTitle
@@ -385,7 +385,7 @@
             this.pnlCmpTitle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlCmpTitle.Location = new System.Drawing.Point(40, 0);
             this.pnlCmpTitle.Name = "pnlCmpTitle";
-            this.pnlCmpTitle.Size = new System.Drawing.Size(158, 40);
+            this.pnlCmpTitle.Size = new System.Drawing.Size(1, 40);
             this.pnlCmpTitle.TabIndex = 1;
             // 
             // lblCmpTitle
@@ -420,9 +420,9 @@
             this.pnlHeader.Controls.Add(this.pbClose);
             this.pnlHeader.Controls.Add(this.pbMenu);
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlHeader.Location = new System.Drawing.Point(200, 0);
+            this.pnlHeader.Location = new System.Drawing.Point(43, 0);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(1100, 42);
+            this.pnlHeader.Size = new System.Drawing.Size(1257, 42);
             this.pnlHeader.TabIndex = 1;
             this.pnlHeader.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pnlHeader_MouseDoubleClick);
             this.pnlHeader.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlHeader_MouseDown);
@@ -431,7 +431,7 @@
             // 
             this.pbMinimise.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pbMinimise.Image = ((System.Drawing.Image)(resources.GetObject("pbMinimise.Image")));
-            this.pbMinimise.Location = new System.Drawing.Point(1007, 1);
+            this.pbMinimise.Location = new System.Drawing.Point(1164, 1);
             this.pbMinimise.Name = "pbMinimise";
             this.pbMinimise.Size = new System.Drawing.Size(30, 30);
             this.pbMinimise.TabIndex = 4;
@@ -444,7 +444,7 @@
             // 
             this.pbMiximise.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pbMiximise.Image = ((System.Drawing.Image)(resources.GetObject("pbMiximise.Image")));
-            this.pbMiximise.Location = new System.Drawing.Point(1038, 1);
+            this.pbMiximise.Location = new System.Drawing.Point(1195, 1);
             this.pbMiximise.Name = "pbMiximise";
             this.pbMiximise.Size = new System.Drawing.Size(30, 30);
             this.pbMiximise.TabIndex = 3;
@@ -457,7 +457,7 @@
             // 
             this.pbRestore.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pbRestore.Image = ((System.Drawing.Image)(resources.GetObject("pbRestore.Image")));
-            this.pbRestore.Location = new System.Drawing.Point(1038, 1);
+            this.pbRestore.Location = new System.Drawing.Point(1195, 1);
             this.pbRestore.Name = "pbRestore";
             this.pbRestore.Size = new System.Drawing.Size(30, 30);
             this.pbRestore.TabIndex = 2;
@@ -470,7 +470,7 @@
             // 
             this.pbClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pbClose.Image = global::HospitalManagement.Properties.Resources.Close_30px;
-            this.pbClose.Location = new System.Drawing.Point(1069, 1);
+            this.pbClose.Location = new System.Drawing.Point(1226, 1);
             this.pbClose.Name = "pbClose";
             this.pbClose.Size = new System.Drawing.Size(30, 30);
             this.pbClose.TabIndex = 1;
@@ -505,9 +505,9 @@
             this.pnlFormContainer.AutoScroll = true;
             this.pnlFormContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
             this.pnlFormContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlFormContainer.Location = new System.Drawing.Point(200, 42);
+            this.pnlFormContainer.Location = new System.Drawing.Point(43, 42);
             this.pnlFormContainer.Name = "pnlFormContainer";
-            this.pnlFormContainer.Size = new System.Drawing.Size(1100, 608);
+            this.pnlFormContainer.Size = new System.Drawing.Size(1257, 608);
             this.pnlFormContainer.TabIndex = 2;
             // 
             // Dashboard

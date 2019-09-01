@@ -64,6 +64,7 @@ namespace Model
         public Nullable<decimal> DuesCollection { get; set; }
 
         public List<LookupModel> UsreCollection { get; set; }
+        public List<OPDHistoryUpdateModel> RecentActivity { get; set; }
     }
 
     

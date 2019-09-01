@@ -30,7 +30,7 @@ namespace HospitalManagement.Forms
 
         #region Menu Design
 
-        bool isIncrement = false;
+        bool isIncrement = true;
         bool isCollaspe = true;
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]

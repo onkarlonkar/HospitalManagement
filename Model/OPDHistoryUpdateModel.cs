@@ -11,6 +11,7 @@ namespace Model
         public string UpdatedField { get; set; }
         public string UpdatedValue { get; set; }
         public string PreviousValue { get; set; }
+        public string CasePaper { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
     }
 }
