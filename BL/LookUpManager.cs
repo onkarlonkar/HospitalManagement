@@ -31,6 +31,12 @@ namespace BL
                     case LookUp.OPDRate:
                         OPDRate OPDRateEntity = new OPDRate();
                         return list = OPDRateEntity.AdvanceSearch(searchText);
+                    case LookUp.RoomType:
+                        RoomType RoomTypeEntity = new RoomType();
+                        return list = RoomTypeEntity.AdvanceSearch(searchText);
+                    case LookUp.Ward:
+                        WardDetail WardDetailEntity = new WardDetail();
+                        return list = WardDetailEntity.AdvanceSearch(searchText);
                     default:
                         return list;
                 }
@@ -63,6 +69,12 @@ namespace BL
                     case LookUp.OPDRate:
                         OPDRate OPDRateEntity = new OPDRate();
                         return isSaved = OPDRateEntity.Create(model);
+                    case LookUp.RoomType:
+                        RoomType roomTypeEntity = new RoomType();
+                        return isSaved = roomTypeEntity.Create(model);
+                    case LookUp.Ward:
+                        WardDetail wardEntity = new WardDetail();
+                        return isSaved = wardEntity.Create(model);
                     default:
                         return isSaved;
                 }
@@ -98,6 +110,12 @@ namespace BL
                     case LookUp.OPDRate:
                         OPDRate OPDRateEntity = new OPDRate();
                         return list = OPDRateEntity.Get();
+                    case LookUp.RoomType:
+                        RoomType roomTypeEntity = new RoomType();
+                        return list = roomTypeEntity.Get();
+                    case LookUp.Ward:
+                        WardDetail wardEntity = new WardDetail();
+                        return list = wardEntity.Get();
                     default:
                         return list;
                 }
@@ -151,6 +169,12 @@ namespace BL
                     case LookUp.OPDRate:
                         OPDRate OPDRateEntity = new OPDRate();
                         return model = OPDRateEntity.GetById(id);
+                    case LookUp.RoomType:
+                        RoomType roomTypeEntity = new RoomType();
+                        return model = roomTypeEntity.GetById(id);
+                    case LookUp.Ward:
+                        WardDetail wardEntity = new WardDetail();
+                        return model = wardEntity.GetById(id);
                     default:
                         return model;
                 }
@@ -180,6 +204,12 @@ namespace BL
                         return model = statusEntity.GetByName(name);
                     case LookUp.OPDRate:
                         return model = OPDRate.GetRatesByType(name);
+                    case LookUp.RoomType:
+                        RoomType roomTypeEntity = new RoomType();
+                        return model = roomTypeEntity.GetByName(name);
+                    case LookUp.Ward:
+                        WardDetail wardEntity = new WardDetail();
+                        return model = wardEntity.GetByName(name);
                     default:
                         return model;
                 }
@@ -231,6 +261,12 @@ namespace BL
                     case LookUp.OPDRate:
                         OPDRate OPDRateEntity = new OPDRate();
                         return isSaved = OPDRateEntity.Update(model);
+                    case LookUp.RoomType:
+                        RoomType roomTypeEntity = new RoomType();
+                        return isSaved = roomTypeEntity.Update(model);
+                    case LookUp.Ward:
+                        WardDetail wardEntity = new WardDetail();
+                        return isSaved = wardEntity.Update(model);
                     default:
                         return isSaved;
                 }

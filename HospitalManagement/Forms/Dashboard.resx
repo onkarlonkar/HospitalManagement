@@ -120,22 +120,16 @@
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>423, 17</value>
   </metadata>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>423, 17</value>
+  </metadata>
+  <metadata name="timerSlide.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>194, 17</value>
+  </metadata>
+  <metadata name="tmrSubMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>300, 17</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="button7.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAiBJREFUWEft
-        l09LVUEYh69JogttVcvUj6A7wY0S1coIFfsA2UJXClrgqp20CjJoJ2Kfofy3dO9KP0GG1iLRSAT1+rwz
-        P256zsw553o7CNIDD9w785t5D3fmzDm38p96qVarbTiEowmtrU2x8qDIC4wxplh5UGTO1wryRrHyoMgn
-        XyvIR8Uag4ma8Sm2qsnBd1v/TYyxgk2KO/jego/xjpryITyNxk+cx258ifuYxzY+wXs4g9/QGNf02RB8
-        gAduyPU5x9/+Y409bFeZOIQWXbwc3qlMGAK9eOai+eziuvxuDQX4g50ql4bODRfLxtb0OdY2lX3GYSxy
-        IcsalobOJZ+JYgUeKp6Cvi60tc5iVfEwBCbxxEXTPFMsChn7JULY0toddVfROIT6MLmL7ae/co+HIGPL
-        kVwKm2tAkWIw4NAN/csXdeVC9qsfUuNQXcVh0JEfW6OeC7AT8TL1XQADBjB0kOQep2TsGP9hAy5hc/Up
-        EoeQndu2UWJnwYiiUciM+WgK29gTioUhsOaicf7Fbfhe8TR0fvaZTBo9iFY0LA2dnXjsYvlc5yg+xR6V
-        C0PgrYuWw4LKxCHUgcl1tF1sj9iihB7Hv/C+ymRD8JUb4tfbXirsouwlYwfz2MJBTL6QTGn6fAg3YT+2
-        qMmh9lWMkdpgtNmtbRffrKbGYKIFjPFBsfKgyGtfK8isYuVBkRv/Y2Kv5rbJHiW0tvL/mt0yKpULZPXH
-        +m2qVwsAAAAASUVORK5CYII=
-</value>
-  </data>
   <data name="pbMinimise.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAJNJREFUSEvt
@@ -170,15 +164,6 @@
         eYqyokZOw2N+pjFFZ1w9ADSlt4zl7geWOwBAe2Yfkgm0FRV3GhYAAAAASUVORK5CYII=
 </value>
   </data>
-  <metadata name="timerSlide.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>194, 17</value>
-  </metadata>
-  <metadata name="tmrSubMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>300, 17</value>
-  </metadata>
-  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>423, 17</value>
-  </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAYAAAAAAAEAIAAoIAQAZgAAABAQAAABACAAaAQAAI4gBAAwMAAAAQAgAKglAAD2JAQAICAAAAEA

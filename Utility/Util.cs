@@ -55,7 +55,9 @@ namespace Utility
         Department = 1,
         RoleCategory,
         Status,
-        OPDRate
+        OPDRate,
+        RoomType,
+        Ward
 
     }
 

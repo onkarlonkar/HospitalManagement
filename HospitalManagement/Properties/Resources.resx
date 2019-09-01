@@ -127,11 +127,17 @@
   <data name="Add_New_Green_18px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\Add_New_Green_18px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Cancel_18px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\Cancel_18px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="reports_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\reports_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Caduceus_104px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\Caduceus_104px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="wards_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\wards_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Save_18px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\Save_18px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -139,14 +145,17 @@
   <data name="Trash_18px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\Trash_18px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Historical_18px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\Historical_18px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Medical Doctor_36px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\Medical Doctor_36px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Restore_Window_30px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\Restore Window_30px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Menu_42px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\Menu_42px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Department_36px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\Department_36px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Print_18px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\Print_18px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -157,11 +166,17 @@
   <data name="Edit_18px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\Edit_18px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Create_18px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\Create_18px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Print_Report_18px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\Print_Report_18px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Add New_18px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\Add New_18px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="department_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\department_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="OPD_Report_36px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\OPD_Report_36px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -175,14 +190,11 @@
   <data name="Add_User_Male_40px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\Add User Male_40px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Status_36px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\Status_36px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="roomType" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\roomType.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="master_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\master_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Minimize_Window_30px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\Minimize Window_30px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Print_Report_18px1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\Print_Report_18px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -190,17 +202,14 @@
   <data name="Print_18px1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\Print_18px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Administrative_Tools_36px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\Administrative Tools_36px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Search_New_18px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\Search_New_18px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IPDPatient_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\IPDPatient_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Cancel_18px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\Cancel_18px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Administrative_Tools_36px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\Administrative Tools_36px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Maximize_Window_30px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\Maximize Window_30px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -211,17 +220,17 @@
   <data name="opdReport_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\opdReport_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Historical_18px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\Historical_18px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Department_36px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\Department_36px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Download_18px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\Download_18px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Restore_Window_30px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\Restore Window_30px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Status_36px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\Status_36px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Create_18px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\Create_18px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Minimize_Window_30px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\Minimize Window_30px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Dashboard_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\Dashboard_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -229,7 +238,7 @@
   <data name="user_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\user_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="department_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\department_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ward_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\ward_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

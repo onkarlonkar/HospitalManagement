@@ -104,6 +104,30 @@
     <Compile Include="Forms\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Lookup\WardDetailOperations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Lookup\WardDetailOperations.Designer.cs">
+      <DependentUpon>WardDetailOperations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Lookup\WardDetailList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Lookup\WardDetailList.Designer.cs">
+      <DependentUpon>WardDetailList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Lookup\RoomTypeOperations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Lookup\RoomTypeOperations.Designer.cs">
+      <DependentUpon>RoomTypeOperations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Lookup\RoomTypeList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Lookup\RoomTypeList.Designer.cs">
+      <DependentUpon>RoomTypeList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Lookup\DepartmentList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -237,6 +261,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Lookup\WardDetailOperations.resx">
+      <DependentUpon>WardDetailOperations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Lookup\WardDetailList.resx">
+      <DependentUpon>WardDetailList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Lookup\RoomTypeOperations.resx">
+      <DependentUpon>RoomTypeOperations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Lookup\RoomTypeList.resx">
+      <DependentUpon>RoomTypeList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Lookup\DepartmentList.resx">
       <DependentUpon>DepartmentList.cs</DependentUpon>
@@ -387,6 +423,9 @@
   <ItemGroup>
     <Content Include="images\Add New_18px.png" />
     <Content Include="images\Caduceus_104px.png" />
+    <None Include="images\ward_24px.png" />
+    <None Include="images\wards_24px.png" />
+    <None Include="images\roomType.png" />
     <None Include="images\department_24px.png" />
     <None Include="images\reports_24px.png" />
     <None Include="images\IPDPatient_24px.png" />
