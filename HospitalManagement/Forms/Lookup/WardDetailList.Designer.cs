@@ -74,7 +74,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.btnNew);
             this.splitContainer1.Panel2.Margin = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.splitContainer1.Size = new System.Drawing.Size(854, 397);
-            this.splitContainer1.SplitterDistance = 754;
+            this.splitContainer1.SplitterDistance = 748;
             this.splitContainer1.SplitterWidth = 2;
             this.splitContainer1.TabIndex = 3;
             // 
@@ -84,7 +84,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 40);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(754, 357);
+            this.panel3.Size = new System.Drawing.Size(748, 357);
             this.panel3.TabIndex = 1;
             // 
             // dgvList
@@ -115,7 +115,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvList.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvList.Size = new System.Drawing.Size(754, 357);
+            this.dgvList.Size = new System.Drawing.Size(748, 357);
             this.dgvList.TabIndex = 1;
             this.dgvList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellDoubleClick);
             // 
@@ -150,7 +150,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(754, 40);
+            this.panel2.Size = new System.Drawing.Size(748, 40);
             this.panel2.TabIndex = 0;
             // 
             // txtSearch
@@ -174,7 +174,7 @@
             this.shapeContainer1.Name = "shapeContainer1";
             this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.lineShape1});
-            this.shapeContainer1.Size = new System.Drawing.Size(754, 40);
+            this.shapeContainer1.Size = new System.Drawing.Size(748, 40);
             this.shapeContainer1.TabIndex = 1;
             this.shapeContainer1.TabStop = false;
             // 
@@ -251,7 +251,7 @@
             this.panel1.Size = new System.Drawing.Size(854, 10);
             this.panel1.TabIndex = 4;
             // 
-            // DepartmentList
+            // WardDetailList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -262,7 +262,7 @@
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "DepartmentList";
+            this.Name = "WardDetailList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DepartmentOperations";
             this.splitContainer1.Panel1.ResumeLayout(false);

@@ -188,6 +188,12 @@
     <Compile Include="Forms\Patients\OPDHistory.Designer.cs">
       <DependentUpon>OPDHistory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Patients\IPDHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Patients\IPDHistory.Designer.cs">
+      <DependentUpon>IPDHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Patients\PatientDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -303,6 +309,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Patients\OPDHistory.resx">
       <DependentUpon>OPDHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Patients\IPDHistory.resx">
+      <DependentUpon>IPDHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Patients\PatientDetails.resx">
       <DependentUpon>PatientDetails.cs</DependentUpon>

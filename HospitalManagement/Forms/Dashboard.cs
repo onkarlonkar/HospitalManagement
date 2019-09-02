@@ -658,6 +658,19 @@ namespace HospitalManagement.Forms
             }
         }
 
+        private void btnMenuDepartment_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                CollapseAllMaster("Master");
+                AddFormToPanel(new Lookup.DepartmentList());
+            }
+            catch (Exception ex)
+            {
+                Utility.ErrorLog.Logging("Dashboard", ex.Message.ToString(), ex.StackTrace.ToString());
+            }
+        }
+
         private void btnMenuUsers_Click(object sender, EventArgs e)
         {
             try

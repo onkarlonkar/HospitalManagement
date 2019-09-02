@@ -73,8 +73,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.btnEdit);
             this.splitContainer1.Panel2.Controls.Add(this.btnNew);
             this.splitContainer1.Panel2.Margin = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.splitContainer1.Size = new System.Drawing.Size(854, 397);
-            this.splitContainer1.SplitterDistance = 754;
+            this.splitContainer1.Size = new System.Drawing.Size(865, 397);
+            this.splitContainer1.SplitterDistance = 756;
             this.splitContainer1.SplitterWidth = 2;
             this.splitContainer1.TabIndex = 3;
             // 
@@ -84,7 +84,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 40);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(754, 357);
+            this.panel3.Size = new System.Drawing.Size(756, 357);
             this.panel3.TabIndex = 1;
             // 
             // dgvList
@@ -115,7 +115,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvList.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvList.Size = new System.Drawing.Size(754, 357);
+            this.dgvList.Size = new System.Drawing.Size(756, 357);
             this.dgvList.TabIndex = 1;
             this.dgvList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellDoubleClick);
             // 
@@ -150,7 +150,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(754, 40);
+            this.panel2.Size = new System.Drawing.Size(756, 40);
             this.panel2.TabIndex = 0;
             // 
             // txtSearch
@@ -174,7 +174,7 @@
             this.shapeContainer1.Name = "shapeContainer1";
             this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.lineShape1});
-            this.shapeContainer1.Size = new System.Drawing.Size(754, 40);
+            this.shapeContainer1.Size = new System.Drawing.Size(756, 40);
             this.shapeContainer1.TabIndex = 1;
             this.shapeContainer1.TabStop = false;
             // 
@@ -195,7 +195,7 @@
             this.btnDelete.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnDelete.Image = global::HospitalManagement.Properties.Resources.Trash_18px;
-            this.btnDelete.Location = new System.Drawing.Point(7, 95);
+            this.btnDelete.Location = new System.Drawing.Point(9, 95);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(90, 38);
             this.btnDelete.TabIndex = 6;
@@ -213,7 +213,7 @@
             this.btnEdit.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnEdit.Image = global::HospitalManagement.Properties.Resources.Edit_18px;
-            this.btnEdit.Location = new System.Drawing.Point(7, 51);
+            this.btnEdit.Location = new System.Drawing.Point(9, 51);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(91, 38);
             this.btnEdit.TabIndex = 5;
@@ -231,7 +231,7 @@
             this.btnNew.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNew.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btnNew.Image = global::HospitalManagement.Properties.Resources.Create_18px;
-            this.btnNew.Location = new System.Drawing.Point(7, 7);
+            this.btnNew.Location = new System.Drawing.Point(9, 7);
             this.btnNew.Name = "btnNew";
             this.btnNew.Size = new System.Drawing.Size(91, 38);
             this.btnNew.TabIndex = 4;
@@ -248,21 +248,21 @@
             this.panel1.Location = new System.Drawing.Point(0, 387);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(854, 10);
+            this.panel1.Size = new System.Drawing.Size(865, 10);
             this.panel1.TabIndex = 4;
             // 
-            // DepartmentList
+            // RoomTypeList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(854, 397);
+            this.ClientSize = new System.Drawing.Size(865, 397);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.splitContainer1);
             this.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "DepartmentList";
+            this.Name = "RoomTypeList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DepartmentOperations";
             this.splitContainer1.Panel1.ResumeLayout(false);
