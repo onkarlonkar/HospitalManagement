@@ -91,6 +91,38 @@ namespace DL.Entity
                 throw ex;
             }
         }
+
+        public static List<LookupModel> GetLabByOPD(Guid id)
+        {
+            try
+            {
+                List<LookupModel> list = new List<LookupModel>();
+
+                using (var db = new HMSEntities())
+                {
+
+                    list = db.TPLabPatientMappings.Where(t => t.OPDHistoryId == id)
+                                .OrderByDescending(c => c.CreatedOn)
+                                .Select(t => new LookupModel()
+                                {
+                                    Id = t.Id,
+                                    Name = t.LabDetail.Name,
+                                    Rate = t.Amount,
+                                    PerentId = t.OPDHistoryId,
+                                    CreatedOn = t.CreatedOn,
+                                    CreatedBy = t.Createdby,
+                                    ModifiedOn = t.ModifiedOn,
+                                    ModifiedBy = t.ModifiedBy
+                                }).ToList();
+                }
+
+                return list;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public LookupModel GetById(Guid id)
         {
             try

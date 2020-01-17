@@ -382,6 +382,61 @@ namespace BL
 
                 addRows(ref DataRow, 3, item.Amount.ToString());
                 addRows(ref DataRow, 4, item.LabTestingAmount.ToString() + "+" + item.ThirdPartyLabAmoumt.ToString());
+                if (item.TPLabs.Any())
+                {
+                    //table.ApplyHorizontalMerge(11, index + 1, index + 1);
+                    table.ApplyVerticalMerge(4, index + 1, index + 1);
+                    // add a nested table to cell(first row, second column)
+
+                    Table nestedTable = table[index + 1, 4].AddTable(true);
+
+                    nestedTable.ResetCells(item.TPLabs.Count + 1, 2);
+                    nestedTable.AutoFit(AutoFitBehaviorType.AutoFitToContents);
+
+                    //Create Header and Data
+                    String[] nestedHeader = { "Name", "Amt" };
+                    //Header Row
+                    TableRow nestedFRow = nestedTable.Rows[0];
+                    nestedFRow.IsHeader = true;
+
+
+
+
+                    //Header Format                   
+                    nestedFRow.RowFormat.BackColor = Color.AliceBlue;
+
+                    for (int i = 0; i < nestedHeader.Length; i++)
+                    {
+                        //Cell Alignment
+                        Paragraph p = nestedFRow.Cells[i].AddParagraph();
+                        nestedFRow.Cells[i].CellFormat.VerticalAlignment = VerticalAlignment.Middle;
+                        p.Format.HorizontalAlignment = HorizontalAlignment.Center;
+                        //nestedFRow.Cells[i].SetCellWidth(20, CellWidthType.Percentage);
+                        //Data Format
+                        TextRange TR = p.AppendText(nestedHeader[i]);
+                        TR.CharacterFormat.FontName = "Calibri";
+                        TR.CharacterFormat.FontSize = 8;
+                        TR.CharacterFormat.TextColor = Color.Black;
+                        TR.CharacterFormat.Bold = true;
+                    }
+
+
+                    int rowIndex = 0;
+                    TableRow nestedDataRow = nestedTable.Rows[rowIndex + 1];
+                    foreach (var itemValue in item.TPLabs)
+                    {
+                        if (rowIndex != 0)
+                            nestedDataRow = nestedTable.Rows[rowIndex + 1];
+
+                        addRows(ref nestedDataRow, 0, itemValue.Name.ToString(), false, 8, HorizontalAlignment.Left);
+                        addRows(ref nestedDataRow, 1, itemValue.Rate.ToString(), false, 8, HorizontalAlignment.Right);
+                        rowIndex++;
+
+                    }
+
+                }
+
+
                 addRows(ref DataRow, 5, item.ECGAmount.ToString());
                 addRows(ref DataRow, 6, item.XRAYAmount.ToString());
 

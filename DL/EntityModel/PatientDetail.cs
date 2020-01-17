@@ -6,12 +6,14 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using PagedList;
 
 namespace DL.Entity
 {
     [MetadataType(typeof(PatientDetailMD))]
     public partial class PatientDetail
     {
+        IPagedList<PatientDetailModel> listp;
         #region --- Property Declaration ---
         public class PatientDetailMD
         {
@@ -40,7 +42,7 @@ namespace DL.Entity
             public Nullable<System.Guid> CreatedBy { get; set; }
             public Nullable<System.Guid> ModifiedBy { get; set; }
             public string AadharCard { get; set; }
-            public string PanCard { get; set; }            
+            public string PanCard { get; set; }
             public string MobileNumber { get; set; }
         }
         #endregion
@@ -79,7 +81,7 @@ namespace DL.Entity
                                     WardNumberId = t.WardNumberId,
                                     WardName = t.WardDetail.Name,
                                     RoomNumber = t.RoomNumber,
-                                    RoomTypeId = t.RoomTypeId,                                    
+                                    RoomTypeId = t.RoomTypeId,
                                     RoomTypeName = t.RoomType.Name,
                                     DepartmentId = t.DepartmentId,
                                     DepartmentName = t.Department.Name,
@@ -499,56 +501,59 @@ namespace DL.Entity
         {
             return true;
         }
-        public List<PatientDetailModel> AdvanceSearch(string searchText, int pageIndex = 1, int pageSize = 40)
+        public async Task<IPagedList<PatientDetailModel>> AdvanceSearch(string searchText, int pageIndex = 1, int pageSize = 40)
         {
             try
             {
                 List<PatientDetailModel> list = new List<PatientDetailModel>();
+                return await Task.Factory.StartNew(() =>
+               {
+                   using (var db = new HMSEntities())
+                   {
+                       return  db.PatientDetails
+                                    .Where(t => t.IsActive == true && t.IsDeleted != true && (t.FullName.Contains(searchText)
+                                    || t.Address.Contains(searchText) || t.Department.Name.Contains(searchText) || t.CasePaperNumber.Contains(searchText)
+                                     || t.PhoneNumber.Contains(searchText)))
+                                   .OrderByDescending(c => c.CreatedOn)
+                                   .Select(t => new PatientDetailModel()
+                                   {
+                                       Id = t.Id,
+                                       FullName = t.FullName,
+                                       Address = t.Address,
+                                       CasePaperNumber = t.CasePaperNumber,
+                                       Gender = t.Gender,
+                                       PhoneNumber = t.PhoneNumber,
+                                       MobileNumber = t.MobileNumber,
+                                       Age = t.Age,
+                                       IsAdmitted = t.IsAdmitted,
+                                       AdmittedDate = t.AdmittedDate,
+                                       IsDischarged = t.IsDischarged,
+                                       DischargedDate = t.DischargedDate,
+                                       RefferedDoctor = t.RefferedDoctor,
+                                       RefferedDoctorName = t.DoctorDetail.FullName,
+                                       CasePaperIssuedDate = t.CasePaperIssuedDate,
+                                       CasePaperExpiryDate = t.CasePaperExpiryDate,
+                                       WardNumberId = t.WardNumberId,
+                                       WardName = t.WardDetail.Name,
+                                       RoomNumber = t.RoomNumber,
+                                       RoomTypeId = t.RoomTypeId,
+                                       RoomTypeName = t.RoomType.Name,
+                                       DepartmentId = t.DepartmentId,
+                                       DepartmentName = t.Department.Name,
+                                       AadharCard = t.AadharCard,
+                                       PanCard = t.PanCard,
+                                       IsActive = t.IsActive,
+                                       IsDeleted = t.IsDeleted,
+                                       CreatedOn = t.CreatedOn,
+                                       CreatedBy = t.CreatedBy,
+                                       ModifiedOn = t.ModifiedOn,
+                                       ModifiedBy = t.ModifiedBy
+                                   }).ToPagedList(pageIndex, pageSize);
+                   }
+               });
 
-                using (var db = new HMSEntities())
-                {
-                    list = db.PatientDetails
-                                 .Where(t => t.IsActive == true && t.IsDeleted != true && (t.FullName.Contains(searchText)
-                                 || t.Address.Contains(searchText) || t.Department.Name.Contains(searchText) || t.CasePaperNumber.Contains(searchText)
-                                  || t.PhoneNumber.Contains(searchText)))
-                                .OrderByDescending(c => c.CreatedOn)
-                                .Select(t => new PatientDetailModel()
-                                {
-                                    Id = t.Id,
-                                    FullName = t.FullName,
-                                    Address = t.Address,
-                                    CasePaperNumber = t.CasePaperNumber,
-                                    Gender = t.Gender,
-                                    PhoneNumber = t.PhoneNumber,
-                                    MobileNumber = t.MobileNumber,
-                                    Age = t.Age,
-                                    IsAdmitted = t.IsAdmitted,
-                                    AdmittedDate = t.AdmittedDate,
-                                    IsDischarged = t.IsDischarged,
-                                    DischargedDate = t.DischargedDate,
-                                    RefferedDoctor = t.RefferedDoctor,
-                                    RefferedDoctorName = t.DoctorDetail.FullName,
-                                    CasePaperIssuedDate = t.CasePaperIssuedDate,
-                                    CasePaperExpiryDate = t.CasePaperExpiryDate,
-                                    WardNumberId = t.WardNumberId,
-                                    WardName = t.WardDetail.Name,
-                                    RoomNumber = t.RoomNumber,
-                                    RoomTypeId = t.RoomTypeId,
-                                    RoomTypeName = t.RoomType.Name,
-                                    DepartmentId = t.DepartmentId,
-                                    DepartmentName = t.Department.Name,
-                                    AadharCard = t.AadharCard,
-                                    PanCard = t.PanCard,
-                                    IsActive = t.IsActive,
-                                    IsDeleted = t.IsDeleted,
-                                    CreatedOn = t.CreatedOn,
-                                    CreatedBy = t.CreatedBy,
-                                    ModifiedOn = t.ModifiedOn,
-                                    ModifiedBy = t.ModifiedBy
-                                }).ToList();
-                }
 
-                return list;
+                //return list;
             }
             catch (Exception ex)
             {

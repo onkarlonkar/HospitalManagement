@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model;
-
+using PagedList;
 
 namespace Service
 {
@@ -19,7 +19,7 @@ namespace Service
         bool Delete(Guid id);
         PatientDetailModel GetByName(string name);
         PatientDetailModel GetByParentId(Guid id);
-        List<PatientDetailModel> AdvanceSearch(string searchText, int pageIndex = 1, int pageSize = 40);
+        Task<IPagedList<PatientDetailModel>> AdvanceSearch(string searchText, int pageIndex = 1, int pageSize = 40);
         decimal? isFollowUpCheck(Guid? id);
         string getNewCasePaperNumber();
     }

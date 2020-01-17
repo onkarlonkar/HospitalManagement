@@ -133,6 +133,26 @@ namespace HospitalManagement.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Chevron_Left_18px {
+            get {
+                object obj = ResourceManager.GetObject("Chevron Left_18px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Chevron_Right_18px {
+            get {
+                object obj = ResourceManager.GetObject("Chevron Right_18px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Close_30px {
             get {
                 object obj = ResourceManager.GetObject("Close_30px", resourceCulture);

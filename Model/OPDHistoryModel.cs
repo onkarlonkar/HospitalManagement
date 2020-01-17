@@ -45,6 +45,7 @@ namespace Model
         public Nullable<decimal> ThirdPartyLabAmoumt { get; set; }
         public PatientDetailModel PatientDetails { get; set; }
         public List<OPDHistoryUpdateModel> OPDHistoryUpdates { get; set; }
+        public List<LookupModel> TPLabs { get; set; }
         public BillHistoryModel BillHistory { get; set; }
     }
     public class DashboardModel

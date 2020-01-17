@@ -914,6 +914,8 @@ namespace DL.Entity
                         model.ModifiedBy = t.ModifiedBy;
                         model.OPDHistoryUpdates = new List<OPDHistoryUpdateModel>();
                         model.OPDHistoryUpdates.AddRange(OPDHistoryUpdate.GetPayingPatient(model.Id.Value));
+                        model.TPLabs = new List<LookupModel>();
+                        model.TPLabs.AddRange(TPLabPatientMapping.GetLabByOPD(model.Id.Value));
                         list.Add(model);
                     }
 

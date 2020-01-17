@@ -6,18 +6,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PagedList;
 
 namespace BL
 {
     public class PatientDetailManager : IPatientDetailService
     {
 
-        public List<PatientDetailModel> AdvanceSearch(string searchText, int pageIndex = 1, int pageSize = 40)
+        public async Task<IPagedList<PatientDetailModel>> AdvanceSearch(string searchText, int pageIndex = 1, int pageSize = 40)
         {
             try
             {
                 PatientDetail entity = new PatientDetail();
-                return entity.AdvanceSearch(searchText, pageIndex, pageSize);
+                return await entity.AdvanceSearch(searchText, pageIndex, pageSize);
             }
             catch (Exception ex)
             {

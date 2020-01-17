@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Utility;
+using PagedList;
 
 namespace HospitalManagement.Forms.Patients
 {
@@ -21,7 +22,9 @@ namespace HospitalManagement.Forms.Patients
         IOPDHistoryService opdService = new OPDHistoryManager();
         public static bool isSubmited = false;
         int pageIndex = 1;
-        int PageSize = 40;
+        int PageSize = 20;
+        bool HasPreviousPage = false;
+        bool HasNextPage = false;
         public PatientList()
         {
             InitializeComponent();
@@ -66,25 +69,28 @@ namespace HospitalManagement.Forms.Patients
             }
         }
 
-        private void Search(string searchText = "")
+        private async void Search(string searchText = "")
         {
             try
             {
-                List<PatientDetailModel> list = service.AdvanceSearch(searchText, pageIndex, PageSize);
+                IPagedList<PatientDetailModel> list = await service.AdvanceSearch(searchText, pageIndex, PageSize);
                 dgvList.AutoGenerateColumns = false;
-                dgvList.DataSource = list;
+                dgvList.DataSource = list.ToList();
+                btnNext.Enabled = this.HasNextPage = list.HasNextPage;
+                btnPrevious.Enabled = this.HasPreviousPage = list.HasPreviousPage;
+                lblPages.Text = string.Format("Page {0}/{1}", list.PageNumber, list.TotalItemCount);
                 //
-                dgvList.BorderStyle = BorderStyle.FixedSingle;
-                dgvList.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
-                dgvList.CellBorderStyle = DataGridViewCellBorderStyle.RaisedVertical;
-                dgvList.DefaultCellStyle.SelectionBackColor = Color.DarkTurquoise;
-                dgvList.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;
-                dgvList.BackgroundColor = Color.White;
-                
-                dgvList.EnableHeadersVisualStyles = false;
-                dgvList.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-                dgvList.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(20, 25, 72);
-                dgvList.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+                //dgvList.BorderStyle = BorderStyle.FixedSingle;
+                //dgvList.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
+                //dgvList.CellBorderStyle = DataGridViewCellBorderStyle.RaisedVertical;
+                //dgvList.DefaultCellStyle.SelectionBackColor = Color.DarkTurquoise;
+                //dgvList.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;
+                //dgvList.BackgroundColor = Color.White;
+
+                //dgvList.EnableHeadersVisualStyles = false;
+                //dgvList.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+                //dgvList.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(20, 25, 72);
+                //dgvList.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
                 dgvList.Refresh();
                 dgvList.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
 
@@ -277,6 +283,29 @@ namespace HospitalManagement.Forms.Patients
         private void PatientList_Load(object sender, EventArgs e)
         {
             dgvList.Focus();
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            if (this.HasNextPage)
+            {
+                pageIndex++;
+                Search();
+            }
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            if (this.HasPreviousPage)
+            {
+                pageIndex--;
+                Search();
+            }
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
 
         //private void dgvList_Scroll(object sender, ScrollEventArgs e)
