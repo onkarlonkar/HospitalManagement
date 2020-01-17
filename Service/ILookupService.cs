@@ -21,5 +21,10 @@ namespace Service
         LookupModel GetByParentId(LookUp lookUp, Guid id);
         List<LookupModel> AdvanceSearch(LookUp lookUp, string searchText);
         LookupModel GetRatesByType(string type);
+
+        List<LookupModel> GetByOPDId(Guid id);
+        bool CreateUpdate(List<LookupModel> model);
+
+        decimal GetTPAmount(Guid id);
     }
 }

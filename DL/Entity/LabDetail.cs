@@ -18,6 +18,7 @@ namespace DL.Entity
         public LabDetail()
         {
             this.OPDHistories = new HashSet<OPDHistory>();
+            this.TPLabPatientMappings = new HashSet<TPLabPatientMapping>();
         }
     
         public System.Guid Id { get; set; }
@@ -35,5 +36,7 @@ namespace DL.Entity
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OPDHistory> OPDHistories { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TPLabPatientMapping> TPLabPatientMappings { get; set; }
     }
 }

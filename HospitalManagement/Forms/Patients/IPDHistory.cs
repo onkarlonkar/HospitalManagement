@@ -31,11 +31,11 @@ namespace HospitalManagement.Forms.Patients
             clearAll();
             getNewCasePaperNumber();
             chkIsDischarged.Checked = false;
-            txtDepartment.Visible = false;
-            txtDepartment.Text = string.Empty;
-            txtNumberOfXRay.Visible = false;
-            lblXRayText.Visible = false;
-            txtNumberOfXRay.Text = "0";
+            //txtDepartment.Visible = false;
+            //txtDepartment.Text = string.Empty;
+            //txtNumberOfXRay.Visible = false;
+            //lblXRayText.Visible = false;
+            //txtNumberOfXRay.Text = "0";
         }
 
         private void getNewCasePaperNumber()
@@ -83,35 +83,35 @@ namespace HospitalManagement.Forms.Patients
                 PatientDetailModel model = new PatientDetailModel();
                 model.Id = this.currentUserId;
                 model.CasePaperNumber = txtCasePaper.Text;
-                model.FullName = txtFullName.Text;
-                model.CasePaperIssuedDate = dtpIssueDate.Value;
-                model.AadharCard = txtAadharcard.Text;
-                model.PanCard = txtPanCard.Text;
-                model.IsDischarged = chkIsDischarged.Checked;
-                model.RoomNumber = txtDepartment.Text;
-                model.RefferedDoctor = new Guid(ddlRefDoctor.SelectedValue.ToString());
-                model.MobileNumber = txtMobileNumber.Text;
-                model.PhoneNumber = txtPhoneNumber.Text;
-                model.DepartmentId = new Guid(ddlDepartment.SelectedValue.ToString());
-                model.Address = txtAddress.Text;
-                model.Age = Convert.ToInt32(txtAge.Text);
-                model.Gender = getGender();
-                model.OPDHistory = new OPDHistoryModel();
-                model.OPDHistory.InTime = dtpInTime.Value;
-                //model.OPDHistory.Amount = Convert.ToDecimal(txtOPDAmount.Text);
-                //model.OPDHistory.LabTestingAmount = 0.00M;
-                //model.OPDHistory.TotalAmount = model.OPDHistory.Amount;
-                //model.OPDHistory.PaidAmount = model.OPDHistory.PayingAmount;
-                //model.OPDHistory.DueAmount = model.OPDHistory.Amount - model.OPDHistory.PayingAmount;
-                model.OPDHistory.IsCharity = chkCharity.Checked;
-                model.OPDHistory.IsLabCharity = chkLabCharity.Checked;
-                model.OPDHistory.IsECG = chkECG.Checked;
-                model.OPDHistory.XRAYAmount = chkXRay.Checked ? lookupService.GetRatesByType("XRAY").Rate * Convert.ToDecimal(txtNumberOfXRay.Text) : 0.00M;
-                model.OPDHistory.NumberofXRAY = txtNumberOfXRay.Text != string.Empty ? Convert.ToInt32(txtNumberOfXRay.Text) : 0;
-                model.OPDHistory.IsXRAY = chkXRay.Checked;
-                model.IPDBillAmount = txtDischargeAmount.Text != string.Empty ? Convert.ToDecimal(txtDischargeAmount.Text) : 0.00M;
-                model.IsOldPatient = chkOldPatient.Checked;
-                model.OPDHistory.ConsultingDoctorId = new Guid(ddlConsulting.SelectedValue.ToString());
+                //model.FullName = txtFullName.Text;
+                //model.CasePaperIssuedDate = dtpIssueDate.Value;
+                //model.AadharCard = txtAadharcard.Text;
+                //model.PanCard = txtPanCard.Text;
+                //model.IsDischarged = chkIsDischarged.Checked;
+                //model.RoomNumber = txtDepartment.Text;
+                //model.RefferedDoctor = new Guid(ddlRefDoctor.SelectedValue.ToString());
+                //model.MobileNumber = txtMobileNumber.Text;
+                //model.PhoneNumber = txtPhoneNumber.Text;
+                //model.DepartmentId = new Guid(ddlDepartment.SelectedValue.ToString());
+                //model.Address = txtAddress.Text;
+                //model.Age = Convert.ToInt32(txtAge.Text);
+                //model.Gender = getGender();
+                //model.OPDHistory = new OPDHistoryModel();
+                //model.OPDHistory.InTime = dtpInTime.Value;
+                ////model.OPDHistory.Amount = Convert.ToDecimal(txtOPDAmount.Text);
+                ////model.OPDHistory.LabTestingAmount = 0.00M;
+                ////model.OPDHistory.TotalAmount = model.OPDHistory.Amount;
+                ////model.OPDHistory.PaidAmount = model.OPDHistory.PayingAmount;
+                ////model.OPDHistory.DueAmount = model.OPDHistory.Amount - model.OPDHistory.PayingAmount;
+                ////model.OPDHistory.IsCharity = chkCharity.Checked;
+                //model.OPDHistory.IsLabCharity = chkLabCharity.Checked;
+                //model.OPDHistory.IsECG = chkECG.Checked;
+                //model.OPDHistory.XRAYAmount = chkXRay.Checked ? lookupService.GetRatesByType("XRAY").Rate * Convert.ToDecimal(txtNumberOfXRay.Text) : 0.00M;
+                //model.OPDHistory.NumberofXRAY = txtNumberOfXRay.Text != string.Empty ? Convert.ToInt32(txtNumberOfXRay.Text) : 0;
+                //model.OPDHistory.IsXRAY = chkXRay.Checked;
+                //model.IPDBillAmount = txtDischargeAmount.Text != string.Empty ? Convert.ToDecimal(txtDischargeAmount.Text) : 0.00M;
+                //model.IsOldPatient = chkOldPatient.Checked;
+                //model.OPDHistory.ConsultingDoctorId = new Guid(ddlConsulting.SelectedValue.ToString());
                 return model;
             }
             catch (Exception ex)
@@ -128,19 +128,19 @@ namespace HospitalManagement.Forms.Patients
                 this.currentUserId = null;
                 txtCasePaper.Text = string.Empty;
                 dtpIssueDate.Value = DateTime.Now;
-                txtFullName.Text = string.Empty;
-                txtAadharcard.Text = string.Empty;
-                txtPanCard.Text = string.Empty;
-                txtMobileNumber.Text = string.Empty;
-                txtPhoneNumber.Text = string.Empty;
-                txtAge.Text = string.Empty;
-                txtAddress.Text = string.Empty;
-                rdoMale.Checked = true;
-                ddlDepartment.SelectedIndex = 0;
-                ddlRefDoctor.SelectedIndex = 0;
-                dtpInTime.Value = DateTime.Now;
-                chkCharity.Checked = false;
-                chkLabCharity.Checked = false;
+                //txtFullName.Text = string.Empty;
+                //txtAadharcard.Text = string.Empty;
+                //txtPanCard.Text = string.Empty;
+                //txtMobileNumber.Text = string.Empty;
+                //txtPhoneNumber.Text = string.Empty;
+                //txtAge.Text = string.Empty;
+                //txtAddress.Text = string.Empty;
+                //rdoMale.Checked = true;
+                //ddlDepartment.SelectedIndex = 0;
+                //ddlRefDoctor.SelectedIndex = 0;
+                //dtpInTime.Value = DateTime.Now;
+                //chkCharity.Checked = false;
+                //chkLabCharity.Checked = false;
             }
             catch (Exception ex)
             {
@@ -152,11 +152,11 @@ namespace HospitalManagement.Forms.Patients
         {
             try
             {
-                if (rdoMale.Checked)
-                    return 1;
-                else if (rdoFemale.Checked)
-                    return 2;
-                else
+                //if (rdoMale.Checked)
+                //    return 1;
+                //else if (rdoFemale.Checked)
+                //    return 2;
+                //else
                     return 3;
             }
             catch (Exception ex)
@@ -194,9 +194,9 @@ namespace HospitalManagement.Forms.Patients
             {
                 List<DoctorDetailModel> model = refDoctorService.GetByType(true);
                 //model.Insert(0, new DoctorDetailModel() { Id = Guid.Empty, FullName = "--Select Doctor--" });
-                ddlConsulting.DataSource = model;
-                ddlConsulting.DisplayMember = "FullName";
-                ddlConsulting.ValueMember = "Id";
+                //ddlConsulting.DataSource = model;
+                //ddlConsulting.DisplayMember = "FullName";
+                //ddlConsulting.ValueMember = "Id";
 
             }
             catch (Exception ex)
@@ -298,22 +298,22 @@ namespace HospitalManagement.Forms.Patients
                     isValid = false;
                 }
 
-                if (txtFullName.Text.Trim() == string.Empty)
-                {
-                    sbError.Append(ErrorMessages.PleaseenterName + "\n");
-                    isValid = false;
-                }
+                //if (txtFullName.Text.Trim() == string.Empty)
+                //{
+                //    sbError.Append(ErrorMessages.PleaseenterName + "\n");
+                //    isValid = false;
+                //}
 
-                if (txtAge.Text.Trim() == string.Empty)
-                {
-                    sbError.Append(ErrorMessages.PleaseenterAge + "\n");
-                    isValid = false;
-                }
-                if (txtMobileNumber.Text.Trim() == string.Empty)
-                {
-                    sbError.Append(ErrorMessages.PleaseenterMobileNumber + "\n");
-                    isValid = false;
-                }
+                //if (txtAge.Text.Trim() == string.Empty)
+                //{
+                //    sbError.Append(ErrorMessages.PleaseenterAge + "\n");
+                //    isValid = false;
+                //}
+                //if (txtMobileNumber.Text.Trim() == string.Empty)
+                //{
+                //    sbError.Append(ErrorMessages.PleaseenterMobileNumber + "\n");
+                //    isValid = false;
+                //}
 
 
                 errorMsg = sbError.ToString();
@@ -331,19 +331,19 @@ namespace HospitalManagement.Forms.Patients
         private void visibleIPDSection()
         {
             //ddlConsulting.SelectedIndex = 0;
-            chkCharity.Checked = false;
-            chkLabCharity.Checked = false;
-            chkECG.Checked = false;
-            chkXRay.Checked = false;
-            opdSection.Visible = false;
-            IPDSection.Visible = true;
+            //chkCharity.Checked = false;
+            //chkLabCharity.Checked = false;
+            //chkECG.Checked = false;
+            //chkXRay.Checked = false;
+            //opdSection.Visible = false;
+            //IPDSection.Visible = true;
         }
 
         private void visibleOPDSection()
         {
-            txtDischargeAmount.Text = "0.00";
-            opdSection.Visible = true;
-            IPDSection.Visible = false;
+            //txtDischargeAmount.Text = "0.00";
+            //opdSection.Visible = true;
+            //IPDSection.Visible = false;
         }
 
         private void VisibleIPDSection()
@@ -352,18 +352,18 @@ namespace HospitalManagement.Forms.Patients
             {
                 visibleIPDSection();
                 ddlDepartment.Visible = false;
-                txtDepartment.Visible = true;
+                //txtDepartment.Visible = true;
                 ddlDepartment.SelectedIndex = 0;
-                chkOldPatient.Checked = false;
-                chkOldPatient.Enabled = false;
+                //chkOldPatient.Checked = false;
+                //chkOldPatient.Enabled = false;
             }
             else
             {
                 visibleOPDSection();
-                txtDepartment.Visible = false;
+                //txtDepartment.Visible = false;
                 ddlDepartment.Visible = true;
-                txtDepartment.Text = string.Empty;
-                chkOldPatient.Enabled = true;
+                //txtDepartment.Text = string.Empty;
+                //chkOldPatient.Enabled = true;
 
             }
         }
@@ -375,54 +375,54 @@ namespace HospitalManagement.Forms.Patients
 
         private void chkCharity_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkCharity.Checked)
-            {
-                chkLabCharity.Enabled = false;
-                chkECG.Enabled = false;
-                chkXRay.Enabled = false;
-            }
-            else
-            {
-                chkLabCharity.Enabled = true;
-                chkECG.Enabled = true;
-                chkXRay.Enabled = true;
-            }
+            //if (chkCharity.Checked)
+            //{
+            //    chkLabCharity.Enabled = false;
+            //    chkECG.Enabled = false;
+            //    chkXRay.Enabled = false;
+            //}
+            //else
+            //{
+            //    chkLabCharity.Enabled = true;
+            //    chkECG.Enabled = true;
+            //    chkXRay.Enabled = true;
+            //}
         }
 
         private void chkOldPatient_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkOldPatient.Checked)
-            {
-                dtpIssueDate.Enabled = true;
-                dtpIssueDate.MaxDate = DateTime.Now;
-                dtpIssueDate.MinDate = DateTime.Now.AddMonths(-2);
-                txtCasePaper.Text = string.Empty;
-                MessageBox.Show(ErrorMessages.pleaseSelectCasepaperIssueDate, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                dtpIssueDate.MaxDate = DateTime.Now.AddDays(1);
-                dtpIssueDate.MinDate = DateTime.Now.AddMonths(-2);
-                dtpIssueDate.Value = DateTime.Now;
-                dtpIssueDate.Enabled = false;
-                getNewCasePaperNumber();
-            }
+            //if (chkOldPatient.Checked)
+            //{
+            //    dtpIssueDate.Enabled = true;
+            //    dtpIssueDate.MaxDate = DateTime.Now;
+            //    dtpIssueDate.MinDate = DateTime.Now.AddMonths(-2);
+            //    txtCasePaper.Text = string.Empty;
+            //    MessageBox.Show(ErrorMessages.pleaseSelectCasepaperIssueDate, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
+            //else
+            //{
+            //    dtpIssueDate.MaxDate = DateTime.Now.AddDays(1);
+            //    dtpIssueDate.MinDate = DateTime.Now.AddMonths(-2);
+            //    dtpIssueDate.Value = DateTime.Now;
+            //    dtpIssueDate.Enabled = false;
+            //    getNewCasePaperNumber();
+            //}
         }
 
         private void chkXRay_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkXRay.Checked)
-            {
-                txtNumberOfXRay.Visible = true;
-                lblXRayText.Visible = true;
-                txtNumberOfXRay.Text = "1";
-            }
-            else
-            {
-                txtNumberOfXRay.Visible = false;
-                lblXRayText.Visible = false;
-                txtNumberOfXRay.Text = "0";
-            }
+            //if (chkXRay.Checked)
+            //{
+            //    txtNumberOfXRay.Visible = true;
+            //    lblXRayText.Visible = true;
+            //    txtNumberOfXRay.Text = "1";
+            //}
+            //else
+            //{
+            //    txtNumberOfXRay.Visible = false;
+            //    lblXRayText.Visible = false;
+            //    txtNumberOfXRay.Text = "0";
+            //}
 
         }
 

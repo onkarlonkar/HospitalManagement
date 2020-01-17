@@ -121,8 +121,8 @@
   <data name="rates_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\rates_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Search_18px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\Search_18px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="wards_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\wards_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Add_New_Green_18px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\Add_New_Green_18px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -135,9 +135,6 @@
   </data>
   <data name="Caduceus_104px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\Caduceus_104px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="wards_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\wards_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Save_18px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\Save_18px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -157,6 +154,9 @@
   <data name="Menu_42px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\Menu_42px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ward_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\ward_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Print_18px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\Print_18px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -165,6 +165,9 @@
   </data>
   <data name="Edit_18px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\Edit_18px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Search_18px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\Search_18px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Create_18px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\Create_18px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -232,13 +235,16 @@
   <data name="Minimize_Window_30px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\Minimize Window_30px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Refresh_16px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\Refresh_16px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Dashboard_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\Dashboard_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="user_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\user_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ward_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\ward_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Widescreen_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\Widescreen_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

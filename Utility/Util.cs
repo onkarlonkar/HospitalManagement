@@ -57,7 +57,8 @@ namespace Utility
         Status,
         OPDRate,
         RoomType,
-        Ward
+        Ward,
+        TPLab
 
     }
 
@@ -65,7 +66,7 @@ namespace Utility
     {
         Waiting = 1,
         Pending,
-        Inprogress,
+        Complete,
         NotAvailable,
         Done
     }

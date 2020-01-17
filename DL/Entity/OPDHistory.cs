@@ -25,6 +25,7 @@ namespace DL.Entity
             this.PatientHistories = new HashSet<PatientHistory>();
             this.BillHistories = new HashSet<BillHistory>();
             this.OPDHistoryUpdates = new HashSet<OPDHistoryUpdate>();
+            this.TPLabPatientMappings = new HashSet<TPLabPatientMapping>();
         }
     
         public System.Guid Id { get; set; }
@@ -53,6 +54,7 @@ namespace DL.Entity
         public Nullable<bool> IsECG { get; set; }
         public Nullable<bool> IsXRAY { get; set; }
         public Nullable<int> NumberofXRAY { get; set; }
+        public Nullable<int> IsFollowUp { get; set; }
     
         public virtual Status Status { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -64,5 +66,7 @@ namespace DL.Entity
         public virtual ICollection<OPDHistoryUpdate> OPDHistoryUpdates { get; set; }
         public virtual LabDetail LabDetail { get; set; }
         public virtual DoctorDetail DoctorDetail { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TPLabPatientMapping> TPLabPatientMappings { get; set; }
     }
 }

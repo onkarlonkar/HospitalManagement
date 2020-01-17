@@ -73,9 +73,21 @@ namespace HospitalManagement.Forms.Patients
                 List<PatientDetailModel> list = service.AdvanceSearch(searchText, pageIndex, PageSize);
                 dgvList.AutoGenerateColumns = false;
                 dgvList.DataSource = list;
-                //dgvList.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-
+                //
+                dgvList.BorderStyle = BorderStyle.FixedSingle;
+                dgvList.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
+                dgvList.CellBorderStyle = DataGridViewCellBorderStyle.RaisedVertical;
+                dgvList.DefaultCellStyle.SelectionBackColor = Color.DarkTurquoise;
+                dgvList.DefaultCellStyle.SelectionForeColor = Color.WhiteSmoke;
+                dgvList.BackgroundColor = Color.White;
+                
+                dgvList.EnableHeadersVisualStyles = false;
+                dgvList.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+                dgvList.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(20, 25, 72);
+                dgvList.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
                 dgvList.Refresh();
+                dgvList.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+
                 ///pageIndex++;
 
             }

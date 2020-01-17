@@ -14,12 +14,14 @@ namespace HospitalManagement.Forms
 {
     public partial class Dashboard : Form
     {
+
+        //Patients.TokenList frm = new Patients.TokenList();
         public Dashboard()
         {
             InitializeComponent(); try
             {
                 CollapseAllMaster("Master");
-                AddFormToPanel(new trialDashboard());
+                AddFormToPanel(new OPDDashboard());
                 showHideMenu();
             }
             catch (Exception ex)
@@ -425,6 +427,8 @@ namespace HospitalManagement.Forms
             }
         }
 
+
+
         private void btnMenuOPD_Click(object sender, EventArgs e)
         {
             try
@@ -482,7 +486,7 @@ namespace HospitalManagement.Forms
             try
             {
                 CollapseAllMaster("Master");
-                AddFormToPanel(new MainDashBoard());
+                AddFormToPanel(new OPDDashboard());
             }
             catch (Exception ex)
             {
@@ -495,7 +499,7 @@ namespace HospitalManagement.Forms
             try
             {
                 CollapseAllMaster("Master");
-                AddFormToPanel(new MainDashBoard());
+                AddFormToPanel(new OPDDashboard());
             }
             catch (Exception ex)
             {
@@ -510,6 +514,16 @@ namespace HospitalManagement.Forms
                 Left = Top = 0;
                 Width = Screen.PrimaryScreen.WorkingArea.Width;
                 Height = Screen.PrimaryScreen.WorkingArea.Height;
+                //AddFormToPanel(new OPDDashboard());
+                //for (int i = 0; i < 4; i++)
+                //{
+                //    notifyIcon1.Icon = SystemIcons.Information;
+                //    notifyIcon1.BalloonTipTitle = "Recent Changes" + i.ToString();
+                //    notifyIcon1.BalloonTipText = "Welcome to Application";
+                //    notifyIcon1.ShowBalloonTip(1000);
+                //}
+
+
             }
             catch (Exception ex)
             {
@@ -522,7 +536,7 @@ namespace HospitalManagement.Forms
             try
             {
                 CollapseAllMaster("Master");
-                AddFormToPanel(new trialDashboard());
+                AddFormToPanel(new OPDDashboard());
             }
             catch (Exception ex)
             {
@@ -622,6 +636,7 @@ namespace HospitalManagement.Forms
         {
             try
             {
+
                 CollapseAllMaster("Master");
                 AddFormToPanel(new Reports.IPDReport());
             }
@@ -631,7 +646,7 @@ namespace HospitalManagement.Forms
             }
         }
 
-       
+
         private void btnRoomType_Click(object sender, EventArgs e)
         {
             try
@@ -664,6 +679,21 @@ namespace HospitalManagement.Forms
             {
                 CollapseAllMaster("Master");
                 AddFormToPanel(new Lookup.DepartmentList());
+            }
+            catch (Exception ex)
+            {
+                Utility.ErrorLog.Logging("Dashboard", ex.Message.ToString(), ex.StackTrace.ToString());
+            }
+        }
+
+        private void btnMenuTokenList_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Patients.TokenList f = Patients.TokenList.Instance;
+                
+                //Patients.TokenList frm = new Patients.TokenList();
+                f.Show();
             }
             catch (Exception ex)
             {

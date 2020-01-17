@@ -29,16 +29,7 @@ namespace HospitalManagement.Forms.Common
 
         }
 
-        private void pbClose_MouseHover(object sender, EventArgs e)
-        {
-            pbClose.BackColor = Color.Red;
-        }
-
-        private void pbClose_MouseLeave(object sender, EventArgs e)
-        {
-            pbClose.BackColor = Color.Transparent;
-        }
-
+      
         private void patientDialog_Load(object sender, EventArgs e)
         {
 
@@ -50,14 +41,14 @@ namespace HospitalManagement.Forms.Common
             {
                 List<LookupModel> list = service.getPatientByType(type);
                 if(type==P_TYPE.XRAY)
-                    this.dgvPatientInfo.Columns["XRAYCount"].Visible = true;
+                    this.dgvList.Columns["XRAYCount"].Visible = true;
                 else
-                    this.dgvPatientInfo.Columns["XRAYCount"].Visible = false;
-                dgvPatientInfo.AutoGenerateColumns = false;
-                dgvPatientInfo.DataSource = list;
-                dgvPatientInfo.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-                dgvPatientInfo.Refresh();
-                dgvPatientInfo.ClearSelection();
+                    this.dgvList.Columns["XRAYCount"].Visible = false;
+                dgvList.AutoGenerateColumns = false;
+                dgvList.DataSource = list;
+                dgvList.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                dgvList.Refresh();
+                dgvList.ClearSelection();
 
             }
             catch (Exception ex)

@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityModel\TPLabPatientMapping.cs" />
     <Compile Include="EntityModel\WardDetails.cs" />
     <Compile Include="EntityModel\RoomType.cs" />
     <Compile Include="EntityModel\Department.cs" />
@@ -131,6 +132,9 @@
       <DependentUpon>HMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\sysdiagram.cs">
+      <DependentUpon>HMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\TPLabPatientMapping.cs">
       <DependentUpon>HMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\UserDetail.cs">

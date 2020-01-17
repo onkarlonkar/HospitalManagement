@@ -78,7 +78,7 @@ namespace HospitalManagement.Forms
         {
             try
             {
-                List<OPDHistoryModel> list = service.GetByStatus(OPD_STATUS.Pending.ToString(), OPD_STATUS.Inprogress.ToString());
+                List<OPDHistoryModel> list = service.GetByStatus(OPD_STATUS.Pending.ToString(), OPD_STATUS.Complete.ToString());
                 dgvInCabin.AutoGenerateColumns = false;
                 dgvInCabin.DataSource = list;
                 //dgvInCabin.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);

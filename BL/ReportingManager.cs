@@ -117,6 +117,12 @@ namespace BL
                 predicate = PredicateBuilder.AndAlso<OPDHistory>(predicate, predicateFilter);
                 predicateFilter = null;
             }
+            if (model.type.Any())
+            {
+                predicateFilter = t => model.type.Contains(t.IsFollowUp);
+                predicate = PredicateBuilder.AndAlso<OPDHistory>(predicate, predicateFilter);
+                predicateFilter = null;
+            }
             if (model.from.HasValue)
             {
                 predicateFilter = t => t.InTime.Value >= model.from.Value && t.InTime.Value <= model.to.Value;

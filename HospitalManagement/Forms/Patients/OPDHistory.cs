@@ -34,6 +34,9 @@ namespace HospitalManagement.Forms.Patients
         decimal? prevOPD = 0.00M;
         decimal? prevLab = 0.00M;
 
+        bool isStatusHasInProgress = false;
+        public int? sequence = null;
+
 
 
         public static bool isPrint = false;
@@ -46,7 +49,7 @@ namespace HospitalManagement.Forms.Patients
             getPatientHistory();
             getStatus();
             getInHouseDoctor();
-            getThirdPartyLab();
+            //getThirdPartyLab();
             setNumberofXRAYVisibility();
         }
 
@@ -55,9 +58,9 @@ namespace HospitalManagement.Forms.Patients
             InitializeComponent();
             this.clearAll();
             clearStaticText();
-            getStatus(id);
+            getStatus();
             getInHouseDoctor();
-            getThirdPartyLab();
+            //getThirdPartyLab();
             this.primaryId = id;
             getPatientHistory(id);
             disablePrintButton();
@@ -65,6 +68,7 @@ namespace HospitalManagement.Forms.Patients
             initialDues = Convert.ToDecimal(txtDueAmount.Text);
             disableControls();
             setNumberofXRAYVisibility();
+            //setThirdPartyLabAmount();
         }
 
         private void disableControls()
@@ -151,7 +155,7 @@ namespace HospitalManagement.Forms.Patients
                         if (this.saveData())
                         {
                             MessageBox.Show(Messages.savedSuccessfully, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            DashboardForm.isSubmited = true;
+                            OPDDashboard.isSubmited = true;
                             clearAll();
                             clearStaticText();
                             disablePrintButton();
@@ -177,7 +181,7 @@ namespace HospitalManagement.Forms.Patients
             {
                 this.clearAll();
                 clearStaticText();
-                trialDashboard.isSubmited = false;
+                OPDDashboard.isSubmited = false;
                 this.Close();
             }
             catch (Exception ex)
@@ -216,6 +220,7 @@ namespace HospitalManagement.Forms.Patients
             txtLabAmount.Text = "0.00";
             txtPayingAmount.Text = "0.00";
             txtPaidAmount.Text = "0.00";
+            sequence = null;
 
         }
 
@@ -223,11 +228,30 @@ namespace HospitalManagement.Forms.Patients
         {
             try
             {
+                bool isSave = false;
                 OPDHistoryModel model = assignModel();
                 if (model != null)
-                    return service.Update(assignModel());
+                {
+                    isSave = service.Update(assignModel());
+                    if (isSave)
+                    {
+                        //if (isStatusHasInProgress)
+                        //{
+                            if (sequence != null)
+                            {
+                                TokenList frm = TokenList.Instance;
+                                frm.removeSequence(sequence.Value);
+                            }
+
+                        //}
+                        return isSave;
+                    }
+                    else
+                        return isSave;
+
+                }
                 else
-                    return false;
+                    return isSave;
             }
             catch (Exception ex)
             {
@@ -284,8 +308,9 @@ namespace HospitalManagement.Forms.Patients
                 model.IsXRAY = chkXRay.Checked;
                 model.ECGAmount = !string.IsNullOrEmpty(txtECG.Text) ? Convert.ToDecimal(txtECG.Text) : Convert.ToDecimal(0.00);
                 model.XRAYAmount = !string.IsNullOrEmpty(txtXRay.Text) ? Convert.ToDecimal(txtXRay.Text) : Convert.ToDecimal(0.00);
-                if (ddlThirdParty.SelectedIndex > 0)
-                    model.ThirdPartyLabId = new Guid(ddlThirdParty.SelectedValue.ToString());
+                model.Sequence = sequence;
+                //if (ddlThirdParty.SelectedIndex > 0)
+                //    model.ThirdPartyLabId = new Guid(ddlThirdParty.SelectedValue.ToString());
 
                 model.ThirdPartyLabAmoumt = !string.IsNullOrEmpty(txtThirdPartyAmount.Text) ? Convert.ToDecimal(txtThirdPartyAmount.Text) : Convert.ToDecimal(0.00);
                 //if (ddlConsulting.SelectedIndex > 0)
@@ -300,16 +325,42 @@ namespace HospitalManagement.Forms.Patients
             }
         }
 
-        private void getStatus(Guid? id = null)
+
+
+        public void getStatus(Guid? id = null)
         {
             try
             {
                 List<LookupModel> model = new List<LookupModel>();
                 model = lookupService.Get(LookUp.Status);
+                if (id.HasValue)
+                {
+                    LookupModel m = model.FirstOrDefault(t => t.Id == id.Value);
+                    if (m != null)
+                    {
+                        if (m.Name == OPD_STATUS.Pending.ToString())
+                        {
+                            model = model.Where(t => t.Name != OPD_STATUS.Complete.ToString()).ToList();
+                            //isStatusHasInProgress = false;
+                        }
+                        if (m.Name == OPD_STATUS.Complete.ToString())
+                        {
+                            model = model.Where(t => t.Name != OPD_STATUS.Pending.ToString()).ToList();
+                            //isStatusHasInProgress = false;
+                        }
+
+                    }
+                }
+                else
+                {
+                    //isStatusHasInProgress = true;
+                }
+
                 model.Insert(0, new LookupModel() { Id = Guid.Empty, Name = "--Select Status--" });
                 ddlStatus.DataSource = model;
                 ddlStatus.DisplayMember = "Name";
                 ddlStatus.ValueMember = "Id";
+
             }
             catch (Exception ex)
             {
@@ -379,7 +430,7 @@ namespace HospitalManagement.Forms.Patients
                     if (service.Print(this.primaryId, printOption))
                     {
                         MessageBox.Show(Messages.printCompleted, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        trialDashboard.isSubmited = true;
+                        OPDDashboard.isSubmited = true;
                         clearAll();
                         clearStaticText();
                         disablePrintButton();
@@ -524,7 +575,7 @@ namespace HospitalManagement.Forms.Patients
                         if (this.saveData())
                         {
                             MessageBox.Show(Messages.savedSuccessfully, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            trialDashboard.isSubmited = true;
+                            OPDDashboard.isSubmited = true;
                             clearAll();
                             clearStaticText();
                             disablePrintButton();
@@ -545,20 +596,20 @@ namespace HospitalManagement.Forms.Patients
             calculateDuesAmount();
         }
 
-        private void ddlThirdParty_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (ddlThirdParty.SelectedIndex > 0)
-            {
-                txtThirdPartyAmount.Enabled = true;
-                if (txtThirdPartyAmount.Text == string.Empty)
-                    txtThirdPartyAmount.Text = "0.00";
-            }
-            else
-            {
-                txtThirdPartyAmount.Text = "0.00";
-                txtThirdPartyAmount.Enabled = false;
-            }
-        }
+        //private void ddlThirdParty_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    if (ddlThirdParty.SelectedIndex > 0)
+        //    {
+        //        txtThirdPartyAmount.Enabled = true;
+        //        if (txtThirdPartyAmount.Text == string.Empty)
+        //            txtThirdPartyAmount.Text = "0.00";
+        //    }
+        //    else
+        //    {
+        //        txtThirdPartyAmount.Text = "0.00";
+        //        txtThirdPartyAmount.Enabled = false;
+        //    }
+        //}
 
         private void txtXRay_TextChanged(object sender, EventArgs e)
         {
@@ -648,13 +699,13 @@ namespace HospitalManagement.Forms.Patients
                 enableControlsForAdmin();
         }
 
-        private void txtThirdPartyAmount_Leave(object sender, EventArgs e)
-        {
-            if (txtThirdPartyAmount.Text != string.Empty)
-                calculateTotalAmount();
-            else
-                txtThirdPartyAmount.Text = "0.00";
-        }
+        //private void txtThirdPartyAmount_Leave(object sender, EventArgs e)
+        //{
+        //    if (txtThirdPartyAmount.Text != string.Empty)
+        //        calculateTotalAmount();
+        //    else
+        //        txtThirdPartyAmount.Text = "0.00";
+        //}
 
         private void txtNumberOfXRay_TextChanged(object sender, EventArgs e)
         {
@@ -702,6 +753,19 @@ namespace HospitalManagement.Forms.Patients
                 Utility.ErrorLog.Logging("OPD History Form", ex.Message.ToString(), ex.StackTrace.ToString());
             }
             return isValid;
+        }
+
+        private void btnLab_Click(object sender, EventArgs e)
+        {
+            AddLabToPatient frm = new AddLabToPatient(this.primaryId.Value);
+            DialogResult r = frm.ShowDialog();
+            setThirdPartyLabAmount();
+            //txtThirdPartyAmount.Text = Convert.ToString(lookupService.GetTPAmount(this.primaryId.Value));
+        }
+
+        private void setThirdPartyLabAmount()
+        {
+            txtThirdPartyAmount.Text = Convert.ToString(lookupService.GetTPAmount(this.primaryId.Value));
         }
 
         private void enableControlsForAdmin()

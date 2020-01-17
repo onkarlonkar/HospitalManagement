@@ -75,6 +75,9 @@ namespace BL
                     case LookUp.Ward:
                         WardDetail wardEntity = new WardDetail();
                         return isSaved = wardEntity.Create(model);
+                    case LookUp.TPLab:
+                        TPLabPatientMapping labMap = new TPLabPatientMapping();
+                        return isSaved = labMap.Create(model);
                     default:
                         return isSaved;
                 }
@@ -175,6 +178,9 @@ namespace BL
                     case LookUp.Ward:
                         WardDetail wardEntity = new WardDetail();
                         return model = wardEntity.GetById(id);
+                    case LookUp.TPLab:
+                        TPLabPatientMapping labMap = new TPLabPatientMapping();
+                        return model = labMap.GetById(id);
                     default:
                         return model;
                 }
@@ -267,6 +273,9 @@ namespace BL
                     case LookUp.Ward:
                         WardDetail wardEntity = new WardDetail();
                         return isSaved = wardEntity.Update(model);
+                    case LookUp.TPLab:
+                        TPLabPatientMapping labMap = new TPLabPatientMapping();
+                        return isSaved = labMap.Update(model);
                     default:
                         return isSaved;
                 }
@@ -282,6 +291,21 @@ namespace BL
         public LookupModel GetRatesByType(string type)
         {
             return OPDRate.GetRatesByType(type);
+        }
+
+        public List<LookupModel> GetByOPDId(Guid id)
+        {
+            return new TPLabPatientMapping().GetByOPDId(id);
+        }
+
+        public bool CreateUpdate(List<LookupModel> model)
+        {
+            return new TPLabPatientMapping().CreateUpdate(model);
+        }
+
+        public decimal GetTPAmount(Guid id)
+        {
+            return TPLabPatientMapping.GetTPAmount(id);
         }
     }
 }

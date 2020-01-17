@@ -44,6 +44,7 @@ namespace DL.Entity
             public Nullable<bool> IsECG { get; set; }
             public Nullable<bool> IsXRAY { get; set; }
             public Nullable<int> NumberofXRAY { get; set; }
+            public Nullable<int> IsFollowUp { get; set; }
         }
         #endregion
 
@@ -89,7 +90,8 @@ namespace DL.Entity
                                     Diagnose = t.Diagnose,
                                     Madicines = t.Madicines,
                                     CreatedBy = t.CreatedBy,
-                                    ModifiedBy = t.ModifiedBy
+                                    ModifiedBy = t.ModifiedBy,
+
                                 }).ToList();
                 }
 
@@ -220,6 +222,7 @@ namespace DL.Entity
                         entity.IsECG = model.IsECG.HasValue ? model.IsECG : false;
                         entity.IsXRAY = model.IsXRAY.HasValue ? model.IsXRAY : false;
                         entity.StatusId = Status.GetStatus(t => t.Name == OPD_STATUS.Waiting.ToString()).FirstOrDefault().Id;
+                        entity.IsFollowUp = isFollowUp;
                         if (!entity.IsCharity.Value)
                         {
                             if (isFollowUp == 0)
@@ -332,6 +335,21 @@ namespace DL.Entity
                 throw ex;
             }
         }
+
+        public bool UpdateStatus(List<OPDHistoryModel> m, string status)
+        {
+            using (var db = new HMSEntities())
+            {
+                foreach (OPDHistoryModel mod in m)
+                {
+                    OPDHistory entity = db.OPDHistories.Find(mod.Id);
+                    entity.StatusId = Status.GetIdByName(status);
+                }
+                db.SaveChanges();
+                return true;
+            }
+            //return false;
+        }
         private bool IsExist(string casePaperNumber)
         {
             try
@@ -436,7 +454,7 @@ namespace DL.Entity
                     {
                         Id = t.Id,
                         PatientId = t.PatientId,
-                        PatientName = t.PatientDetail != null ? t.PatientDetail.FullName : "",
+                        PatientName = t.PatientDetail != null ? t.PatientDetail.FullName.ToUpper() : "",
                         CasePaperNumber = t.PatientDetail != null ? t.PatientDetail.CasePaperNumber : "",
                         Sequence = t.Sequence,
                         InTime = t.InTime,
@@ -693,81 +711,6 @@ namespace DL.Entity
                     model.DuesCollection = duesCollection != null ? duesCollection : Convert.ToDecimal(0.00);
                     model.ReceivedCollection = paidCollection != null ? paidCollection : Convert.ToDecimal(0.00);
 
-                    #region User Collection
-                    var list = db.UserDetails.Where(u => u.IsActive == true);
-                    model.UsreCollection = new List<LookupModel>();
-                    foreach (var users in list)
-                    {
-                        Guid? prevoiusid = null;
-                        LookupModel md = new LookupModel();
-                        var hislist = db.OPDHistoryUpdates.AsEnumerable().Where(h => h.UpdatedBy == users.Id && h.UpdatedField == "PayingAmount" && h.CreatedOn.Value.Date == today);
-                        int records = hislist.Count();
-                        int index = 0;
-                        foreach (var item in hislist)
-                        {
-                            index++;
-                            if (prevoiusid == null)
-                            {
-                                prevoiusid = item.UpdatedBy;
-                                md.Rate = md.Rate == null ? Convert.ToDecimal(item.UpdatedValue) : md.Rate + Convert.ToDecimal(item.UpdatedValue);
-                            }
-                            else
-                            {
-                                md.Rate = md.Rate == null ? Convert.ToDecimal(item.UpdatedValue) : md.Rate + Convert.ToDecimal(item.UpdatedValue);
-                            }
-
-                            if (records == index)
-                            {
-                                md.Id = item.UpdatedBy.Value;
-                                md.Name = UserDetail.GetNameById(item.UpdatedBy.Value);
-                                model.UsreCollection.Add(md);
-                                md = new LookupModel();
-                            }
-
-                        }
-                    }
-
-                    #endregion
-
-                    #region Recent Activity
-
-                    model.RecentActivity = new List<OPDHistoryUpdateModel>();
-                    var activities = db.OPDHistoryUpdates.AsEnumerable().Where(h => h.CreatedOn.Value.Date == today).OrderByDescending(t => t.CreatedOn);
-                    foreach (var item in activities)
-                    {
-                        OPDHistoryUpdateModel lookup = new OPDHistoryUpdateModel();
-                        lookup.Id = item.Id;
-                        lookup.CasePaper = GetById(item.OPDHistoryId).CasePaperNumber;
-                        lookup.UpdatedName = UserDetail.GetNameById(item.UpdatedBy.Value);
-                        lookup.UpdatedField = item.UpdatedField;
-                        switch (item.UpdatedField)
-                        {
-                            case "XRAYAmount":
-                            case "ECGAmount":
-                            case "PayingAmount":
-                            case "ThirdPartyLabAmoumt":
-                            case "LabTestingAmount":
-                                lookup.PreviousValue = item.PreviousValue != null ? Convert.ToString(item.PreviousValue) : "";
-                                lookup.UpdatedValue = item.UpdatedValue != null ? Convert.ToString(item.UpdatedValue) : "";
-                                break;
-                            case "IsCharity":
-                            case "IsXRAY":
-                            case "IsECG":
-                            case "IsLabCharity":
-                                lookup.PreviousValue = item.PreviousValue != null ? Convert.ToBoolean(item.PreviousValue) ? "Yes" : "No" : "";
-                                lookup.UpdatedValue = item.UpdatedValue != null ? Convert.ToBoolean(item.UpdatedValue) ? "Yes" : "No" : "";
-                                break;
-                            case "StatusId":
-                                lookup.PreviousValue = item.PreviousValue != null ? Status.GetNameById(new Guid(item.PreviousValue)) : "";
-                                lookup.UpdatedValue = item.UpdatedValue != null ? Status.GetNameById(new Guid(item.UpdatedValue)) : "";
-                                break;
-                            default:
-                                break;
-                        }
-
-                        model.RecentActivity.Add(lookup);
-                    }
-                    #endregion                   
                 }
 
                 return model;
@@ -777,6 +720,92 @@ namespace DL.Entity
                 throw ex;
             }
         }
+
+        //public DashboardModel UserCollectionRecentActivity()
+        //{
+        //    DashboardModel model = new DashboardModel();
+        //    Guid? StatusId = Status.GetIdByName(OPD_STATUS.Waiting.ToString());
+        //    using (var db = new HMSEntities())
+        //    {
+        //        #region User Collection
+        //        var list = db.UserDetails.Where(u => u.IsActive == true);
+        //        model.UsreCollection = new List<LookupModel>();
+        //        foreach (var users in list)
+        //        {
+        //            Guid? prevoiusid = null;
+        //            LookupModel md = new LookupModel();
+        //            var hislist = db.OPDHistoryUpdates.AsEnumerable().Where(h => h.UpdatedBy == users.Id && h.UpdatedField == "PayingAmount" && h.CreatedOn.Value.Date == today);
+        //            int records = hislist.Count();
+        //            int index = 0;
+        //            foreach (var item in hislist)
+        //            {
+        //                index++;
+        //                if (prevoiusid == null)
+        //                {
+        //                    prevoiusid = item.UpdatedBy;
+        //                    md.Rate = md.Rate == null ? Convert.ToDecimal(item.UpdatedValue) : md.Rate + Convert.ToDecimal(item.UpdatedValue);
+        //                }
+        //                else
+        //                {
+        //                    md.Rate = md.Rate == null ? Convert.ToDecimal(item.UpdatedValue) : md.Rate + Convert.ToDecimal(item.UpdatedValue);
+        //                }
+
+        //                if (records == index)
+        //                {
+        //                    md.Id = item.UpdatedBy.Value;
+        //                    md.Name = UserDetail.GetNameById(item.UpdatedBy.Value);
+        //                    model.UsreCollection.Add(md);
+        //                    md = new LookupModel();
+        //                }
+
+        //            }
+        //        }
+
+        //        #endregion
+
+        //        #region Recent Activity
+
+        //        model.RecentActivity = new List<OPDHistoryUpdateModel>();
+        //        var activities = db.OPDHistoryUpdates.AsEnumerable().Where(h => h.CreatedOn.Value.Date == today).OrderByDescending(t => t.CreatedOn);
+        //        foreach (var item in activities)
+        //        {
+        //            OPDHistoryUpdateModel lookup = new OPDHistoryUpdateModel();
+        //            lookup.Id = item.Id;
+        //            lookup.CasePaper = GetById(item.OPDHistoryId).CasePaperNumber;
+        //            lookup.UpdatedName = UserDetail.GetNameById(item.UpdatedBy.Value);
+        //            lookup.UpdatedField = item.UpdatedField;
+        //            switch (item.UpdatedField)
+        //            {
+        //                case "XRAYAmount":
+        //                case "ECGAmount":
+        //                case "PayingAmount":
+        //                case "ThirdPartyLabAmoumt":
+        //                case "LabTestingAmount":
+        //                    lookup.PreviousValue = item.PreviousValue != null ? Convert.ToString(item.PreviousValue) : "";
+        //                    lookup.UpdatedValue = item.UpdatedValue != null ? Convert.ToString(item.UpdatedValue) : "";
+        //                    break;
+        //                case "IsCharity":
+        //                case "IsXRAY":
+        //                case "IsECG":
+        //                case "IsLabCharity":
+        //                    lookup.PreviousValue = item.PreviousValue != null ? Convert.ToBoolean(item.PreviousValue) ? "Yes" : "No" : "";
+        //                    lookup.UpdatedValue = item.UpdatedValue != null ? Convert.ToBoolean(item.UpdatedValue) ? "Yes" : "No" : "";
+        //                    break;
+        //                case "StatusId":
+        //                    lookup.PreviousValue = item.PreviousValue != null ? Status.GetNameById(new Guid(item.PreviousValue)) : "";
+        //                    lookup.UpdatedValue = item.UpdatedValue != null ? Status.GetNameById(new Guid(item.UpdatedValue)) : "";
+        //                    break;
+        //                default:
+        //                    break;
+        //            }
+
+        //            model.RecentActivity.Add(lookup);
+        //        }
+        //        #endregion
+        //    }
+
+        //    return model;
+        //}
 
         public List<LookupModel> getPatientByType(P_TYPE type)
         {
@@ -788,7 +817,7 @@ namespace DL.Entity
             {
                 case P_TYPE.ECG:
                     predicate = t => t.IsECG == true && DbFunctions.TruncateTime(t.InTime.Value) == today;
-                    
+
                     break;
                 case P_TYPE.XRAY:
                     predicate = t => t.IsXRAY == true && DbFunctions.TruncateTime(t.InTime.Value) == today;

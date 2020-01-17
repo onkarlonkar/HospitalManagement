@@ -1,7 +1,4 @@
-﻿using BL;
-using Model;
-using Service;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,34 +7,48 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BL;
+using Model;
+using Service;
 using Utility;
 
 namespace HospitalManagement.Forms
 {
-    public partial class MainDashBoard : Form
+    public partial class OPDDashboard : Form
     {
+        Patients.TokenList frm = new Patients.TokenList();
         IOPDHistoryService service = new OPDHistoryManager();
         IDoctorDetailService docService = new DoctorDetailManager();
         public static bool isSubmited = false;
-
-        public MainDashBoard()
+        public OPDDashboard()
         {
             InitializeComponent();
-            try
-            {
-                getPandingPatient();
-                getWaitingPatient();
-                getDashboardCounts();
-                tmrRefresh.Enabled = true;
-                tmrRefresh.Start();
-                dgvInCabin.ClearSelection();
-                dgvWaiting.ClearSelection();
-            }
-            catch (Exception ex)
-            {
-                Utility.ErrorLog.Logging("Main Dashboard", ex.Message.ToString(), ex.StackTrace.ToString());
-            }
         }
+
+
+
+        private void OPDDashboard_Load(object sender, EventArgs e)
+        {
+            getPandingPatient();
+            getWaitingPatient();
+            getDashboardCounts();
+            //tmrRefresh.Enabled = true;
+            //tmrRefresh.Start();
+            dgvInCabin.ClearSelection();
+            dgvWaiting.ClearSelection();
+            getNextPatients();
+            firstLoad();
+        }
+
+        private void refreshPage()
+        {
+            getPandingPatient();
+            getWaitingPatient();
+            getDashboardCounts();
+            dgvInCabin.ClearSelection();
+            dgvWaiting.ClearSelection();
+        }
+
 
         private void Search(string searchText = "")
         {
@@ -60,7 +71,7 @@ namespace HospitalManagement.Forms
         {
             try
             {
-                List<OPDHistoryModel> list = service.GetByStatus(OPD_STATUS.Waiting.ToString(), OPD_STATUS.NotAvailable.ToString(), OPD_STATUS.Done.ToString());
+                List<OPDHistoryModel> list = service.GetByStatus(OPD_STATUS.Waiting.ToString(), OPD_STATUS.Complete.ToString(), OPD_STATUS.Done.ToString());
                 dgvWaiting.AutoGenerateColumns = false;
                 dgvWaiting.DataSource = list;
                 //dgvWaiting.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
@@ -78,17 +89,29 @@ namespace HospitalManagement.Forms
         {
             try
             {
-                List<OPDHistoryModel> list = service.GetByStatus(OPD_STATUS.Pending.ToString(), OPD_STATUS.Complete.ToString());
+                List<OPDHistoryModel> list = service.GetByStatus(OPD_STATUS.Pending.ToString());
                 dgvInCabin.AutoGenerateColumns = false;
                 dgvInCabin.DataSource = list;
                 //dgvInCabin.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
                 dgvInCabin.Refresh();
                 dgvInCabin.ClearSelection();
 
+
             }
             catch (Exception ex)
             {
                 Utility.ErrorLog.Logging("Main Dashboard", ex.Message.ToString(), ex.StackTrace.ToString());
+            }
+        }
+
+        private void firstLoad()
+        {
+            List<OPDHistoryModel> list = service.GetByStatus(OPD_STATUS.Pending.ToString());
+            if (list.Count > 0)
+            {
+                ChangeToken(false);
+                Patients.TokenList frm = Patients.TokenList.Instance;
+                frm.setNextPatients(false);
             }
         }
 
@@ -101,6 +124,7 @@ namespace HospitalManagement.Forms
                 {
                     Patients.OPDHistory frm = new Patients.OPDHistory(model.Id);
                     Patients.OPDHistory.isControlsEnabled = true;
+                    frm.sequence = model.Sequence;
                     frm.patientId = model.PatientId;
                     frm.lblName.Text = model.PatientDetails.FullName;
                     frm.lblCasePaper.Text = model.PatientDetails.CasePaperNumber;
@@ -126,6 +150,7 @@ namespace HospitalManagement.Forms
                     frm.initialDues = model.DueAmount.HasValue ? model.DueAmount.Value : Convert.ToDecimal(0.00);
                     frm.txtDueAmount.Text = model.DueAmount.HasValue ? Convert.ToString(model.DueAmount) : "0.00";
                     frm.lblTotalAmount.Text = Convert.ToString(model.TotalAmount);
+                    frm.getStatus(model.StatusId);
                     frm.ddlStatus.SelectedValue = model.StatusId;
                     frm.ddlConsulting.SelectedValue = model.ConsultingDoctorId.HasValue ? model.ConsultingDoctorId : docService.GetInHouse("SIR");
                     frm.txtThirdPartyAmount.Text = model.ThirdPartyLabAmoumt.HasValue ? Convert.ToString(model.ThirdPartyLabAmoumt) : "0.00";
@@ -139,9 +164,8 @@ namespace HospitalManagement.Forms
                     {
                         getPandingPatient();
                         getWaitingPatient();
-                        getDashboardCounts();
-
                     }
+                    getDashboardCounts();
                     tmrRefresh.Enabled = true;
                     tmrRefresh.Start();
 
@@ -190,6 +214,7 @@ namespace HospitalManagement.Forms
                 lblSIRPatient.Text = Convert.ToString(model.SirPatient);
                 lblOPDCollection.Text = Convert.ToString(model.OPDCollection);
                 lblLabCollection.Text = Convert.ToString(model.LabCollection);
+                lblTPLabCollection.Text = Convert.ToString(model.ThirePartyLabCollection);
                 lblECG.Text = Convert.ToString(model.ECGCollection);
                 lblXRAY.Text = Convert.ToString(model.XRAYCollection);
                 lblDuesCollection.Text = Convert.ToString(model.DuesCollection);
@@ -210,6 +235,7 @@ namespace HospitalManagement.Forms
                 {
                     if (dgvInCabin.SelectedRows.Count > 0)
                     {
+                        Patients.OPDHistory.isControlsEnabled = false;
                         FillFormData(new Guid(dgvInCabin.CurrentRow.Cells[0].Value.ToString()));
 
                     }
@@ -231,7 +257,7 @@ namespace HospitalManagement.Forms
             {
                 if (e.RowIndex >= 0)
                 {
-                    if (e.RowIndex != getRowIndexForSelection())
+                    if (e.RowIndex != getRowIndexForSelection() && dgvWaiting.CurrentRow.Cells[6].Value.ToString()!=OPD_STATUS.Complete.ToString())
                     {
                         Patients.OPDHistory.isControlsEnabled = false;
                         FillFormData(new Guid(dgvWaiting.CurrentRow.Cells[0].Value.ToString()));
@@ -261,11 +287,16 @@ namespace HospitalManagement.Forms
             int index = -1;
             foreach (DataGridViewRow row in dgvWaiting.Rows)
             {            //Here 2 cell is target value and 1 cell is Volume
-                if (Convert.ToString(row.Cells[6].Value) == OPD_STATUS.Waiting.ToString() || Convert.ToString(row.Cells[6].Value) == OPD_STATUS.NotAvailable.ToString())
+                if (Convert.ToString(row.Cells[6].Value) == OPD_STATUS.Waiting.ToString())
                 {
                     index = row.Index;
                     break;
                 }
+                //else if (Convert.ToString(row.Cells[6].Value) == OPD_STATUS.Complete.ToString())
+                //{
+                //    index = row.Index;
+                //    break;
+                //}
             }
             return index;
         }
@@ -402,15 +433,145 @@ namespace HospitalManagement.Forms
                         row.DefaultCellStyle.ForeColor = Color.White;
                     }
                 }
+            }
+        }
 
+        private void lblOPDCollection_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("hi");
+        }
+
+        private void lblOPDCollection_MouseClick(object sender, MouseEventArgs e)
+        {
+            MessageBox.Show("hi");
+        }
+
+        private void lblTitleXRAY_DoubleClick(object sender, EventArgs e)
+        {
+            Common.patientDialog frm = new Common.patientDialog(P_TYPE.XRAY);
+            frm.ShowDialog();
+        }
+
+        private void lblTitleECG_DoubleClick(object sender, EventArgs e)
+        {
+            Common.patientDialog frm = new Common.patientDialog(P_TYPE.ECG);
+            frm.ShowDialog();
+        }
+
+        private void getNextPatients()
+        {
+
+            try
+            {
+                List<LookupModel> model = new List<LookupModel>();
+                LookupModel m = new LookupModel();
+                for (int i = 1; i <= 6; i++)
+                {
+                    m = new LookupModel();
+                    m.Sequence = i;
+                    m.Name = i.ToString();
+                    model.Add(m);
+                }
+
+
+                model.Insert(0, new LookupModel() { Sequence = 0, Name = "--" });
+                ddlNextPatients.DataSource = model;
+                ddlNextPatients.DisplayMember = "Name";
+                ddlNextPatients.ValueMember = "Sequence";
+
+            }
+            catch (Exception ex)
+            {
+                Utility.ErrorLog.Logging("Patient Details", ex.Message.ToString(), ex.StackTrace.ToString());
+            }
+
+        }
+
+        private void ddlNextPatients_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlNextPatients.SelectedIndex > 0)
+            {
+                //LookupModel m = (LookupModel);
+                List<OPDHistoryModel> list = service.GetByStatus(OPD_STATUS.Pending.ToString());
+                service.UpdateStatus(list, OPD_STATUS.Complete);
+                UserDetailSession.NumberPatientCount = Convert.ToInt32(ddlNextPatients.SelectedValue);
+                ChangeToken();
+                Patients.TokenList frm = Patients.TokenList.Instance;
+                frm.setNextPatients();
+
+                refreshPage();
+
+            }
+            else
+            {
+                UserDetailSession.NumberPatientCount = 0;
+                for (int i = 0; i < 6; i++)
+                {
+                    RoundedButton tbx = this.Controls.Find("lbl" + (i + 1), true).FirstOrDefault() as RoundedButton;
+                    tbx.Visible = false;
+                    tbx.Update();
+                }
+            }
+
+        }
+
+        private void ChangeToken(bool isFirstTime = true)
+        {
+
+            List<OPDHistoryModel> list = isFirstTime ? service.GetByStatus(OPD_STATUS.Waiting.ToString()).Take(UserDetailSession.NumberPatientCount).ToList()
+                : service.GetByStatus(OPD_STATUS.Pending.ToString());
+            //service.UpdateStatus(list, OPD_STATUS.Pending);
+
+            for (int i = 0; i < 6; i++)
+            {
+                if (list.Count > i)
+                {
+                    RoundedButton tbx = this.Controls.Find("lbl" + (i + 1), true).FirstOrDefault() as RoundedButton;
+                    tbx.Visible = true;
+                    tbx.Text = Convert.ToString(list[i].Sequence);
+                    tbx.Update();
+                }
+                else
+                {
+                    RoundedButton tbx = this.Controls.Find("lbl" + (i + 1).ToString(), true).FirstOrDefault() as RoundedButton;
+                    tbx.Text = "--";
+                    tbx.Visible = false;
+                    tbx.Update();
+                }
 
             }
         }
 
-        private void panel5_Paint(object sender, PaintEventArgs e)
+        internal void removeSequence()
+        {
+            List<OPDHistoryModel> list = service.GetByStatus(OPD_STATUS.Pending.ToString());
+            for (int i = 0; i < 6; i++)
+            {
+                RoundedButton tbx = this.Controls.Find("lbl" + (i + 1), true).FirstOrDefault() as RoundedButton;
+                if (tbx.Text == list[i].Sequence.ToString())
+                {
+                    tbx.Text = "--";
+                    tbx.Visible = false;
+                }
+                tbx.Update();
+            }
+        }
+
+        private void btnTokenPageRefresh_Click(object sender, EventArgs e)
+        {
+            List<OPDHistoryModel> list = service.GetByStatus(OPD_STATUS.Pending.ToString());
+            service.UpdateStatus(list, OPD_STATUS.Complete);
+            ChangeToken();
+            Patients.TokenList frm = Patients.TokenList.Instance;
+            frm.setNextPatients();
+
+            refreshPage();
+        }
+
+        private void roundedButton3_Click(object sender, EventArgs e)
         {
 
         }
     }
-
 }
+

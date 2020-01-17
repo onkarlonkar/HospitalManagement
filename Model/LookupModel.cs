@@ -8,6 +8,9 @@ namespace Model
         public string Name { get; set; }
         public Nullable<System.Guid> PerentId { get; set; }
         public string PerentName { get; set; }
+
+        public Nullable<System.Guid> SubPerentId { get; set; }
+        public string SubPerentName { get; set; }
         public string Description { get; set; }
         public decimal? Rate { get; set; }
         public Nullable<bool> IsFlag { get; set; }

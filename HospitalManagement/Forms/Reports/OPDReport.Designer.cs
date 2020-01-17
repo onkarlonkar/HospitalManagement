@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dgvList = new System.Windows.Forms.DataGridView();
@@ -49,6 +49,8 @@
             this.LabFree = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Free = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ddlFollowUp = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.ddlStatus = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.ddlConsulting = new System.Windows.Forms.ComboBox();
@@ -90,7 +92,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.btnSearch);
             this.splitContainer1.Panel2.Controls.Add(this.btnPrint);
             this.splitContainer1.Size = new System.Drawing.Size(935, 489);
-            this.splitContainer1.SplitterDistance = 826;
+            this.splitContainer1.SplitterDistance = 830;
             this.splitContainer1.SplitterWidth = 2;
             this.splitContainer1.TabIndex = 1;
             // 
@@ -101,7 +103,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 73);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(826, 416);
+            this.panel3.Size = new System.Drawing.Size(830, 416);
             this.panel3.TabIndex = 1;
             // 
             // dgvList
@@ -109,14 +111,14 @@
             this.dgvList.AllowUserToDeleteRows = false;
             this.dgvList.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
             this.dgvList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.OPDId,
@@ -139,17 +141,17 @@
             this.dgvList.MultiSelect = false;
             this.dgvList.Name = "dgvList";
             this.dgvList.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvList.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvList.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvList.RowHeadersVisible = false;
             this.dgvList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvList.Size = new System.Drawing.Size(826, 416);
+            this.dgvList.Size = new System.Drawing.Size(830, 416);
             this.dgvList.TabIndex = 2;
             // 
             // OPDId
@@ -270,6 +272,8 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.ddlFollowUp);
+            this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.ddlStatus);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.ddlConsulting);
@@ -283,8 +287,31 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(826, 73);
+            this.panel1.Size = new System.Drawing.Size(830, 73);
             this.panel1.TabIndex = 0;
+            // 
+            // ddlFollowUp
+            // 
+            this.ddlFollowUp.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.ddlFollowUp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlFollowUp.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ddlFollowUp.ForeColor = System.Drawing.Color.Black;
+            this.ddlFollowUp.FormattingEnabled = true;
+            this.ddlFollowUp.Location = new System.Drawing.Point(284, 42);
+            this.ddlFollowUp.Name = "ddlFollowUp";
+            this.ddlFollowUp.Size = new System.Drawing.Size(148, 25);
+            this.ddlFollowUp.TabIndex = 58;
+            this.ddlFollowUp.SelectedIndexChanged += new System.EventHandler(this.ddlFollowUp_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(278, 45);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(0, 17);
+            this.label3.TabIndex = 59;
             // 
             // ddlStatus
             // 
@@ -318,7 +345,7 @@
             this.ddlConsulting.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlConsulting.ForeColor = System.Drawing.Color.Black;
             this.ddlConsulting.FormattingEnabled = true;
-            this.ddlConsulting.Location = new System.Drawing.Point(608, 8);
+            this.ddlConsulting.Location = new System.Drawing.Point(612, 8);
             this.ddlConsulting.Name = "ddlConsulting";
             this.ddlConsulting.Size = new System.Drawing.Size(213, 25);
             this.ddlConsulting.TabIndex = 54;
@@ -330,7 +357,7 @@
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.Black;
-            this.label17.Location = new System.Drawing.Point(518, 12);
+            this.label17.Location = new System.Drawing.Point(522, 12);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(85, 17);
             this.label17.TabIndex = 55;
@@ -340,7 +367,7 @@
             // 
             this.dtpTo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpTo.Location = new System.Drawing.Point(717, 40);
+            this.dtpTo.Location = new System.Drawing.Point(721, 40);
             this.dtpTo.Name = "dtpTo";
             this.dtpTo.Size = new System.Drawing.Size(103, 23);
             this.dtpTo.TabIndex = 6;
@@ -349,7 +376,7 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(681, 43);
+            this.label1.Location = new System.Drawing.Point(685, 43);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(30, 17);
             this.label1.TabIndex = 5;
@@ -359,7 +386,7 @@
             // 
             this.dtpFrom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFrom.Location = new System.Drawing.Point(572, 40);
+            this.dtpFrom.Location = new System.Drawing.Point(576, 40);
             this.dtpFrom.Name = "dtpFrom";
             this.dtpFrom.Size = new System.Drawing.Size(103, 23);
             this.dtpFrom.TabIndex = 4;
@@ -368,7 +395,7 @@
             // 
             this.lblFrom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblFrom.AutoSize = true;
-            this.lblFrom.Location = new System.Drawing.Point(518, 43);
+            this.lblFrom.Location = new System.Drawing.Point(522, 43);
             this.lblFrom.Name = "lblFrom";
             this.lblFrom.Size = new System.Drawing.Size(48, 17);
             this.lblFrom.TabIndex = 3;
@@ -395,7 +422,7 @@
             this.shapeContainer1.Name = "shapeContainer1";
             this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.lineShape1});
-            this.shapeContainer1.Size = new System.Drawing.Size(824, 71);
+            this.shapeContainer1.Size = new System.Drawing.Size(828, 71);
             this.shapeContainer1.TabIndex = 2;
             this.shapeContainer1.TabStop = false;
             // 
@@ -516,5 +543,7 @@
         private System.Windows.Forms.Label label17;
         internal System.Windows.Forms.ComboBox ddlStatus;
         private System.Windows.Forms.Label label2;
+        internal System.Windows.Forms.ComboBox ddlFollowUp;
+        private System.Windows.Forms.Label label3;
     }
 }

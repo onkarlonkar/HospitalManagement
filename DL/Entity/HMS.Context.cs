@@ -45,5 +45,6 @@ namespace DL.Entity
         public virtual DbSet<OPDRate> OPDRates { get; set; }
         public virtual DbSet<OPDHistoryUpdate> OPDHistoryUpdates { get; set; }
         public virtual DbSet<IPDHistory> IPDHistories { get; set; }
+        public virtual DbSet<TPLabPatientMapping> TPLabPatientMappings { get; set; }
     }
 }

@@ -33,11 +33,25 @@
             this.pnlmainMenu = new System.Windows.Forms.Panel();
             this.pnlMenu = new System.Windows.Forms.Panel();
             this.flyMenu = new System.Windows.Forms.FlowLayoutPanel();
+            this.pnlSettings = new System.Windows.Forms.Panel();
+            this.pnlHeading = new System.Windows.Forms.Panel();
+            this.pnlCmpTitle = new System.Windows.Forms.Panel();
+            this.lblCmpTitle = new System.Windows.Forms.Label();
+            this.pnlHeader = new System.Windows.Forms.Panel();
+            this.timerSlide = new System.Windows.Forms.Timer(this.components);
+            this.tmrSubMenu = new System.Windows.Forms.Timer(this.components);
+            this.pnlFormContainer = new System.Windows.Forms.Panel();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.pbMinimise = new System.Windows.Forms.PictureBox();
+            this.pbMiximise = new System.Windows.Forms.PictureBox();
+            this.pbRestore = new System.Windows.Forms.PictureBox();
+            this.pbClose = new System.Windows.Forms.PictureBox();
+            this.pbMenu = new System.Windows.Forms.PictureBox();
             this.btnMenuDashboard = new System.Windows.Forms.Button();
             this.btnMenuOPD = new System.Windows.Forms.Button();
             this.btnMenuUsers = new System.Windows.Forms.Button();
             this.btnMenuDoctor = new System.Windows.Forms.Button();
-            this.pnlSettings = new System.Windows.Forms.Panel();
             this.btnRoomType = new System.Windows.Forms.Button();
             this.btnWard = new System.Windows.Forms.Button();
             this.btnMasterMenuLab = new System.Windows.Forms.Button();
@@ -47,20 +61,8 @@
             this.btnSettings = new System.Windows.Forms.Button();
             this.btnMenuReport = new System.Windows.Forms.Button();
             this.btnMenuIPDReport = new System.Windows.Forms.Button();
-            this.pnlHeading = new System.Windows.Forms.Panel();
-            this.pnlCmpTitle = new System.Windows.Forms.Panel();
-            this.lblCmpTitle = new System.Windows.Forms.Label();
+            this.btnMenuTokenList = new System.Windows.Forms.Button();
             this.pnlLogo = new System.Windows.Forms.Panel();
-            this.pnlHeader = new System.Windows.Forms.Panel();
-            this.pbMinimise = new System.Windows.Forms.PictureBox();
-            this.pbMiximise = new System.Windows.Forms.PictureBox();
-            this.pbRestore = new System.Windows.Forms.PictureBox();
-            this.pbClose = new System.Windows.Forms.PictureBox();
-            this.pbMenu = new System.Windows.Forms.PictureBox();
-            this.timerSlide = new System.Windows.Forms.Timer(this.components);
-            this.tmrSubMenu = new System.Windows.Forms.Timer(this.components);
-            this.pnlFormContainer = new System.Windows.Forms.Panel();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.pnlmainMenu.SuspendLayout();
             this.pnlMenu.SuspendLayout();
             this.flyMenu.SuspendLayout();
@@ -108,11 +110,166 @@
             this.flyMenu.Controls.Add(this.pnlSettings);
             this.flyMenu.Controls.Add(this.btnMenuReport);
             this.flyMenu.Controls.Add(this.btnMenuIPDReport);
+            this.flyMenu.Controls.Add(this.btnMenuTokenList);
             this.flyMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flyMenu.Location = new System.Drawing.Point(0, 0);
             this.flyMenu.Name = "flyMenu";
             this.flyMenu.Size = new System.Drawing.Size(43, 608);
             this.flyMenu.TabIndex = 0;
+            // 
+            // pnlSettings
+            // 
+            this.pnlSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(31)))));
+            this.pnlSettings.Controls.Add(this.btnRoomType);
+            this.pnlSettings.Controls.Add(this.btnWard);
+            this.pnlSettings.Controls.Add(this.btnMasterMenuLab);
+            this.pnlSettings.Controls.Add(this.btnMenuMasterRate);
+            this.pnlSettings.Controls.Add(this.btnMenuStatus);
+            this.pnlSettings.Controls.Add(this.btnMenuDepartment);
+            this.pnlSettings.Controls.Add(this.btnSettings);
+            this.pnlSettings.Location = new System.Drawing.Point(3, 175);
+            this.pnlSettings.MaximumSize = new System.Drawing.Size(199, 292);
+            this.pnlSettings.MinimumSize = new System.Drawing.Size(199, 42);
+            this.pnlSettings.Name = "pnlSettings";
+            this.pnlSettings.Size = new System.Drawing.Size(199, 42);
+            this.pnlSettings.TabIndex = 12;
+            // 
+            // pnlHeading
+            // 
+            this.pnlHeading.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlHeading.Controls.Add(this.pnlCmpTitle);
+            this.pnlHeading.Controls.Add(this.pnlLogo);
+            this.pnlHeading.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlHeading.Location = new System.Drawing.Point(0, 0);
+            this.pnlHeading.Name = "pnlHeading";
+            this.pnlHeading.Size = new System.Drawing.Size(43, 42);
+            this.pnlHeading.TabIndex = 0;
+            // 
+            // pnlCmpTitle
+            // 
+            this.pnlCmpTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(89)))), ((int)(((byte)(149)))));
+            this.pnlCmpTitle.Controls.Add(this.lblCmpTitle);
+            this.pnlCmpTitle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlCmpTitle.Location = new System.Drawing.Point(40, 0);
+            this.pnlCmpTitle.Name = "pnlCmpTitle";
+            this.pnlCmpTitle.Size = new System.Drawing.Size(1, 40);
+            this.pnlCmpTitle.TabIndex = 1;
+            // 
+            // lblCmpTitle
+            // 
+            this.lblCmpTitle.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCmpTitle.ForeColor = System.Drawing.Color.White;
+            this.lblCmpTitle.Location = new System.Drawing.Point(0, 0);
+            this.lblCmpTitle.Name = "lblCmpTitle";
+            this.lblCmpTitle.Size = new System.Drawing.Size(153, 40);
+            this.lblCmpTitle.TabIndex = 0;
+            this.lblCmpTitle.Text = "PARAMASHETTI";
+            this.lblCmpTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblCmpTitle.Click += new System.EventHandler(this.lblCmpTitle_Click);
+            // 
+            // pnlHeader
+            // 
+            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(89)))), ((int)(((byte)(149)))));
+            this.pnlHeader.Controls.Add(this.pbMinimise);
+            this.pnlHeader.Controls.Add(this.pbMiximise);
+            this.pnlHeader.Controls.Add(this.pbRestore);
+            this.pnlHeader.Controls.Add(this.pbClose);
+            this.pnlHeader.Controls.Add(this.pbMenu);
+            this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlHeader.Location = new System.Drawing.Point(43, 0);
+            this.pnlHeader.Name = "pnlHeader";
+            this.pnlHeader.Size = new System.Drawing.Size(1257, 42);
+            this.pnlHeader.TabIndex = 1;
+            this.pnlHeader.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pnlHeader_MouseDoubleClick);
+            this.pnlHeader.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlHeader_MouseDown);
+            // 
+            // timerSlide
+            // 
+            this.timerSlide.Interval = 15;
+            this.timerSlide.Tick += new System.EventHandler(this.timerSlide_Tick);
+            // 
+            // tmrSubMenu
+            // 
+            this.tmrSubMenu.Interval = 15;
+            this.tmrSubMenu.Tick += new System.EventHandler(this.tmrSubMenu_Tick);
+            // 
+            // pnlFormContainer
+            // 
+            this.pnlFormContainer.AutoScroll = true;
+            this.pnlFormContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
+            this.pnlFormContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlFormContainer.Location = new System.Drawing.Point(43, 42);
+            this.pnlFormContainer.Name = "pnlFormContainer";
+            this.pnlFormContainer.Size = new System.Drawing.Size(1257, 608);
+            this.pnlFormContainer.TabIndex = 2;
+            // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
+            // 
+            // pbMinimise
+            // 
+            this.pbMinimise.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbMinimise.Image = ((System.Drawing.Image)(resources.GetObject("pbMinimise.Image")));
+            this.pbMinimise.Location = new System.Drawing.Point(1164, 1);
+            this.pbMinimise.Name = "pbMinimise";
+            this.pbMinimise.Size = new System.Drawing.Size(30, 30);
+            this.pbMinimise.TabIndex = 4;
+            this.pbMinimise.TabStop = false;
+            this.pbMinimise.Click += new System.EventHandler(this.pbMinimise_Click);
+            this.pbMinimise.MouseLeave += new System.EventHandler(this.pbMinimise_MouseLeave);
+            this.pbMinimise.MouseHover += new System.EventHandler(this.pbMinimise_MouseHover);
+            // 
+            // pbMiximise
+            // 
+            this.pbMiximise.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbMiximise.Image = ((System.Drawing.Image)(resources.GetObject("pbMiximise.Image")));
+            this.pbMiximise.Location = new System.Drawing.Point(1195, 1);
+            this.pbMiximise.Name = "pbMiximise";
+            this.pbMiximise.Size = new System.Drawing.Size(30, 30);
+            this.pbMiximise.TabIndex = 3;
+            this.pbMiximise.TabStop = false;
+            this.pbMiximise.Click += new System.EventHandler(this.pbMiximise_Click);
+            this.pbMiximise.MouseLeave += new System.EventHandler(this.pbMiximise_MouseLeave);
+            this.pbMiximise.MouseHover += new System.EventHandler(this.pbMiximise_MouseHover);
+            // 
+            // pbRestore
+            // 
+            this.pbRestore.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbRestore.Image = ((System.Drawing.Image)(resources.GetObject("pbRestore.Image")));
+            this.pbRestore.Location = new System.Drawing.Point(1195, 1);
+            this.pbRestore.Name = "pbRestore";
+            this.pbRestore.Size = new System.Drawing.Size(30, 30);
+            this.pbRestore.TabIndex = 2;
+            this.pbRestore.TabStop = false;
+            this.pbRestore.Click += new System.EventHandler(this.pbRestore_Click);
+            this.pbRestore.MouseLeave += new System.EventHandler(this.pbRestore_MouseLeave);
+            this.pbRestore.MouseHover += new System.EventHandler(this.pbRestore_MouseHover);
+            // 
+            // pbClose
+            // 
+            this.pbClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbClose.Image = global::HospitalManagement.Properties.Resources.Close_30px;
+            this.pbClose.Location = new System.Drawing.Point(1226, 1);
+            this.pbClose.Name = "pbClose";
+            this.pbClose.Size = new System.Drawing.Size(30, 30);
+            this.pbClose.TabIndex = 1;
+            this.pbClose.TabStop = false;
+            this.pbClose.Click += new System.EventHandler(this.pbClose_Click);
+            this.pbClose.MouseLeave += new System.EventHandler(this.pbClose_MouseLeave);
+            this.pbClose.MouseHover += new System.EventHandler(this.pbClose_MouseHover);
+            // 
+            // pbMenu
+            // 
+            this.pbMenu.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pbMenu.Image = ((System.Drawing.Image)(resources.GetObject("pbMenu.Image")));
+            this.pbMenu.Location = new System.Drawing.Point(0, 0);
+            this.pbMenu.Name = "pbMenu";
+            this.pbMenu.Size = new System.Drawing.Size(42, 42);
+            this.pbMenu.TabIndex = 0;
+            this.pbMenu.TabStop = false;
+            this.pbMenu.Click += new System.EventHandler(this.pbMenu_Click);
             // 
             // btnMenuDashboard
             // 
@@ -193,23 +350,6 @@
             this.toolTip1.SetToolTip(this.btnMenuDoctor, "Doctor");
             this.btnMenuDoctor.UseVisualStyleBackColor = false;
             this.btnMenuDoctor.Click += new System.EventHandler(this.btnMenuDoctor_Click);
-            // 
-            // pnlSettings
-            // 
-            this.pnlSettings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(31)))));
-            this.pnlSettings.Controls.Add(this.btnRoomType);
-            this.pnlSettings.Controls.Add(this.btnWard);
-            this.pnlSettings.Controls.Add(this.btnMasterMenuLab);
-            this.pnlSettings.Controls.Add(this.btnMenuMasterRate);
-            this.pnlSettings.Controls.Add(this.btnMenuStatus);
-            this.pnlSettings.Controls.Add(this.btnMenuDepartment);
-            this.pnlSettings.Controls.Add(this.btnSettings);
-            this.pnlSettings.Location = new System.Drawing.Point(3, 175);
-            this.pnlSettings.MaximumSize = new System.Drawing.Size(199, 292);
-            this.pnlSettings.MinimumSize = new System.Drawing.Size(199, 42);
-            this.pnlSettings.Name = "pnlSettings";
-            this.pnlSettings.Size = new System.Drawing.Size(199, 42);
-            this.pnlSettings.TabIndex = 12;
             // 
             // btnRoomType
             // 
@@ -394,38 +534,25 @@
             this.btnMenuIPDReport.UseVisualStyleBackColor = false;
             this.btnMenuIPDReport.Click += new System.EventHandler(this.btnMenuIPDReport_Click);
             // 
-            // pnlHeading
+            // btnMenuTokenList
             // 
-            this.pnlHeading.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlHeading.Controls.Add(this.pnlCmpTitle);
-            this.pnlHeading.Controls.Add(this.pnlLogo);
-            this.pnlHeading.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlHeading.Location = new System.Drawing.Point(0, 0);
-            this.pnlHeading.Name = "pnlHeading";
-            this.pnlHeading.Size = new System.Drawing.Size(43, 42);
-            this.pnlHeading.TabIndex = 0;
-            // 
-            // pnlCmpTitle
-            // 
-            this.pnlCmpTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(89)))), ((int)(((byte)(149)))));
-            this.pnlCmpTitle.Controls.Add(this.lblCmpTitle);
-            this.pnlCmpTitle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlCmpTitle.Location = new System.Drawing.Point(40, 0);
-            this.pnlCmpTitle.Name = "pnlCmpTitle";
-            this.pnlCmpTitle.Size = new System.Drawing.Size(1, 40);
-            this.pnlCmpTitle.TabIndex = 1;
-            // 
-            // lblCmpTitle
-            // 
-            this.lblCmpTitle.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCmpTitle.ForeColor = System.Drawing.Color.White;
-            this.lblCmpTitle.Location = new System.Drawing.Point(0, 0);
-            this.lblCmpTitle.Name = "lblCmpTitle";
-            this.lblCmpTitle.Size = new System.Drawing.Size(153, 40);
-            this.lblCmpTitle.TabIndex = 0;
-            this.lblCmpTitle.Text = "PARAMASHETTI";
-            this.lblCmpTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblCmpTitle.Click += new System.EventHandler(this.lblCmpTitle_Click);
+            this.btnMenuTokenList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(14)))), ((int)(((byte)(31)))));
+            this.btnMenuTokenList.FlatAppearance.BorderSize = 0;
+            this.btnMenuTokenList.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(100)))), ((int)(((byte)(180)))));
+            this.btnMenuTokenList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMenuTokenList.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMenuTokenList.ForeColor = System.Drawing.Color.White;
+            this.btnMenuTokenList.Image = global::HospitalManagement.Properties.Resources.Widescreen_24px;
+            this.btnMenuTokenList.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMenuTokenList.Location = new System.Drawing.Point(0, 309);
+            this.btnMenuTokenList.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            this.btnMenuTokenList.Name = "btnMenuTokenList";
+            this.btnMenuTokenList.Size = new System.Drawing.Size(199, 40);
+            this.btnMenuTokenList.TabIndex = 15;
+            this.btnMenuTokenList.Text = "Token Screen";
+            this.toolTip1.SetToolTip(this.btnMenuTokenList, "OPD Report");
+            this.btnMenuTokenList.UseVisualStyleBackColor = false;
+            this.btnMenuTokenList.Click += new System.EventHandler(this.btnMenuTokenList_Click);
             // 
             // pnlLogo
             // 
@@ -437,105 +564,6 @@
             this.pnlLogo.Size = new System.Drawing.Size(40, 40);
             this.pnlLogo.TabIndex = 0;
             this.pnlLogo.Click += new System.EventHandler(this.pnlLogo_Click);
-            // 
-            // pnlHeader
-            // 
-            this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(89)))), ((int)(((byte)(149)))));
-            this.pnlHeader.Controls.Add(this.pbMinimise);
-            this.pnlHeader.Controls.Add(this.pbMiximise);
-            this.pnlHeader.Controls.Add(this.pbRestore);
-            this.pnlHeader.Controls.Add(this.pbClose);
-            this.pnlHeader.Controls.Add(this.pbMenu);
-            this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlHeader.Location = new System.Drawing.Point(43, 0);
-            this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(1257, 42);
-            this.pnlHeader.TabIndex = 1;
-            this.pnlHeader.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pnlHeader_MouseDoubleClick);
-            this.pnlHeader.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlHeader_MouseDown);
-            // 
-            // pbMinimise
-            // 
-            this.pbMinimise.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbMinimise.Image = ((System.Drawing.Image)(resources.GetObject("pbMinimise.Image")));
-            this.pbMinimise.Location = new System.Drawing.Point(1164, 1);
-            this.pbMinimise.Name = "pbMinimise";
-            this.pbMinimise.Size = new System.Drawing.Size(30, 30);
-            this.pbMinimise.TabIndex = 4;
-            this.pbMinimise.TabStop = false;
-            this.pbMinimise.Click += new System.EventHandler(this.pbMinimise_Click);
-            this.pbMinimise.MouseLeave += new System.EventHandler(this.pbMinimise_MouseLeave);
-            this.pbMinimise.MouseHover += new System.EventHandler(this.pbMinimise_MouseHover);
-            // 
-            // pbMiximise
-            // 
-            this.pbMiximise.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbMiximise.Image = ((System.Drawing.Image)(resources.GetObject("pbMiximise.Image")));
-            this.pbMiximise.Location = new System.Drawing.Point(1195, 1);
-            this.pbMiximise.Name = "pbMiximise";
-            this.pbMiximise.Size = new System.Drawing.Size(30, 30);
-            this.pbMiximise.TabIndex = 3;
-            this.pbMiximise.TabStop = false;
-            this.pbMiximise.Click += new System.EventHandler(this.pbMiximise_Click);
-            this.pbMiximise.MouseLeave += new System.EventHandler(this.pbMiximise_MouseLeave);
-            this.pbMiximise.MouseHover += new System.EventHandler(this.pbMiximise_MouseHover);
-            // 
-            // pbRestore
-            // 
-            this.pbRestore.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbRestore.Image = ((System.Drawing.Image)(resources.GetObject("pbRestore.Image")));
-            this.pbRestore.Location = new System.Drawing.Point(1195, 1);
-            this.pbRestore.Name = "pbRestore";
-            this.pbRestore.Size = new System.Drawing.Size(30, 30);
-            this.pbRestore.TabIndex = 2;
-            this.pbRestore.TabStop = false;
-            this.pbRestore.Click += new System.EventHandler(this.pbRestore_Click);
-            this.pbRestore.MouseLeave += new System.EventHandler(this.pbRestore_MouseLeave);
-            this.pbRestore.MouseHover += new System.EventHandler(this.pbRestore_MouseHover);
-            // 
-            // pbClose
-            // 
-            this.pbClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbClose.Image = global::HospitalManagement.Properties.Resources.Close_30px;
-            this.pbClose.Location = new System.Drawing.Point(1226, 1);
-            this.pbClose.Name = "pbClose";
-            this.pbClose.Size = new System.Drawing.Size(30, 30);
-            this.pbClose.TabIndex = 1;
-            this.pbClose.TabStop = false;
-            this.pbClose.Click += new System.EventHandler(this.pbClose_Click);
-            this.pbClose.MouseLeave += new System.EventHandler(this.pbClose_MouseLeave);
-            this.pbClose.MouseHover += new System.EventHandler(this.pbClose_MouseHover);
-            // 
-            // pbMenu
-            // 
-            this.pbMenu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pbMenu.Image = ((System.Drawing.Image)(resources.GetObject("pbMenu.Image")));
-            this.pbMenu.Location = new System.Drawing.Point(0, 0);
-            this.pbMenu.Name = "pbMenu";
-            this.pbMenu.Size = new System.Drawing.Size(42, 42);
-            this.pbMenu.TabIndex = 0;
-            this.pbMenu.TabStop = false;
-            this.pbMenu.Click += new System.EventHandler(this.pbMenu_Click);
-            // 
-            // timerSlide
-            // 
-            this.timerSlide.Interval = 15;
-            this.timerSlide.Tick += new System.EventHandler(this.timerSlide_Tick);
-            // 
-            // tmrSubMenu
-            // 
-            this.tmrSubMenu.Interval = 15;
-            this.tmrSubMenu.Tick += new System.EventHandler(this.tmrSubMenu_Tick);
-            // 
-            // pnlFormContainer
-            // 
-            this.pnlFormContainer.AutoScroll = true;
-            this.pnlFormContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(216)))), ((int)(((byte)(216)))));
-            this.pnlFormContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlFormContainer.Location = new System.Drawing.Point(43, 42);
-            this.pnlFormContainer.Name = "pnlFormContainer";
-            this.pnlFormContainer.Size = new System.Drawing.Size(1257, 608);
-            this.pnlFormContainer.TabIndex = 2;
             // 
             // Dashboard
             // 
@@ -604,5 +632,7 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button btnMenuIPDReport;
         private System.Windows.Forms.Button btnWard;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.Button btnMenuTokenList;
     }
 }

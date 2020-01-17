@@ -272,10 +272,10 @@
           <Property Name="IsLabCharity" Type="bit" />
           <Property Name="IsECG" Type="bit" />
           <Property Name="IsXRAY" Type="bit" />
+          <Property Name="IsFollowUp" Type="int" />
           <Property Name="ThirdPartyLabId" Type="uniqueidentifier" />
           <Property Name="ThirdPartyLabAmoumt" Type="decimal" Precision="18" Scale="2" />
           <Property Name="ECGAmount" Type="decimal" Precision="18" Scale="2" />
-          <Property Name="NumberofXRAY" Type="int" />
           <Property Name="XRAYAmount" Type="decimal" Precision="18" Scale="2" />
           <Property Name="ConsultingDoctorId" Type="uniqueidentifier" />
           <Property Name="Diagnose" Type="nvarchar(max)" />
@@ -289,6 +289,7 @@
           <Property Name="ReceivedBy" Type="uniqueidentifier" />
           <Property Name="CreatedBy" Type="uniqueidentifier" />
           <Property Name="ModifiedBy" Type="uniqueidentifier" />
+          <Property Name="NumberofXRAY" Type="int" />
         </EntityType>
         <EntityType Name="OPDHistoryUpdate">
           <Key>
@@ -315,6 +316,19 @@
           <Property Name="CreatedOn" Type="datetime" />
           <Property Name="ModifiedOn" Type="datetime" />
           <Property Name="CreatedBy" Type="uniqueidentifier" />
+          <Property Name="ModifiedBy" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="TPLabPatientMapping">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OPDHistoryId" Type="uniqueidentifier" />
+          <Property Name="LabId" Type="uniqueidentifier" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Createdby" Type="uniqueidentifier" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="ModifiedOn" Type="datetime" />
           <Property Name="ModifiedBy" Type="uniqueidentifier" />
         </EntityType>
         <EntityType Name="UserDetail">
@@ -564,6 +578,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TPLabPatientMapping_LabDetail">
+          <End Role="LabDetail" Type="Self.LabDetail" Multiplicity="0..1" />
+          <End Role="TPLabPatientMapping" Type="Self.TPLabPatientMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LabDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TPLabPatientMapping">
+              <PropertyRef Name="LabId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TPLabPatientMapping_OPDHistory">
+          <End Role="OPDHistory" Type="Self.OPDHistory" Multiplicity="0..1" />
+          <End Role="TPLabPatientMapping" Type="Self.TPLabPatientMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OPDHistory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TPLabPatientMapping">
+              <PropertyRef Name="OPDHistoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_UserDetail_Department">
           <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
           <End Role="UserDetail" Type="Self.UserDetail" Multiplicity="*" />
@@ -608,6 +646,7 @@
           <EntitySet Name="OPDHistory" EntityType="Self.OPDHistory" Schema="Tran" store:Type="Tables" />
           <EntitySet Name="OPDHistoryUpdate" EntityType="Self.OPDHistoryUpdate" Schema="Tran" store:Type="Tables" />
           <EntitySet Name="PatientHistory" EntityType="Self.PatientHistory" Schema="Tran" store:Type="Tables" />
+          <EntitySet Name="TPLabPatientMapping" EntityType="Self.TPLabPatientMapping" Schema="Tran" store:Type="Tables" />
           <EntitySet Name="UserDetail" EntityType="Self.UserDetail" Schema="User" store:Type="Tables" />
           <AssociationSet Name="FK_BillHistory_OPDHistory" Association="Self.FK_BillHistory_OPDHistory">
             <End Role="OPDHistory" EntitySet="OPDHistory" />
@@ -685,6 +724,14 @@
             <End Role="Department" EntitySet="Department" />
             <End Role="Status" EntitySet="Status" />
           </AssociationSet>
+          <AssociationSet Name="FK_TPLabPatientMapping_LabDetail" Association="Self.FK_TPLabPatientMapping_LabDetail">
+            <End Role="LabDetail" EntitySet="LabDetail" />
+            <End Role="TPLabPatientMapping" EntitySet="TPLabPatientMapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TPLabPatientMapping_OPDHistory" Association="Self.FK_TPLabPatientMapping_OPDHistory">
+            <End Role="OPDHistory" EntitySet="OPDHistory" />
+            <End Role="TPLabPatientMapping" EntitySet="TPLabPatientMapping" />
+          </AssociationSet>
           <AssociationSet Name="FK_UserDetail_Department" Association="Self.FK_UserDetail_Department">
             <End Role="Department" EntitySet="Department" />
             <End Role="UserDetail" EntitySet="UserDetail" />
@@ -742,6 +789,7 @@
           <Property Name="CreatedBy" Type="Guid" />
           <Property Name="ModifiedBy" Type="Guid" />
           <NavigationProperty Name="OPDHistories" Relationship="HospitalManagementModel.FK_OPDHistory_LabDetail" FromRole="LabDetail" ToRole="OPDHistory" />
+          <NavigationProperty Name="TPLabPatientMappings" Relationship="HospitalManagementModel.FK_TPLabPatientMapping_LabDetail" FromRole="LabDetail" ToRole="TPLabPatientMapping" />
         </EntityType>
         <EntityType Name="Medicine">
           <Key>
@@ -972,6 +1020,8 @@
           <Property Name="IsECG" Type="Boolean" />
           <Property Name="IsXRAY" Type="Boolean" />
           <Property Name="NumberofXRAY" Type="Int32" />
+          <Property Name="IsFollowUp" Type="Int32" />
+          <NavigationProperty Name="TPLabPatientMappings" Relationship="HospitalManagementModel.FK_TPLabPatientMapping_OPDHistory" FromRole="OPDHistory" ToRole="TPLabPatientMapping" />
         </EntityType>
         <EntityType Name="PatientHistory">
           <Key>
@@ -1286,6 +1336,15 @@
             <End Role="PatientDetail" EntitySet="PatientDetails" />
             <End Role="IPDHistory" EntitySet="IPDHistories" />
           </AssociationSet>
+          <EntitySet Name="TPLabPatientMappings" EntityType="HospitalManagementModel.TPLabPatientMapping" />
+          <AssociationSet Name="FK_TPLabPatientMapping_LabDetail" Association="HospitalManagementModel.FK_TPLabPatientMapping_LabDetail">
+            <End Role="LabDetail" EntitySet="LabDetails" />
+            <End Role="TPLabPatientMapping" EntitySet="TPLabPatientMappings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TPLabPatientMapping_OPDHistory" Association="HospitalManagementModel.FK_TPLabPatientMapping_OPDHistory">
+            <End Role="OPDHistory" EntitySet="OPDHistories" />
+            <End Role="TPLabPatientMapping" EntitySet="TPLabPatientMappings" />
+          </AssociationSet>
           </EntityContainer>
         <Association Name="FK_OPDHistory_PatientDetail">
           <End Type="HospitalManagementModel.PatientDetail" Role="PatientDetail" Multiplicity="0..1" />
@@ -1426,6 +1485,45 @@
             </Principal>
             <Dependent Role="IPDHistory">
               <PropertyRef Name="PatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TPLabPatientMapping">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OPDHistoryId" Type="Guid" />
+          <Property Name="LabId" Type="Guid" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Createdby" Type="Guid" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Guid" />
+          <NavigationProperty Name="LabDetail" Relationship="HospitalManagementModel.FK_TPLabPatientMapping_LabDetail" FromRole="TPLabPatientMapping" ToRole="LabDetail" />
+          <NavigationProperty Name="OPDHistory" Relationship="HospitalManagementModel.FK_TPLabPatientMapping_OPDHistory" FromRole="TPLabPatientMapping" ToRole="OPDHistory" />
+        </EntityType>
+        <Association Name="FK_TPLabPatientMapping_LabDetail">
+          <End Type="HospitalManagementModel.LabDetail" Role="LabDetail" Multiplicity="0..1" />
+          <End Type="HospitalManagementModel.TPLabPatientMapping" Role="TPLabPatientMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LabDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TPLabPatientMapping">
+              <PropertyRef Name="LabId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TPLabPatientMapping_OPDHistory">
+          <End Type="HospitalManagementModel.OPDHistory" Role="OPDHistory" Multiplicity="0..1" />
+          <End Type="HospitalManagementModel.TPLabPatientMapping" Role="TPLabPatientMapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OPDHistory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TPLabPatientMapping">
+              <PropertyRef Name="OPDHistoryId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1663,6 +1761,7 @@
           <EntitySetMapping Name="OPDHistories">
             <EntityTypeMapping TypeName="HospitalManagementModel.OPDHistory">
               <MappingFragment StoreEntitySet="OPDHistory">
+                <ScalarProperty Name="IsFollowUp" ColumnName="IsFollowUp" />
                 <ScalarProperty Name="NumberofXRAY" ColumnName="NumberofXRAY" />
                 <ScalarProperty Name="IsXRAY" ColumnName="IsXRAY" />
                 <ScalarProperty Name="IsECG" ColumnName="IsECG" />
@@ -1782,6 +1881,20 @@
                 <ScalarProperty Name="PaidAmount" ColumnName="PaidAmount" />
                 <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
                 <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TPLabPatientMappings">
+            <EntityTypeMapping TypeName="HospitalManagementModel.TPLabPatientMapping">
+              <MappingFragment StoreEntitySet="TPLabPatientMapping">
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Createdby" ColumnName="Createdby" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="LabId" ColumnName="LabId" />
+                <ScalarProperty Name="OPDHistoryId" ColumnName="OPDHistoryId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

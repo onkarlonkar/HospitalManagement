@@ -560,6 +560,19 @@ namespace BL
                 throw ex;
             }
         }
+
+        public bool UpdateStatus(List<OPDHistoryModel> model,OPD_STATUS status)
+        {
+            try
+            {
+                OPDHistory entity = new OPDHistory();
+                return entity.UpdateStatus(model, status.ToString());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 
 

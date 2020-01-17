@@ -28,6 +28,7 @@ namespace HospitalManagement.Forms.Reports
             InitializeComponent();
             isSearch = true;
             getInHouseDoctor();
+            getPatientType();
             getStatus();
             Search();
             txtSearch.Focus();
@@ -95,6 +96,32 @@ namespace HospitalManagement.Forms.Reports
 
         }
 
+        private void getPatientType()
+        {
+            try
+            {
+                List<LookupModel> model = new List<LookupModel>();
+                LookupModel m = new LookupModel();
+                m.Sequence = 0;
+                m.Name = "New";
+                model.Add(m);
+                m = new LookupModel();
+                m.Sequence = 1;
+                m.Name = "Follow-Up";
+                model.Add(m);
+                model.Insert(0, new LookupModel() { Sequence = null, Name = "All" });
+                ddlFollowUp.DataSource = model;
+                ddlFollowUp.DisplayMember = "Name";
+                ddlFollowUp.ValueMember = "Sequence";
+
+            }
+            catch (Exception ex)
+            {
+                Utility.ErrorLog.Logging("Patient Details", ex.Message.ToString(), ex.StackTrace.ToString());
+            }
+
+        }
+
         private void getStatus(Guid? id = null)
         {
             try
@@ -118,6 +145,7 @@ namespace HospitalManagement.Forms.Reports
             OPDFilterSearchModel model = new OPDFilterSearchModel();
             model.ConsultingId = new List<Guid?>();
             model.StatusId = new List<Guid?>();
+            model.type = new List<int?>();
             if (!string.IsNullOrEmpty(txtSearch.Text) && txtSearch.Text != "Search...")
             {
                 model.searchText = txtSearch.Text;
@@ -157,6 +185,23 @@ namespace HospitalManagement.Forms.Reports
                 if (model.StatusId.Any())
                     model.StatusId.Clear();
                 model.StatusId.Add(new Guid(ddlStatus.SelectedValue.ToString()));
+            }
+
+            if (ddlFollowUp.SelectedIndex == 0)
+            {
+
+                if (model.type.Any())
+                    model.type.Clear();
+
+                model.type.Add(1);
+                model.type.Add(0);
+
+            }
+            else
+            {
+                if (model.type.Any())
+                    model.type.Clear();
+                model.type.Add(Convert.ToInt32(ddlFollowUp.SelectedValue));
             }
 
 
@@ -225,6 +270,14 @@ namespace HospitalManagement.Forms.Reports
         }
 
         private void ddlStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!isSearch)
+            {
+                Search();
+            }
+        }
+
+        private void ddlFollowUp_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!isSearch)
             {

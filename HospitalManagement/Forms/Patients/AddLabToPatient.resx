@@ -117,39 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="tabControl1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="Id.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btnSave.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAABGdBTUEAALGPC/xhBQAAAN5JREFUOE9j
-        +Pr1qycQ3wHif0D8BojXAPEqPHg1EL8E4s3v3r3jZ4ABoMAjIP4Pwt++fSuACmMAoHwzEK/68uWLHpBO
-        geq5DMRSMAVgQ6A4EyyIBQDljoLUAA1yA+JYJD0X3r59y0cNg0B4GrUM2kkbg4CBvRhIG+PAvkD50O/f
-        v9sA2bOAGLdBFGAUg0Bp4wyJ+DsQoxoEdLY0NDiIBsCwSsAwCAh4oPJEA6DlgaMG4QfoBv2lgkHbQQYd
-        A3E+ffqkAZUnGgANyoMaVAcySAqIpwMxtkKMGFzz//9/NgA/jb0mpIfj6wAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="btnCancel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAABGdBTUEAALGPC/xhBQAAAahJREFUOE+N
-        kztLA1EQhddHqVj4SLDWRhDE0geInaV/QStFOxEEGyGIlY3+AEWws1ArCxG0ECwsNIa0mkJhIcXu5iFo
-        1m+ud+VmjCYDZx9nzpy5986u1yjCMBwplUpb5XL5CuR5zoIzsBQEQZ+V/R1RFKXBMQU1EDcCxgH3zTiO
-        O21ZfWAwiuDFLWqCC8y6bPl3QA6CgiNqFaeYtVsbY3SiBO/gTXGCRiteNCZsaUwlPjiHeQ68n+dHhz+g
-        ewf3PYcTFISX1WRUwsc8ZZukeM9hfGTEBO9zjtaA/KTH5VInQA6TtBQy7t7EhFXOkIuUNka7Jh2edEJA
-        g7yYiIFEpVKZgpf4pcVoV4zudcJin5W0WR+vWCz2wN0pTYJtMZIvVicOMTFjZWUTyZmxtQFyjXawLMIV
-        Rb5iYr5au50QZGWKwvE8bnU/qFarQ0mXugOUPcPP0kR+h4R/gJN/8NbhRHstDUxA6E+gVdRk1dbG82S8
-        kOdK1BRm7Dp83+8m2arZJyYb7lTrQiaFaAE8O0UaNzJJW/J/iCF7n6brOkU7FGe4rzKdYStR4XlfFk6y
-        vZQxQ78AAAAASUVORK5CYII=
-</value>
-  </data>
-  <metadata name="lineShape1.Bounds" type="System.Drawing.Rectangle, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1, 92, 924, 0</value>
+  <metadata name="LabId.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
   </metadata>
-  <metadata name="lineShape1.Location" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1, 92</value>
+  <metadata name="Names.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
   </metadata>
-  <metadata name="lineShape1.Size" type="System.Drawing.Size, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>924, 0</value>
+  <metadata name="Amount.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
   </metadata>
 </root>

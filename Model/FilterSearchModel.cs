@@ -15,7 +15,7 @@ namespace Model
         public string searchText { get; set; }
         public DateTime? from { get; set; }
         public DateTime? to { get; set; }
-
+        public List<Nullable<int>> type { get; set; }
         public List<Nullable<System.Guid>> ConsultingId { get; set; }
         public List<Nullable<System.Guid>> StatusId { get; set; }
     }

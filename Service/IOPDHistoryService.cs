@@ -17,6 +17,8 @@ namespace Service
         OPDHistoryModel GetById(Guid id);
 
         bool Update(OPDHistoryModel model);
+
+        bool UpdateStatus(List<OPDHistoryModel> model, OPD_STATUS status);
         bool Delete(Guid id);
         OPDHistoryModel GetByParentId(Guid id);
         List<OPDHistoryModel> AdvanceSearch(string searchText);

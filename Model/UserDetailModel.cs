@@ -38,5 +38,8 @@ namespace Model
         public static string RoleCategoryName { get; set; }
         public static string UserName { get; set; }
         public static string Password { get; set; }
+        public static int lastPatientCount { get; set; }
+
+        public static int NumberPatientCount { get; set; }
     }
 }

@@ -51,6 +51,9 @@
             this.lblCasePaper = new System.Windows.Forms.Label();
             this.lblFullName = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnLab = new System.Windows.Forms.Button();
+            this.txtNumberOfXRay = new System.Windows.Forms.TextBox();
+            this.lblXRayText = new System.Windows.Forms.Label();
             this.txtThirdPartyAmount = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.ddlThirdParty = new System.Windows.Forms.ComboBox();
@@ -91,8 +94,6 @@
             this.tPatientHistory = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.txtNumberOfXRay = new System.Windows.Forms.TextBox();
-            this.lblXRayText = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tbOPDHostory.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -385,6 +386,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnLab);
             this.groupBox1.Controls.Add(this.txtNumberOfXRay);
             this.groupBox1.Controls.Add(this.lblXRayText);
             this.groupBox1.Controls.Add(this.txtThirdPartyAmount);
@@ -415,6 +417,47 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "OPD Details";
             // 
+            // btnLab
+            // 
+            this.btnLab.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnLab.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.btnLab.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.btnLab.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLab.Font = new System.Drawing.Font("Verdana", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLab.Image = global::HospitalManagement.Properties.Resources.lab_24px;
+            this.btnLab.Location = new System.Drawing.Point(653, 53);
+            this.btnLab.Name = "btnLab";
+            this.btnLab.Size = new System.Drawing.Size(39, 53);
+            this.btnLab.TabIndex = 60;
+            this.btnLab.UseVisualStyleBackColor = true;
+            this.btnLab.Click += new System.EventHandler(this.btnLab_Click);
+            // 
+            // txtNumberOfXRay
+            // 
+            this.txtNumberOfXRay.BackColor = System.Drawing.SystemColors.Window;
+            this.txtNumberOfXRay.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNumberOfXRay.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtNumberOfXRay.Location = new System.Drawing.Point(610, 20);
+            this.txtNumberOfXRay.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtNumberOfXRay.MaxLength = 1;
+            this.txtNumberOfXRay.Name = "txtNumberOfXRay";
+            this.txtNumberOfXRay.Size = new System.Drawing.Size(35, 23);
+            this.txtNumberOfXRay.TabIndex = 58;
+            this.txtNumberOfXRay.Text = "1";
+            this.txtNumberOfXRay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtNumberOfXRay.TextChanged += new System.EventHandler(this.txtNumberOfXRay_TextChanged);
+            // 
+            // lblXRayText
+            // 
+            this.lblXRayText.AutoSize = true;
+            this.lblXRayText.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblXRayText.ForeColor = System.Drawing.Color.White;
+            this.lblXRayText.Location = new System.Drawing.Point(485, 22);
+            this.lblXRayText.Name = "lblXRayText";
+            this.lblXRayText.Size = new System.Drawing.Size(124, 17);
+            this.lblXRayText.TabIndex = 59;
+            this.lblXRayText.Text = "Number of X-Ray :";
+            // 
             // txtThirdPartyAmount
             // 
             this.txtThirdPartyAmount.BackColor = System.Drawing.SystemColors.Window;
@@ -424,22 +467,22 @@
             this.txtThirdPartyAmount.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtThirdPartyAmount.MaxLength = 10;
             this.txtThirdPartyAmount.Name = "txtThirdPartyAmount";
+            this.txtThirdPartyAmount.ReadOnly = true;
             this.txtThirdPartyAmount.Size = new System.Drawing.Size(181, 23);
             this.txtThirdPartyAmount.TabIndex = 6;
             this.txtThirdPartyAmount.Text = "0.00";
             this.txtThirdPartyAmount.TextChanged += new System.EventHandler(this.txtThirdPartyAmount_TextChanged);
-            this.txtThirdPartyAmount.Leave += new System.EventHandler(this.txtThirdPartyAmount_Leave);
             // 
             // label18
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.Color.White;
-            this.label18.Location = new System.Drawing.Point(396, 86);
+            this.label18.Location = new System.Drawing.Point(407, 86);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(68, 17);
+            this.label18.Size = new System.Drawing.Size(57, 17);
             this.label18.TabIndex = 57;
-            this.label18.Text = "Amount :";
+            this.label18.Text = "TP Lab :";
             // 
             // ddlThirdParty
             // 
@@ -450,7 +493,7 @@
             this.ddlThirdParty.Name = "ddlThirdParty";
             this.ddlThirdParty.Size = new System.Drawing.Size(245, 25);
             this.ddlThirdParty.TabIndex = 4;
-            this.ddlThirdParty.SelectedIndexChanged += new System.EventHandler(this.ddlThirdParty_SelectedIndexChanged);
+            this.ddlThirdParty.Visible = false;
             // 
             // label19
             // 
@@ -462,6 +505,7 @@
             this.label19.Size = new System.Drawing.Size(109, 17);
             this.label19.TabIndex = 55;
             this.label19.Text = "Third Party Lab :";
+            this.label19.Visible = false;
             // 
             // ddlConsulting
             // 
@@ -909,32 +953,6 @@
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             // 
-            // txtNumberOfXRay
-            // 
-            this.txtNumberOfXRay.BackColor = System.Drawing.SystemColors.Window;
-            this.txtNumberOfXRay.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNumberOfXRay.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.txtNumberOfXRay.Location = new System.Drawing.Point(610, 20);
-            this.txtNumberOfXRay.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtNumberOfXRay.MaxLength = 1;
-            this.txtNumberOfXRay.Name = "txtNumberOfXRay";
-            this.txtNumberOfXRay.Size = new System.Drawing.Size(35, 23);
-            this.txtNumberOfXRay.TabIndex = 58;
-            this.txtNumberOfXRay.Text = "1";
-            this.txtNumberOfXRay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtNumberOfXRay.TextChanged += new System.EventHandler(this.txtNumberOfXRay_TextChanged);
-            // 
-            // lblXRayText
-            // 
-            this.lblXRayText.AutoSize = true;
-            this.lblXRayText.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblXRayText.ForeColor = System.Drawing.Color.White;
-            this.lblXRayText.Location = new System.Drawing.Point(485, 22);
-            this.lblXRayText.Name = "lblXRayText";
-            this.lblXRayText.Size = new System.Drawing.Size(124, 17);
-            this.lblXRayText.TabIndex = 59;
-            this.lblXRayText.Text = "Number of X-Ray :";
-            // 
             // OPDHistory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -1040,5 +1058,6 @@
         private System.Windows.Forms.Label label13;
         internal System.Windows.Forms.TextBox txtNumberOfXRay;
         internal System.Windows.Forms.Label lblXRayText;
+        private System.Windows.Forms.Button btnLab;
     }
 }
